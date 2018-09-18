@@ -2124,23 +2124,23 @@ multiple pre-existing platforms and consolidates all this information in a neat 
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-adding-an-entry" class="discrete">Use case: Adding an entry</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User asks application to add a new entry.</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>Application creates a new entry, displays confirmation to user.</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User enters additional information for new entry.</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>Application updates entry, displays info to user.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2153,19 +2153,189 @@ multiple pre-existing platforms and consolidates all this information in a neat 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The list is empty.</p>
+<p>1a.  User creates new entry along with associated information.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1.  Application displays confirmation of entry creation.</p>
+</li>
+<li>
+<p>1a2.  Application displays entry along with associated information.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
+</ul>
+</div>
+</li>
 <li>
-<p>3a. The given index is invalid.</p>
+<p>1b.  Entry with same name already exists in AddressBook.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1.  Application informs user, requests for confirmation.</p>
+</li>
+<li>
+<p>1b2.  User confirms request.</p>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a.  Wrong keyword or details input by user.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1.  Application prompts user for re-entry.</p>
+</li>
+<li>
+<p>3a2.  Application will give example of a proper command.</p>
+</li>
+<li>
+<p>3a3.  User gives proper format of input.</p>
+<div class="paragraph">
+<p>Use case resumes from step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b.  Entry with same name already exists in AddressBook.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1.  Application displays numbered list of entries with that same name.</p>
+</li>
+<li>
+<p>3b2.  User inputs number associated with correct entry.</p>
+<div class="paragraph">
+<p>Use case resumes from step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-an-entry" class="discrete">Use case: Delete an entry</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User asks application to delete a entry.</p>
+</li>
+<li>
+<p>Application asks user to confirm deletion.</p>
+</li>
+<li>
+<p>User confirms deletion.</p>
+</li>
+<li>
+<p>Application deletes entry, shows confirmation message to user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>1a.  User’s requested entry does not exist.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1.  Application informs user.</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>Use case resumes from step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b.  Multiple entries with identical names exist.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1.  Application displays numbered list of entries with that same name.</p>
+</li>
+<li>
+<p>1b2.  User inputs number associated with correct entry (or 0 to cancel).</p>
+<div class="paragraph">
+<p>Use case resumes from step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a.  User requests to cancel deletion.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1.  Application displays acknowledgement message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-an-entry-2" class="discrete">Use case: Delete an entry</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User searches for an entry name.</p>
+</li>
+<li>
+<p>Application displays entry and associated information.</p>
+</li>
+<li>
+<p>User adds info into new fields.</p>
+</li>
+<li>
+<p>Application displays updated entry.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a.  User edits existing field.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1.  Application modifies requested field, displays updated entry.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b.  User deletes existing field.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1.  Application deletes existing field, displays updated entry.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
@@ -2362,4 +2532,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-18 14:00:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-18 14:14:54 UTC</div></div></div></body></html>
