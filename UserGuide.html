@@ -23,10 +23,13 @@
 <li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.13. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#grouping-content-together-by-tag-code-group-code">3.11. Grouping content together by tag: <code>group</code></a></li>
+<li><a href="#show-command-history-code-history-code">3.12. Show command history: <code>history</code></a></li>
+<li><a href="#import-information-from-external-platform-code-import-code">3.13. Import information from external platform: <code>import</code></a></li>
+<li><a href="#autocomplete">3.14. Autocomplete</a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.16. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -365,8 +368,15 @@ Format: <code>history</code></p>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+<p>A command to allow the user to undo previous commands.<br></p>
+</div>
+<div class="paragraph">
+<p>Command Syntax:<br>
+<code>undo</code>:<br>
+This command will undo the user’s previous command.<br>
+<code>undo [number]</code>:<br>
+The number of commands you want to undo.
+This command will undo a certain number of commands. The number should be at least 1. If the number exceeds the number of operations that has been done, the application will undo all the previous operations.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -396,13 +406,12 @@ Format: <code>undo</code></p>
 <p><code>select 1</code><br>
 <code>list</code><br>
 <code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+The <code>undo</code> command fails as there are no undoable commands executed previously.<br></p>
 </li>
 <li>
 <p><code>delete 1</code><br>
 <code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo 2</code> (reverses the <code>clear</code> command and the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
 </div>
@@ -410,8 +419,15 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <div class="sect2">
 <h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+<p>A command to allow the user to redo previously undone commands.<br></p>
+</div>
+<div class="paragraph">
+<p>Command Syntax:
+<code>redo</code>: <br>
+This command will redo the user’s previous undone command.<br>
+<code>redo [number]</code>:<br>
+The number of undone commands you want to redo.
+This command will redo a certain number of undone commands. The number should be at least 1. If the number exceeds the number of operations that has been undone, the application will redo all the previous operations that have been undone.</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -433,35 +449,59 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+<code>redo 2</code> (reapplies the <code>delete 1</code> command and the <code>clear</code> command)<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="grouping-content-together-by-tag-code-group-code"><a class="link" href="#grouping-content-together-by-tag-code-group-code">3.11. Grouping content together by tag: <code>group</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>A command to allow the user to group students under a certain group tag.<br>
+Command Syntax:<br>
+<code>group [group_name] [keyword]</code>:<br>
+group_name: The name of this group of people.<br>
+keyword: n/NAME The name of the person you want to put in this group.
+                  i/INDEX The index of the person you want to put in this group.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
+<h3 id="show-command-history-code-history-code"><a class="link" href="#show-command-history-code-history-code">3.12. Show command history: <code>history</code></a></h3>
+<div class="paragraph">
+<p>A command to allow the user to see the history of commands used within the address book.+
+Command Syntax: <code>history</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import-information-from-external-platform-code-import-code"><a class="link" href="#import-information-from-external-platform-code-import-code">3.13. Import information from external platform: <code>import</code></a></h3>
+<div class="paragraph">
+<p>A command to allow the user to see the history of commands used within the address book.+
+Command Syntax: <code>import [keyword]</code><br>
+keyword: One of either: IVLE, NUSMODS, MYISIS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete"><a class="link" href="#autocomplete">3.14. Autocomplete</a></h3>
+<div class="paragraph">
+<p>A feature that gives a list of potential matches based on substrings of a result that a user types into any other command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -523,4 +563,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-18 13:05:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-09-18 13:08:47 UTC</div></div></div></body></html>
