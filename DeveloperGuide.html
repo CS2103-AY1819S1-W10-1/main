@@ -34,6 +34,7 @@
 <li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">3.4. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#delete">3.6. Delete</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -900,6 +901,150 @@ new command:</p>
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete"><a class="link" href="#delete">3.6. Delete</a></h3>
+<div class="paragraph">
+<p>(to be completed)<br>
+<code>delete</code> is a basic feature provided by every version of 'TheTracker'.
+It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion', by the same `DeleteCommand</code> with different parameters, which would facilitate
+and improve the user experience.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.6.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>delete</code> mechanism is managed by <code>DeleteCommand</code>, which extends the <code>Command</code> class and uses inheritance to facilitate implementation.
+Generally, it implements the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DeleteCommand#excute(Model model, CommandHistory history)</code>: deletes the entity passed to the <code>DeleteCommand</code> class</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This operation is exposed in the Model interface as Model#getFilteredEntity(), Model#deleteEntity() and Model#commitAddressBook() respectively.</p>
+</div>
+<div class="paragraph">
+<p>Provided below is an usage scenario instance. It illustrates how the
+delete mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1: The user launches TheTracker for the first time. The
+<code>VersionedAddressBook</code> will be initialised with the initial address book
+state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteStartingStateListDiagramXueyan.png" alt="DeleteStartingStateListDiagramXueyan" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2: The user executes <code>add n/David&#8230;&#8203;</code> command to add a person named
+David in his TheTracker. The parser <code>AddCommandParser</code> will identify by
+the '\n' tag that the entity to be added is a person. The <code>add</code> command
+calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker
+after the <code>add David&#8230;&#8203;</code> command executes to be saved in the <code>addressBookStateList</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteNewCommand1StateListDiagramXueyan.png" alt="DeleteNewCommand1StateListDiagramXueyan" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 3: The user executes 'delete n/David' to delete the person named David in the address
+book. The parser <code>DeleteCommandParser</code> will identify by the '\n' tag that the entity to be
+deleted is a person.The 'delete' command calls Model#getFilteredEntity(), Model#deleteEntity()
+and 'Model#commitAddressBook()', and causes modified address book state to be saved into the 'addressBookStateList'</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteDeleteCommandStateListDiagramXueyan.png" alt="DeleteDeleteCommandStateListDiagramXueyan" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the undo operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteSequenceDiagramXueyan.png" alt="DeleteSequenceDiagramXueyan" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-delete-executes"><a class="link" href="#aspect-how-delete-executes">Aspect: How delete executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Use tags and entity):</strong> Inputs the type of the entity to be deleted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy for user to understand the usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Needs to implement additional class type for checking which type of Entity and which Entity list to delete from.</p>
+</li>
+<li>
+<p>Needs to search for the Entity in the whole list which may be slow.</p>
+</li>
+<li>
+<p>User input Entity name may not be valid, which needs extra prompt.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Inputs the index number of entity to be deleted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement.</p>
+</li>
+<li>
+<p>Fast retrieval of Entity in the list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User needs to know the index number of the Entity to be deleted.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2597,4 +2742,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 14:40:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-16 15:46:45 UTC</div></div></div></body></html>
