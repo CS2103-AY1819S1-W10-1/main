@@ -23,7 +23,7 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
  *
  * Supports a minimal set of list operations.
  */
-public class UniquePersonList extends UniqueEntityList implements Iterable<Person>  {
+public class UniquePersonList extends UniqueEntityList implements Iterable<Person> {
 
     private final ObservableList<Person> internalList = FXCollections.observableArrayList();
 
