@@ -29,14 +29,14 @@ public class Module extends Entity {
      * Every field must be present and not null.
      */
     public Module(ModuleCode moduleCode, ModuleTitle moduleTitle, AcademicYear academicYear,
-                  Semester semester, Set<Tag> tags, TypeUtil type) {
-        requireAllNonNull(moduleCode, moduleTitle, academicYear, semester, tags, type);
+                  Semester semester, Set<Tag> tags) {
+        requireAllNonNull(moduleCode, moduleTitle, academicYear, semester, tags);
         this.moduleCode = moduleCode;
         this.moduleTitle = moduleTitle;
         this.academicYear = academicYear;
         this.semester = semester;
         this.tags.addAll(tags);
-        this.type = type;
+        this.type = TypeUtil.MODULE;
     }
 
     public ModuleCode getModuleCode() {

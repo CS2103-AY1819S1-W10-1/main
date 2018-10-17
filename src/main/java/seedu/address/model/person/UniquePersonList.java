@@ -9,6 +9,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.entity.Entity;
+import seedu.address.model.entity.UniqueEntityList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.NotAPersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -22,21 +23,9 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
  *
  * Supports a minimal set of list operations.
  */
-public class UniquePersonList implements Iterable<Person> {
+public class UniquePersonList extends UniqueEntityList implements Iterable<Person>  {
 
     private final ObservableList<Person> internalList = FXCollections.observableArrayList();
-
-    /**
-     * Returns true if the list contains an equivalent entity as the given argument.
-     */
-    public boolean contains(Entity toCheck) {
-        requireNonNull(toCheck);
-        if (!(toCheck instanceof Person)) {
-            return false;
-        }
-        Person personToCheck = (Person) toCheck;
-        return internalList.stream().anyMatch(personToCheck::isSameEntity);
-    }
 
     /**
      * Adds a person to the list.

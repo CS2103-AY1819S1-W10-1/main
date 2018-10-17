@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.commons.util.TypeUtil;
 import seedu.address.model.entity.Entity;
 import seedu.address.model.tag.Tag;
 
@@ -35,6 +36,7 @@ public class Person extends Entity {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.type = TypeUtil.PERSON;
     }
 
     public Name getName() {
