@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.commons.util.TypeUtil;
 import seedu.address.model.module.AcademicYear;
 import seedu.address.model.module.Module;
 import seedu.address.model.module.ModuleCode;
@@ -122,8 +121,7 @@ public class XmlAdaptedModule {
         final Semester modelSemester = new Semester(semester);
 
         final Set<Tag> modelTags = new HashSet<>(moduleTags);
-        final TypeUtil modelType = TypeUtil.MODULE;
-        return new Module(modelCode, modelTitle, modelAcademicYear, modelSemester, modelTags, modelType);
+        return new Module(modelCode, modelTitle, modelAcademicYear, modelSemester, modelTags);
     }
 
     @Override

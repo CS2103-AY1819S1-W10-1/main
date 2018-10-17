@@ -9,6 +9,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.entity.Entity;
+import seedu.address.model.entity.UniqueEntityList;
 import seedu.address.model.module.exceptions.DuplicateModuleException;
 
 /**
@@ -20,22 +21,9 @@ import seedu.address.model.module.exceptions.DuplicateModuleException;
  * Supports a minimal set of list operations.
  *
  */
-public class UniqueModuleList implements Iterable<Module> {
+public class UniqueModuleList extends UniqueEntityList implements Iterable<Module> {
 
     private final ObservableList<Module> internalList = FXCollections.observableArrayList();
-
-    /**
-     * Returns true if the list contains an equivalent module as the given argument.
-     */
-    public boolean contains(Entity toCheck) {
-        requireNonNull(toCheck);
-        if (!(toCheck instanceof Module)) {
-            return false;
-        }
-
-        Module moduleToCheck = (Module) toCheck;
-        return internalList.stream().anyMatch(moduleToCheck::equals);
-    }
 
     /**
      * Adds the specified module to the list iff it is not originally contained

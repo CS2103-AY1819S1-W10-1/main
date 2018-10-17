@@ -31,13 +31,13 @@ public class Occasion extends Inanimate {
      * Every field must be present and not null.
      */
     public Occasion(OccasionName occasionName, OccasionDate occasionDate,
-        Person organiser, Set<Tag> tags, TypeUtil type) {
-        requireAllNonNull(occasionName, occasionDate, organiser, tags, type);
+        Person organiser, Set<Tag> tags) {
+        requireAllNonNull(occasionName, occasionDate, organiser, tags);
         this.occasionName = occasionName;
         this.occasionDate = occasionDate;
         this.organiser = organiser;
         this.tags.addAll(tags);
-        this.type = type;
+        this.type = TypeUtil.OCCASION;
     }
 
     public OccasionName getOccasionName() {
