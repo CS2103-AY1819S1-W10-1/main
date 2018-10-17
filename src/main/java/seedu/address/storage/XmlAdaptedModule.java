@@ -122,8 +122,7 @@ public class XmlAdaptedModule {
         final Semester modelSemester = new Semester(semester);
 
         final Set<Tag> modelTags = new HashSet<>(moduleTags);
-        final TypeUtil modelType = TypeUtil.MODULE;
-        return new Module(modelCode, modelTitle, modelAcademicYear, modelSemester, modelTags, modelType);
+        return new Module(modelCode, modelTitle, modelAcademicYear, modelSemester, modelTags);
     }
 
     @Override
