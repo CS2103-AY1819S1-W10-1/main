@@ -109,7 +109,7 @@ public class UniqueEntityList implements Iterable<Entity> {
     public void setEntities(UniqueEntityList replacement) {
         requireNonNull(replacement);
 
-        if(!isSameType(replacement)) {
+        if (!isSameType(replacement)) {
             throw new WrongEntityTypeException();
         }
         internalList.setAll(replacement.internalList);
