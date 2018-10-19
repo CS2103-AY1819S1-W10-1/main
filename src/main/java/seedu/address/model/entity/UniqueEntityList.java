@@ -1,17 +1,17 @@
 package seedu.address.model.entity;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Iterator;
+import java.util.List;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.TypeUtil;
 import seedu.address.model.entity.exceptions.DuplicateEntityException;
 import seedu.address.model.entity.exceptions.EntityNotFoundException;
 import seedu.address.model.entity.exceptions.WrongEntityTypeException;
-
-import java.util.Iterator;
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * A list of entities that enforces uniqueness between its elements and does not allow nulls.
@@ -20,9 +20,17 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
  * Supports a minimal set of list operations.
  */
 
-public abstract class UniqueEntityList implements Iterable<Entity> {
-    ObservableList<Entity> internalList = FXCollections.observableArrayList();
-    TypeUtil type; // contains the type of entries in that list
+public class UniqueEntityList implements Iterable<Entity> {
+    private ObservableList<Entity> internalList = FXCollections.observableArrayList();
+    private TypeUtil type; // contains the type of entries in that list
+
+    public ObservableList<Entity> getInternalList() {
+        return internalList;
+    }
+
+    public TypeUtil getType() {
+        return type;
+    }
 
     /**
      * Returns true if another UniqueEntityList has the same type.
