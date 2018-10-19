@@ -34,7 +34,7 @@ public class UniqueModuleList implements Iterable<Module> {
         }
 
         Module moduleToCheck = (Module) toCheck;
-        return internalList.stream().anyMatch(moduleToCheck::equals);
+        return internalList.stream().anyMatch(moduleToCheck::isSameEntity);
     }
 
     /**

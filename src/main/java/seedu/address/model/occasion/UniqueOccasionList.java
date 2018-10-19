@@ -32,7 +32,7 @@ public class UniqueOccasionList implements Iterable<Occasion> {
             return false;
         }
         Occasion occasionToCheck = (Occasion) toCheck;
-        return internalList.stream().anyMatch(occasionToCheck::equals);
+        return internalList.stream().anyMatch(occasionToCheck::isSameEntity);
     }
 
     /**

@@ -24,4 +24,8 @@ public abstract class Entity {
     }
 
     public abstract boolean isSameEntity(Entity other);
+
+    public boolean isSameType(Entity other) {
+        return this.type == other.type;
+    }
 }
