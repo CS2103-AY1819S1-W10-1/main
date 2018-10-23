@@ -970,9 +970,9 @@ after the <code>add David&#8230;&#8203;</code> command executes to be saved in t
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3: The user executes 'delete n/David' to delete the person named David in the address
+<p>Step 3: The user executes <code>delete n/David</code> to delete the person named David in the address
 book. The parser <code>DeleteCommandParser</code> will identify by the '\n' tag that the entity to be
-deleted is a person.The 'delete' command calls Model#getFilteredEntity(), Model#deleteEntity()
+deleted is a person.The <code>delete</code> command calls Model#getFilteredEntity(), Model#deleteEntity()
 and 'Model#commitAddressBook()', and causes modified address book state to be saved into the 'addressBookStateList'</p>
 </div>
 <div class="imageblock">
@@ -981,7 +981,7 @@ and 'Model#commitAddressBook()', and causes modified address book state to be sa
 </div>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p>The following sequence diagram shows how the delete operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2758,4 +2758,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 05:38:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 05:48:37 UTC</div></div></div></body></html>
