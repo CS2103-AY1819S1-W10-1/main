@@ -14,21 +14,20 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
+<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add[]</code></a></li>
+<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list[]</code></a></li>
+<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit[]</code></a></li>
 <li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
+<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete[]</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.7. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.8. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.9. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#grouping-content-together-by-tag-code-group-code">3.10. Grouping content together by tag: <code>group</code></a></li>
 <li><a href="#show-command-history-code-history-code">3.11. Show command history: <code>history</code></a></li>
-<li><a href="#import-information-from-external-platform-code-import-code">3.12. Import information from external platform: <code>import</code></a></li>
-<li><a href="#autocomplete">3.13. Autocomplete</a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.15. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.13. Saving the data</a></li>
+<li><a href="#autocomplete-coming-in-v-1-4">3.14. Autocomplete (coming in v 1.4)</a></li>
+<li><a href="#import-information-from-external-platform-code-import-code-coming-in-v-2-0">3.15. Import information from external platform: <code>import</code> (coming in v 2.0)</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -75,16 +74,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><code>listmodules</code> : lists all modules</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe t/98765432 t/johnd@example.com t/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><code>addperson n/John Doe t/98765432 t/johnd@example.com t/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
 </li>
 <li>
-<p>**<code>delete n/John Doe</code> : deletes the person John Doe from TheTracker.</p>
+<p><code>deleteoccasion 2</code> : deletes the 2nd entry in your occasion list</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><code>exit</code> : exits the app</p>
 </li>
 </ul>
 </div>
@@ -107,6 +106,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
+<p>Commands with <code>[]</code> after them will include either <code>person</code>,<code>module</code> or <code>occasion</code> e.g. <code>add[]</code> refers to <code>addperson</code>, <code>addmodule</code> or <code>addoccasion</code>.</p>
+</li>
+<li>
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
@@ -126,10 +128,14 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add[]</code></a></h3>
 <div class="paragraph">
-<p>Adds a person, module or an event to the address book<br>
-Format to add person: <code>add n/NAME t/VALUE OF TAG ONE t/VALUE OF TAG TWO t/VALUE OF TAG THREE [x/TAG VALUE]&#8230;&#8203;</code></p>
+<p>Adds a person, module or an occasion to the address book.<br></p>
+</div>
+<div class="paragraph">
+<p>Format to add person: <code>addperson n/NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/HOME_ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+Format to add module: <code>addmodule mc/MODULE_CODE mt/MODULE_TITLE ay/ACADEMIC_YEAR sem/SEMESTER [t/TAG]&#8230;&#8203;</code><br>
+Format to add occasion: <code>addoccasion on/OCCASION_NAME od/OCCASION_DATE loc/LOCATION [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -138,17 +144,10 @@ Format to add person: <code>add n/NAME t/VALUE OF TAG ONE t/VALUE OF TAG TWO t/V
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person, module or an event can have any number of tags (including 0) and in no particular order.
+A person, module or an occasion can have any number of tags (including 0) and in no particular order.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>The values a <code>x</code> can take:<br>
-* n: Name of person to be added.<br>
-* m: Name/Code of the module to be added.<br>
-* e: Name of the event to be added.<br>
-* t: Keyword to tag the person, event or module with.</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -156,26 +155,26 @@ A person, module or an event can have any number of tags (including 0) and in no
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/Betsy Crowe t/friend t/betsycrowe@example.com t/criminal</code><br></p>
+<p><code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code><br></p>
 </li>
 <li>
-<p><code>add m/CS2103 t/Software Engineering t/Dr. Damith</code><br></p>
+<p><code>addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/AY1718 sem/1 t/gg</code><br></p>
 </li>
 <li>
-<p><code>add e/Birthday t/My friend&#8217;s Birthday!</code></p>
+<p><code>addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list[]</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Shows a list of all persons/modules/occasions in the address book.<br>
+Format: <code>list[]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
+<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit[]</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
 Format: <code>edit x/VALUE [t/VALUE TO EDIT | NEW VALUE] [t/VALUE TO EDIT | NEW VALUE] [t/TAG]&#8230;&#8203;</code></p>
@@ -259,23 +258,17 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete[]</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified person, event or module from the address book.<br>
-Format: <code>delete x/VALUE</code></p>
-</div>
-<div class="paragraph">
-<p>The value of <code>x</code> is:
-* n: Represents that a person will be deleted.<br>
-* m: Represents that a module will be deleted.<br>
-* e: Represents that an event will be deleted.</p>
+<p>Deletes the specified person, module or occasion from the address book.<br>
+Format: <code>delete[] INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the person, module or event at with the specified <code>VALUE</code>.<br></p>
+<p>Deletes the person, module or occasion at with the specified <code>INDEX</code>.<br></p>
 </li>
 </ul>
 </div>
@@ -287,16 +280,16 @@ Format: <code>delete x/VALUE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete n/John Doe</code><br>
-Deletes the person whose name is John Doe.</p>
+<p><code>deleteperson 2</code><br>
+Deletes the 2nd person.<br></p>
 </li>
 <li>
-<p><code>delete m/CS2103</code><br>
-Deletes the module whose value is CS2103.<br></p>
+<p><code>deletemodule 1</code><br>
+Deletes the 1st module.<br></p>
 </li>
 <li>
-<p><code>delete e/Birthday</code><br>
-Deletes the event whose value is Birthday.</p>
+<p><code>deleteoccasion 5</code><br>
+Deletes the 5th occasion.</p>
 </li>
 </ul>
 </div>
@@ -430,37 +423,31 @@ Command Syntax: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-information-from-external-platform-code-import-code"><a class="link" href="#import-information-from-external-platform-code-import-code">3.12. Import information from external platform: <code>import</code></a></h3>
-<div class="paragraph">
-<p>A command to allow the user to see the history of commands used within the address book.+
-Command Syntax: <code>import [keyword]</code><br>
-keyword: One of either: IVLE, NUSMODS, MYISIS.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="autocomplete"><a class="link" href="#autocomplete">3.13. Autocomplete</a></h3>
-<div class="paragraph">
-<p>A feature that gives a list of potential matches based on substrings of a result that a user types into any other command.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="autocomplete-coming-in-v-1-4"><a class="link" href="#autocomplete-coming-in-v-1-4">3.14. Autocomplete (coming in v 1.4)</a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>A feature that gives a list of potential matches based on substrings of a result that a user types into any other command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import-information-from-external-platform-code-import-code-coming-in-v-2-0"><a class="link" href="#import-information-from-external-platform-code-import-code-coming-in-v-2-0">3.15. Import information from external platform: <code>import</code> (coming in v 2.0)</a></h3>
+<div class="paragraph">
+<p>A command to allow the user to see the history of commands used within the address book.+
+Command Syntax: <code>import [keyword]</code><br>
+keyword: One of either: IVLE, NUSMODS, MYISIS.</p>
 </div>
 </div>
 </div>
@@ -480,18 +467,17 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME t/VALUE ONE t/VALUE TWO t/VALUE THREE [t/VALUE]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho t/22224444 t/jamesho@example.com t/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add[]</strong> e.g. <code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete x/VALUE</code><br>
-e.g. <code>delete n/James Ho</code></p>
+<p><strong>Delete[]</strong> : <code>delete[] INDEX</code><br>
+e.g. <code>deleteperson 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [x/VALUE] [t/VALUE TO EDIT | NEW VALUE] [t/VALUE TO EDIT | NEW VALUE] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit[]</strong> : <code>edit INDEX [x/VALUE] [t/VALUE TO EDIT | NEW VALUE] [t/VALUE TO EDIT | NEW VALUE] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee t/jameslee@example.com | <a href="mailto:johndoe@example.com">johndoe@example.com</a></code></p>
 </li>
 <li>
@@ -499,7 +485,7 @@ e.g. <code>edit 2 n/James Lee t/jameslee@example.com | <a href="mailto:johndoe@e
 e.g. <code>find n/James Jake</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><strong>List[]</strong> : <code>list</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
@@ -518,4 +504,4 @@ e.g. <code>redo 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-26 02:59:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-27 06:23:21 UTC</div></div></div></body></html>
