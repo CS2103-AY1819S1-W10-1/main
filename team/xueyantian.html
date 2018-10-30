@@ -245,23 +245,23 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by 'VersionAddressBook'.It extends
-'AddressBook' with an command history, stored internally as an
-'addressBookStateList' and 'currentStatePointer'.
+<p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
+<code>AddressBook</code> with an command history, stored internally as an
+<code>addressBookStateList</code> and <code>currentStatePointer</code>.
 In addition, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>'VersionedAddressBook#commit()': Saves the current book state
+<p><code>VersionedAddressBook#commit()</code>: Saves the current book state
 in the command history</p>
 </li>
 <li>
-<p>'VersionedAddressBook#undo()': Restores the address book to its previous
+<p><code>VersionedAddressBook#undo()</code>: Restores the address book to its previous
 state.</p>
 </li>
 <li>
-<p>'VersionedAddressBook#redo()': Restores the address book to its previously
+<p><code>VersionedAddressBook#redo()</code>: Restores the address book to its previously
 undone state.</p>
 </li>
 </ul>
@@ -276,8 +276,8 @@ undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
 <p>Step 1: The user launches TheTracker for the first time. The
-'VersionedAddressBook' will be initialised with the initial address book
-state, which the 'currentStatePointer' is currently pointing to.</p>
+<code>VersionedAddressBook</code> will be initialised with the initial address book
+state, which the <code>currentStatePointer</code> is currently pointing to.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -285,11 +285,11 @@ state, which the 'currentStatePointer' is currently pointing to.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2: The user executes 'add n/David&#8230;&#8203;' command to add a person called
-David in his TheTracker. The 'find' command calls 'Model#commitAddressBook()
-', causing the modified state of TheTracker after the 'find David&#8230;&#8203;' command
- executes to be saved in the 'addressBookStateList', and the
- 'currentStatePointer' is shifted to the newly inserted address book state.</p>
+<p>Step 2: The user executes <code>add n/David&#8230;&#8203;</code> command to add a person called
+David in his TheTracker. The <code>find</code> command calls <code>Model#commitAddressBook()
+`, causing the modified state of TheTracker after the `find David&#8230;&#8203;</code> command
+ executes to be saved in the <code>addressBookStateList</code>, and the
+ <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -297,9 +297,9 @@ David in his TheTracker. The 'find' command calls 'Model#commitAddressBook()
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3: The user executes 'delete 7' to delete the 7th person in the address
-book. The 'delete' command also calls 'Model#commitAddressBook()', causing
-another modified address book state to be saved into the 'addressBookStateList'</p>
+<p>Step 3: The user executes <code>delete 7</code> to delete the 7th person in the address
+book. The <code>delete</code> command also calls <code>Model#commitAddressBook()</code>, causing
+another modified address book state to be saved into the <code>addressBookStateList</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -313,17 +313,17 @@ another modified address book state to be saved into the 'addressBookStateList'<
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call 'Model#commitAddressBook()
-', so the address book state will not be saved into the 'addressBookStateList'.
+If a command fails its execution, it will not call <code>Model#commitAddressBook()
+`, so the address book state will not be saved into the `addressBookStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Step 4: If the user now realizes that deleting the 7th person is a mistake,
-and decides to undo that action by executing the 'undo' command. The 'undo'
-command will call 'Model#undoAddressBook()', which will shift the
-'currentStatePointer' once to the left, pointing it to the previous address
+and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code>
+command will call <code>Model#undoAddressBook()</code>, which will shift the
+<code>currentStatePointer</code> once to the left, pointing it to the previous address
 book state, and restores the address book to that state.</p>
 </div>
 <div class="imageblock">
@@ -338,9 +338,9 @@ book state, and restores the address book to that state.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the 'currentStatePointer' is at index 0, pointing the initial address book
-state, then there are no previous address book states to restore. The 'undo'
-command uses 'Model#canUndoAddressBook()' to check if this is the case. In
+If the <code>currentStatePointer</code> is at index 0, pointing the initial address book
+state, then there are no previous address book states to restore. The <code>undo</code>
+command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. In
 this case, it will return an error to the user rather than attempting to
 perform the undo.
 </td>
@@ -349,7 +349,7 @@ perform the undo.
 </div>
 <div class="paragraph">
 <p>The redo command does the opposite&#8201;&#8212;&#8201;it calls Model#redoAddressBook(), which
-shifts the 'currentStatePointer' once to the right, pointing to the
+shifts the <code>currentStatePointer</code> once to the right, pointing to the
 previously undone state, and restores the address book to that state.</p>
 </div>
 <div class="paragraph">
@@ -367,9 +367,9 @@ previously undone state, and restores the address book to that state.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the 'currentStatePointer' is at index 'addressBookStateList.size() - 1',
+If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>,
 pointing to the latest address book state, then there are no undone address
-book states to restore. The 'redo' command uses 'Model#canRedoAddressBook()'
+book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code>
 to check if this is the case. If so, it will return an error to the user
 rather than attempting to perform the redo.
 </td>
@@ -490,4 +490,4 @@ new command:</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-28 13:43:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 11:36:21 UTC</div></div></div></body></html>

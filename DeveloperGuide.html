@@ -29,8 +29,10 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-features-supporting-person-module-and-occasion">3.1. [Proposed] Features supporting Person, Module and Occasion</a></li>
-<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
+<li><a href="#features-supporting-person-module-and-occasion">3.1. Features supporting Person, Module and Occasion</a></li>
+<li><a href="#edit-feature">3.2. Edit Feature</a></li>
+<li><a href="#undo-redo-feature">3.3. Undo/Redo feature</a></li>
+<li><a href="#history-feature">3.4. History feature</a></li>
 </ul>
 </li>
 </ul>
@@ -552,53 +554,58 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-features-supporting-person-module-and-occasion"><a class="link" href="#proposed-features-supporting-person-module-and-occasion">3.1. [Proposed] Features supporting Person, Module and Occasion</a></h3>
+<h3 id="features-supporting-person-module-and-occasion"><a class="link" href="#features-supporting-person-module-and-occasion">3.1. Features supporting Person, Module and Occasion</a></h3>
 <div class="paragraph">
 <p>Our application is an extension of address book application. Besides
 supporting basic address book features for 'Person', we also intended to
-make those features be available for 'Module' and 'Occasion'. This makes this
+make those features be available for 'Module' and <code>Occasion</code>. This makes this
 application(TheTracker) to be able to track the modules a person takes, as
 well as the Occasions they participate in.</p>
 </div>
 <div class="sect3">
 <h4 id="current-design-plan"><a class="link" href="#current-design-plan">3.1.1. Current Design plan</a></h4>
 <div class="paragraph">
-<p>The graph below shows the inheritance relationship between the related
-interface and classes.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ClassInheritance.png" alt="ClassInheritance" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>We would be using polymorphism to realise support for 'Person', 'Module' and
-'Occasion'.</p>
+<p>We are storing persons, modules and occasions individually. And command are also entity-specific.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.2.1. Current Implementation</a></h4>
+<h3 id="edit-feature"><a class="link" href="#edit-feature">3.2. Edit Feature</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by 'VersionAddressBook'.It extends
-'AddressBook' with an command history, stored internally as an
-'addressBookStateList' and 'currentStatePointer'.
+<p>The following sequence diagram shows how the <code>editPerson</code> operation works:
+<code>editPerson 6 p/91234567 e/johndoe@example.com</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditPersonSequenceDiagram.png" alt="EditPersonSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><code>editModule</code> and <code>editOccasion</code> works in a similar way as <code>editPerson</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.3. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
+<code>AddressBook</code> with an command history, stored internally as an
+<code>addressBookStateList</code> and <code>currentStatePointer</code>.
 In addition, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>'VersionedAddressBook#commit()': Saves the current book state
+<p><code>VersionedAddressBook#commit()</code>: Saves the current book state
 in the command history</p>
 </li>
 <li>
-<p>'VersionedAddressBook#undo()': Restores the address book to its previous
+<p><code>VersionedAddressBook#undo()</code>: Restores the address book to its previous
 state.</p>
 </li>
 <li>
-<p>'VersionedAddressBook#redo()': Restores the address book to its previously
+<p><code>VersionedAddressBook#redo()</code>: Restores the address book to its previously
 undone state.</p>
 </li>
 </ul>
@@ -613,8 +620,8 @@ undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
 <p>Step 1: The user launches TheTracker for the first time. The
-'VersionedAddressBook' will be initialised with the initial address book
-state, which the 'currentStatePointer' is currently pointing to.</p>
+<code>VersionedAddressBook</code> will be initialised with the initial address book
+state, which the <code>currentStatePointer</code> is currently pointing to.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -622,11 +629,11 @@ state, which the 'currentStatePointer' is currently pointing to.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2: The user executes 'add n/David&#8230;&#8203;' command to add a person called
-David in his TheTracker. The 'find' command calls 'Model#commitAddressBook()
-', causing the modified state of TheTracker after the 'find David&#8230;&#8203;' command
- executes to be saved in the 'addressBookStateList', and the
- 'currentStatePointer' is shifted to the newly inserted address book state.</p>
+<p>Step 2: The user executes <code>add n/David&#8230;&#8203;</code> command to add a person called
+David in his TheTracker. The <code>find</code> command calls <code>Model#commitAddressBook()
+`, causing the modified state of TheTracker after the `find David&#8230;&#8203;</code> command
+ executes to be saved in the <code>addressBookStateList</code>, and the
+ <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -634,9 +641,9 @@ David in his TheTracker. The 'find' command calls 'Model#commitAddressBook()
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3: The user executes 'delete 7' to delete the 7th person in the address
-book. The 'delete' command also calls 'Model#commitAddressBook()', causing
-another modified address book state to be saved into the 'addressBookStateList'</p>
+<p>Step 3: The user executes <code>delete 7</code> to delete the 7th person in the address
+book. The <code>delete</code> command also calls <code>Model#commitAddressBook()</code>, causing
+another modified address book state to be saved into the <code>addressBookStateList</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -650,17 +657,17 @@ another modified address book state to be saved into the 'addressBookStateList'<
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call 'Model#commitAddressBook()
-', so the address book state will not be saved into the 'addressBookStateList'.
+If a command fails its execution, it will not call <code>Model#commitAddressBook()
+`, so the address book state will not be saved into the `addressBookStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Step 4: If the user now realizes that deleting the 7th person is a mistake,
-and decides to undo that action by executing the 'undo' command. The 'undo'
-command will call 'Model#undoAddressBook()', which will shift the
-'currentStatePointer' once to the left, pointing it to the previous address
+and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code>
+command will call <code>Model#undoAddressBook()</code>, which will shift the
+<code>currentStatePointer</code> once to the left, pointing it to the previous address
 book state, and restores the address book to that state.</p>
 </div>
 <div class="imageblock">
@@ -675,9 +682,9 @@ book state, and restores the address book to that state.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the 'currentStatePointer' is at index 0, pointing the initial address book
-state, then there are no previous address book states to restore. The 'undo'
-command uses 'Model#canUndoAddressBook()' to check if this is the case. In
+If the <code>currentStatePointer</code> is at index 0, pointing the initial address book
+state, then there are no previous address book states to restore. The <code>undo</code>
+command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. In
 this case, it will return an error to the user rather than attempting to
 perform the undo.
 </td>
@@ -686,7 +693,7 @@ perform the undo.
 </div>
 <div class="paragraph">
 <p>The redo command does the opposite&#8201;&#8212;&#8201;it calls Model#redoAddressBook(), which
-shifts the 'currentStatePointer' once to the right, pointing to the
+shifts the <code>currentStatePointer</code> once to the right, pointing to the
 previously undone state, and restores the address book to that state.</p>
 </div>
 <div class="paragraph">
@@ -704,9 +711,9 @@ previously undone state, and restores the address book to that state.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the 'currentStatePointer' is at index 'addressBookStateList.size() - 1',
+If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>,
 pointing to the latest address book state, then there are no undone address
-book states to restore. The 'redo' command uses 'Model#canRedoAddressBook()'
+book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code>
 to check if this is the case. If so, it will return an error to the user
 rather than attempting to perform the redo.
 </td>
@@ -748,7 +755,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -814,11 +821,18 @@ new command:</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="history-feature"><a class="link" href="#history-feature">3.4. History feature</a></h3>
 <div class="paragraph">
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-=== History feature
-==== Current Implementation
-==== Design Considerations</p>
+<p>The following sequence diagram shows how the <code>history</code> operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/HistoryCommandSequenceDiagram.png" alt="HistoryCommandSequenceDiagram" width="800">
+</div>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -836,9 +850,6 @@ new command:</p>
 </div>
 <div class="paragraph">
 <p>While checking, the feature will try to give a regex match of the command and also provide suggestions on correct arguments based on current entities stored in TheTracker&#8217;s address book.</p>
-</div>
-<div class="paragraph">
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 1047a3c7e9ee7a6c6ba36efd18eaee63c15a5e62</p>
 </div>
 <div class="paragraph">
 <p>=== Logging</p>
@@ -887,8 +898,8 @@ new command:</p>
 <div class="paragraph">
 <p>=== Delete
 (to be completed)<br>
-<code>delete</code> is a basic feature provided by every version of 'TheTracker'.
-It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion', by the same `DeleteCommand</code> with different parameters, which would facilitate
+<code>delete</code> is a basic feature provided by every version of <code>TheTracker</code>.
+It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion</code>, by the same <code>DeleteCommand</code> with different parameters, which would facilitate
 and improve the user experience.</p>
 </div>
 <div class="paragraph">
@@ -934,9 +945,9 @@ after the <code>add David&#8230;&#8203;</code> command executes to be saved in t
 </div>
 <div class="paragraph">
 <p>Step 3: The user executes <code>delete n/David</code> to delete the person named David in the address
-book. The parser <code>DeleteCommandParser</code> will identify by the '\n' tag that the entity to be
+book. The parser <code>DeleteCommandParser</code> will identify by the <code>\n</code> tag that the entity to be
 deleted is a person.The <code>delete</code> command calls Model#getFilteredEntity(), Model#deleteEntity()
-and 'Model#commitAddressBook()', and causes modified address book state to be saved into the 'addressBookStateList'</p>
+and <code>Model#commitAddressBook()</code>, and causes modified address book state to be saved into the <code>addressBookStateList</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1615,7 +1626,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>You can modify the existing test methods for <code>PersonCard</code> 's to include testing the tag&#8217;s color as well.</p>
+<p>You can modify the existing test methods for <code>PersonCard</code> `s to include testing the tag&#8217;s color as well.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/798">PR</a> for the full solution.</p>
@@ -2630,6 +2641,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-28 13:43:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 11:36:21 UTC</div></div></div></body></html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Kong Zijin - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Kong Zijin - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">PROJECT: AddressBook - Level 4</a></h2>
+<h2 id="project-thetracker-v1-3"><a class="link" href="#project-thetracker-v1-3">PROJECT: TheTracker (v1.3)</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>The Tracker (v1.3) is a desktop application that helps NUS students to monitor contacts, modules and events.</p>
 </div>
 </div>
 </div>
@@ -20,29 +20,27 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: *Improved existing edit function to edit any type of entry.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to edit a person, module or occasion by index</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This is one of the basic features of TheTracker, which allows a user to edit module and occasion in a
+similar way of how he edit a person in his address book.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: This feature is necessary for a user to simultaneously maintain all three types of entries.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: This enhancement required the different lists to be handled independently, but with all actions tracked simultaneously (e.g. for undo/redo).</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Minor enhancement</strong>: Implement the <code>Occasion</code> class and its related classes(<code>OccasionName</code>, <code>OccasionDate</code>, <code>OccasionLocation</code>)</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +51,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed milestones for <code>v1.2</code> - <code>v1.5rc</code> (set milestone deadlines, close issues and milestones accordingly) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -63,20 +61,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Wrote additional tests for Undo/Redo command features to increase coverage (in progress)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did cosmetic tweaks to existing contents of the User Guide</p>
 </li>
 </ul>
 </div>
@@ -86,16 +74,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>PRs reviewed (with non-trivial review comments) (To Do in next milestone)</p>
 </li>
 </ul>
 </div>
@@ -105,7 +84,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Integrated a third party library (Natty) to the project, eg: (<a href="https://github.com">#42</a>)</p>
 </li>
 <li>
 <p>Integrated a new Github plugin (CircleCI) to the team repo</p>
@@ -113,13 +92,23 @@
 </ul>
 </div>
 </li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote user stories for v1.0</p>
+</li>
+<li>
+<p>Updated AboutUs.adoc to match application design</p>
+</li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -136,6 +125,90 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="editing-a-person-module-occasion-code-edit-code"><a class="link" href="#editing-a-person-module-occasion-code-edit-code">Editing a person/module/occasion : <code>edit[]</code></a></h3>
+<div class="paragraph">
+<p>Edits an existing person, module or occasion in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format to edit person: <code>editPerson INDEX x/VALUE &#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person, name of part specified by x - "n | p | e | a | t" followed by the VALUE which is the value of the name, phone number, email, address or tag you want to change to.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Format to edit module: <code>editModule INDEX x/VALUE &#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the module, name of part specified by x - "mc | mt | ay | sem | t" followed by the VALUE which is the value of the moduleCode, moduleTitle, academicYear, semester or tag you want to change to.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Format to edit occasion: <code>editOccasion x/VALUE &#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the occasion, name of part specified by x - "on | od | loc | t" followed by the VALUE which is the value of the occasionName, occasionDate, occasionLocation or tag you want to change to.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Common format:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one value to edit must be provided.<br></p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editPerson 6 p/91234567 e/johndoe@example.com</code><br>
+Edits the person of INDEX 6 in TheTracker: edits his phone to 91234567 and email address to <a href="mailto:johndoe@example.com">johndoe@example.com</a>.</p>
+</li>
+<li>
+<p><code>editModule 1 mc/CS1101S</code><br>
+Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
+</li>
+<li>
+<p><code>editOccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
+Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17, edits the occasionLocation to NUS.</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
@@ -241,27 +314,111 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </tbody>
 </table>
 <div class="sect2">
+<h3 id="editing-a-person-module-occasion-code-edit-code-2"><a class="link" href="#editing-a-person-module-occasion-code-edit-code-2">Editing a person/module/occasion : <code>edit[]</code></a></h3>
+<div class="paragraph">
+<p>Edits an existing person, module or occasion in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format to edit person: <code>editPerson INDEX x/VALUE &#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person, name of part specified by x - "n | p | e | a | t" followed by the VALUE which is the value of the name, phone number, email, address or tag you want to change to.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Format to edit module: <code>editModule INDEX x/VALUE &#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the module, name of part specified by x - "mc | mt | ay | sem | t" followed by the VALUE which is the value of the moduleCode, moduleTitle, academicYear, semester or tag you want to change to.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Format to edit occasion: <code>editOccasion x/VALUE &#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the occasion, name of part specified by x - "on | od | loc | t" followed by the VALUE which is the value of the occasionName, occasionDate, occasionLocation or tag you want to change to.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Common format:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At least one value to edit must be provided.<br></p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editPerson 6 p/91234567 e/johndoe@example.com</code><br>
+Edits the person of INDEX 6 in TheTracker: edits his phone to 91234567 and email address to <a href="mailto:johndoe@example.com">johndoe@example.com</a>.</p>
+</li>
+<li>
+<p><code>editModule 1 mc/CS1101S</code><br>
+Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
+</li>
+<li>
+<p><code>editOccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
+Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17, edits the occasionLocation to NUS.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by 'VersionAddressBook'.It extends
-'AddressBook' with an command history, stored internally as an
-'addressBookStateList' and 'currentStatePointer'.
+<p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
+<code>AddressBook</code> with an command history, stored internally as an
+<code>addressBookStateList</code> and <code>currentStatePointer</code>.
 In addition, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>'VersionedAddressBook#commit()': Saves the current book state
+<p><code>VersionedAddressBook#commit()</code>: Saves the current book state
 in the command history</p>
 </li>
 <li>
-<p>'VersionedAddressBook#undo()': Restores the address book to its previous
+<p><code>VersionedAddressBook#undo()</code>: Restores the address book to its previous
 state.</p>
 </li>
 <li>
-<p>'VersionedAddressBook#redo()': Restores the address book to its previously
+<p><code>VersionedAddressBook#redo()</code>: Restores the address book to its previously
 undone state.</p>
 </li>
 </ul>
@@ -276,8 +433,8 @@ undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
 <p>Step 1: The user launches TheTracker for the first time. The
-'VersionedAddressBook' will be initialised with the initial address book
-state, which the 'currentStatePointer' is currently pointing to.</p>
+<code>VersionedAddressBook</code> will be initialised with the initial address book
+state, which the <code>currentStatePointer</code> is currently pointing to.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -285,11 +442,11 @@ state, which the 'currentStatePointer' is currently pointing to.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2: The user executes 'add n/David&#8230;&#8203;' command to add a person called
-David in his TheTracker. The 'find' command calls 'Model#commitAddressBook()
-', causing the modified state of TheTracker after the 'find David&#8230;&#8203;' command
- executes to be saved in the 'addressBookStateList', and the
- 'currentStatePointer' is shifted to the newly inserted address book state.</p>
+<p>Step 2: The user executes <code>add n/David&#8230;&#8203;</code> command to add a person called
+David in his TheTracker. The <code>find</code> command calls <code>Model#commitAddressBook()
+`, causing the modified state of TheTracker after the `find David&#8230;&#8203;</code> command
+ executes to be saved in the <code>addressBookStateList</code>, and the
+ <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -297,9 +454,9 @@ David in his TheTracker. The 'find' command calls 'Model#commitAddressBook()
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3: The user executes 'delete 7' to delete the 7th person in the address
-book. The 'delete' command also calls 'Model#commitAddressBook()', causing
-another modified address book state to be saved into the 'addressBookStateList'</p>
+<p>Step 3: The user executes <code>delete 7</code> to delete the 7th person in the address
+book. The <code>delete</code> command also calls <code>Model#commitAddressBook()</code>, causing
+another modified address book state to be saved into the <code>addressBookStateList</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -313,17 +470,17 @@ another modified address book state to be saved into the 'addressBookStateList'<
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call 'Model#commitAddressBook()
-', so the address book state will not be saved into the 'addressBookStateList'.
+If a command fails its execution, it will not call <code>Model#commitAddressBook()
+`, so the address book state will not be saved into the `addressBookStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Step 4: If the user now realizes that deleting the 7th person is a mistake,
-and decides to undo that action by executing the 'undo' command. The 'undo'
-command will call 'Model#undoAddressBook()', which will shift the
-'currentStatePointer' once to the left, pointing it to the previous address
+and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code>
+command will call <code>Model#undoAddressBook()</code>, which will shift the
+<code>currentStatePointer</code> once to the left, pointing it to the previous address
 book state, and restores the address book to that state.</p>
 </div>
 <div class="imageblock">
@@ -338,9 +495,9 @@ book state, and restores the address book to that state.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the 'currentStatePointer' is at index 0, pointing the initial address book
-state, then there are no previous address book states to restore. The 'undo'
-command uses 'Model#canUndoAddressBook()' to check if this is the case. In
+If the <code>currentStatePointer</code> is at index 0, pointing the initial address book
+state, then there are no previous address book states to restore. The <code>undo</code>
+command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. In
 this case, it will return an error to the user rather than attempting to
 perform the undo.
 </td>
@@ -349,7 +506,7 @@ perform the undo.
 </div>
 <div class="paragraph">
 <p>The redo command does the opposite&#8201;&#8212;&#8201;it calls Model#redoAddressBook(), which
-shifts the 'currentStatePointer' once to the right, pointing to the
+shifts the <code>currentStatePointer</code> once to the right, pointing to the
 previously undone state, and restores the address book to that state.</p>
 </div>
 <div class="paragraph">
@@ -367,9 +524,9 @@ previously undone state, and restores the address book to that state.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the 'currentStatePointer' is at index 'addressBookStateList.size() - 1',
+If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>,
 pointing to the latest address book state, then there are no undone address
-book states to restore. The 'redo' command uses 'Model#canRedoAddressBook()'
+book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code>
 to check if this is the case. If so, it will return an error to the user
 rather than attempting to perform the redo.
 </td>
@@ -483,11 +640,20 @@ new command:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
+<h2 id="project-orbital-2018"><a class="link" href="#project-orbital-2018">PROJECT: ORBITAL 2018</a></h2>
 <div class="sectionbody">
-<hr>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">_Project Description</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>In this Orbital Project, we designed a 2D-pixel-style music-adventure Unity game. It is played on iOS platform.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-28 13:43:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 11:36:21 UTC</div></div></div></body></html>
