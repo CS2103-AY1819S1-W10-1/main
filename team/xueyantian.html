@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Tian Xueyan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Tian Xueyan - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">PROJECT: AddressBook - Level 4</a></h2>
+<h2 id="project-thetracker-v1-3"><a class="link" href="#project-thetracker-v1-3">PROJECT: TheTracker v1.3</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>TheTracker is a desktop address book application that helps NUS students to monitor contacts, modules and events.</p>
 </div>
 </div>
 </div>
@@ -20,32 +20,52 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: extended AddCommand to <strong>AddPersonCommand, AddModuleCommand, AddOccasionCommand</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to adds Person, Module, and Occasion to their own TheTracker. Any Persons, Modules and
+Occasions added by users in the command line will show in separate windows.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
-</li>
-<li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Justification: These features is the basics of the product such that a user can track not onlt his or her contacts
+but also modules and occasions happening in the school.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Major enhancement</strong>: extended FindCommand to <strong>FindPersonCommand, FindModuleCommand, FindOccasionCommand</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to finds Person by name, phone, or email, or address; similarly, it allows finding
+Modules by module code, module name, academic year or semester; finding occasions by occasion name, occasion date,
+or occasion location.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: These features largely improve the convenience for finding a specific Person, Module or Occasion. For
+instance, a Person now can be found by his or her name, phone, email or address, and multiple step of findperson command
+can be used to find a person by more than one kind of conditions.</p>
 </li>
 <li>
-<p><strong>Other contributions</strong>:</p>
+<p>Highlights: The finding is based on the compulsory prefixes entered by the user when he or she adds a Person, Module
+or Occasion. This may be improved in TheTracker v1.4 by employing a new tagging system, which allows more dynamic
+finding.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: built tests for Occasion related classes, and unit and system tests for the above-mentioned
+commands.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>]
+<em>{give links to collated code files}</em></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>: wrote skeleton for Occasion related UI.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -53,7 +73,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Set milestones for <code>v1.2</code> - <code>v1.4</code> on GitHub</p>
+</li>
+<li>
+<p>Opened issues for <code>v1.2</code> - <code>v1.4</code> on GitHub</p>
 </li>
 </ul>
 </div>
@@ -63,10 +86,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated Add and Find related Commands (Pull requests <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/94">#94</a>,
+<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/111">#111</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote additional tests for existing features to increase coverage(Pull requests
+<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/98">#98</a>,
+<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/115">#115</a>)</p>
 </li>
 </ul>
 </div>
@@ -136,6 +162,202 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="adding-a-person-module-or-occasion-code-add-code"><a class="link" href="#adding-a-person-module-or-occasion-code-add-code">Adding a person, module or occasion: <code>add[]</code></a></h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A person, module or an occasion can have any number of tags (including 0) and in no particular order.<br>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="adding-a-person-code-addperson-code"><a class="link" href="#adding-a-person-code-addperson-code">Adding a person: <code>addperson</code></a></h4>
+<div class="paragraph">
+<p>Adds a person to TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>addperson n/NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/HOME_ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code><br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-module-code-addmodule-code"><a class="link" href="#adding-a-module-code-addmodule-code">Adding a module: <code>addmodule</code></a></h4>
+<div class="paragraph">
+<p>Adds a module to TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>addmodule mc/MODULE_CODE mt/MODULE_TITLE ay/ACADEMIC_YEAR sem/SEMESTER [t/TAG]&#8230;&#8203;</code><br></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/AY1718 sem/1 t/gg</code><br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-an-occasion-code-addoccasion-code"><a class="link" href="#adding-an-occasion-code-addoccasion-code">Adding an occasion: <code>addoccasion</code></a></h4>
+<div class="paragraph">
+<p>Adds an occasion to TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>addoccasion on/OCCASION_NAME od/OCCASION_DATE loc/LOCATION [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locating-persons-modules-or-occasions-code-find-code"><a class="link" href="#locating-persons-modules-or-occasions-code-find-code">Locating persons, modules, or occasions: <code>find[]</code></a></h3>
+<div class="sect3">
+<h4 id="finding-a-person-code-findperson-code"><a class="link" href="#finding-a-person-code-findperson-code">Finding a person: <code>findperson</code></a></h4>
+<div class="paragraph">
+<p>Finds a person in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findperson n/John Doe</code>, <code>findperson p/98765432</code>, <code>findperson e/johnd@example.com</code>,
+<code>findperson a/Clementi</code><br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-a-module-code-findmodule-code"><a class="link" href="#finding-a-module-code-findmodule-code">Finding a module: <code>findmodule</code></a></h4>
+<div class="paragraph">
+<p>Finds a module in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>findmodule mc/MODULE_CODE</code>, <code>findmodule mt/MODULE_TITLE</code>, <code>findmodule ay/ACADEMIC_YEAR</code>,
+ <code>findmodule sem/SEMESTER</code><br></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findmodule mc/CS2103</code>, <code>findmodule mt/SOFTWARE</code>, <code>findmodule ay/AY1718</code>, <code>findmodule sem/1</code><br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-an-occasion-code-findoccasion-code"><a class="link" href="#finding-an-occasion-code-findoccasion-code">Finding an occasion: <code>findoccasion</code></a></h4>
+<div class="paragraph">
+<p>Finds an occasion in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>findoccasion on/OCCASION_NAME</code>, <code>findoccasion od/OCCASION_DATE</code>, <code>findoccasion loc/LOCATION</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findoccasion on/discussion</code>, <code>findoccasion od/2018-01-01</code>, <code>findoccasion loc/SoC</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">Deleting an entry : <code>delete[]</code></a></h3>
+<div class="paragraph">
+<p>Deletes the specified person, module or occasion from the address book.<br>
+Format: <code>delete[] INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the person, module or occasion at with the specified <code>INDEX</code>.<br></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteperson 2</code><br>
+Deletes the 2nd person.<br></p>
+</li>
+<li>
+<p><code>deletemodule 1</code><br>
+Deletes the 1st module.<br></p>
+</li>
+<li>
+<p><code>deleteoccasion 5</code><br>
+Deletes the 5th occasion.
+=== Listing entered commands : <code>history</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Lists all the commands that you have entered in reverse chronological order.<br>
+Format: <code>history</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
@@ -225,6 +447,107 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="grouping-content-together-by-tag-code-group-code"><a class="link" href="#grouping-content-together-by-tag-code-group-code">Grouping content together by tag: <code>group</code></a></h3>
+<div class="paragraph">
+<p>A command to allow the user to group students under a certain group tag.<br>
+Command Syntax:<br>
+<code>group [group_name] [keyword]</code>:<br>
+group_name: The name of this group of people.<br>
+keyword: n/NAME The name of the person you want to put in this group.
+                  i/INDEX The index of the person you want to put in this group.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="show-command-history-code-history-code"><a class="link" href="#show-command-history-code-history-code">Show command history: <code>history</code></a></h3>
+<div class="paragraph">
+<p>A command to allow the user to see the history of commands used within the address book.+
+Command Syntax: <code>history</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h3>
+<div class="paragraph">
+<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete-coming-in-v-1-4"><a class="link" href="#autocomplete-coming-in-v-1-4">Autocomplete (coming in v 1.4)</a></h3>
+<div class="paragraph">
+<p>A feature that gives a list of potential matches based on substrings of a result that a user types into any other command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#import-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">Import module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
+<div class="paragraph">
+<p>A command to allow the user to import information from NUSMods.+</p>
+</div>
+<div class="paragraph">
+<p>Command Syntax: <code>importmodule [modulecode]</code><br>
+If the specified module in the current semester is not found, it will be imported with information extracted from NUSMods.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add[]</strong> e.g. <code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Delete[]</strong> : <code>delete[] INDEX</code><br>
+e.g. <code>deleteperson 3</code></p>
+</li>
+<li>
+<p><strong>Edit[]</strong> : <code>edit INDEX [x/VALUE] [t/VALUE TO EDIT | NEW VALUE] [t/VALUE TO EDIT | NEW VALUE] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 n/James Lee t/jameslee@example.com | <a href="mailto:johndoe@example.com">johndoe@example.com</a></code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find KEYWORD x/VALUE t/VALUE ONE t/VALUE TWO</code><br>
+e.g. <code>find n/James Jake</code></p>
+</li>
+<li>
+<p><strong>List[]</strong> : <code>list</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo [NUMBER]</code><br>
+e.g. <code>undo 1</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo [NUMBER]</code><br>
+e.g. <code>redo 1</code></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -241,236 +564,143 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="delete"><a class="link" href="#delete">Delete</a></h3>
+<div class="paragraph">
+<p><code>delete</code> is a basic feature provided by every version of <code>TheTracker</code>.
+It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion</code>, by the same <code>DeletePersonCommand</code> <code>DeleteModuleCommand</code> and
+<code>DeleteOccasionCommand</code> respectively.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
-<code>AddressBook</code> with an command history, stored internally as an
-<code>addressBookStateList</code> and <code>currentStatePointer</code>.
-In addition, it implements the following operations:</p>
+<p>This following section will use <code>DeletePersonCommand</code> as an example, <code>DeleteModuleCommand</code> and  <code>DeleteOccasionCommand</code>
+uses the same mechanism. <code>DeletePersonCommand`extends the `Command</code> class and uses inheritance to facilitate
+implementation.
+Generally, it implements the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>: Saves the current book state
-in the command history</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#undo()</code>: Restores the address book to its previous
-state.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>: Restores the address book to its previously
-undone state.</p>
+<p><code>DeletePersonCommand#excute(Model model, CommandHistory history)</code>:
+deletes the person passed to the <code>DeletePersonCommand</code> class</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the Model interface as
-Model#commitAddressBook(), Model#undoAddressBook() and Model#redoAddressBook() respectively.</p>
+<p>This operation is exposed in the Model interface as Model#getFilteredEntity(), Model#deleteEntity() and
+Model#commitAddressBook() respectively.</p>
 </div>
 <div class="paragraph">
 <p>Provided below is an usage scenario instance. It illustrates how the
-undo/redo mechanism behaves at each step.</p>
+delete mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
 <p>Step 1: The user launches TheTracker for the first time. The
 <code>VersionedAddressBook</code> will be initialised with the initial address book
-state, which the <code>currentStatePointer</code> is currently pointing to.</p>
+state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
+<img src="../images/DeleteStartingStateListDiagram.png" alt="DeleteStartingStateListDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2: The user executes <code>add n/David&#8230;&#8203;</code> command to add a person called
-David in his TheTracker. The <code>find</code> command calls <code>Model#commitAddressBook()
-`, causing the modified state of TheTracker after the `find David&#8230;&#8203;</code> command
- executes to be saved in the <code>addressBookStateList</code>, and the
- <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2: The user executes <code>addperson n/David&#8230;&#8203;</code> command to add a person named
+David in his TheTracker. The parser <code>AddPersonCommandParser</code> will identify by
+the 'n/' tag that the entity to be added is a person. The <code>addperson</code> command
+calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker
+after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be saved in the <code>addressBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
+<img src="../images/DeleteNewCommand1StateListDiagram.png" alt="DeleteNewCommand1StateListDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3: The user executes <code>delete 7</code> to delete the 7th person in the address
-book. The <code>delete</code> command also calls <code>Model#commitAddressBook()</code>, causing
-another modified address book state to be saved into the <code>addressBookStateList</code></p>
+<p>Step 3: The user executes <code>deleteperson 1</code> to delete the person named David in the address
+book who has an index 1. The parser <code>DeletePersonCommandParser</code> will identify by the index of the person to be
+deleted.The <code>deleteperson</code> command calls Model#getFilteredPersonList(), Model#deletePerson()
+and <code>Model#commitAddressBook()</code>, and causes modified address book state to be saved into the <code>addressBookStateList</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
+<img src="../images/DeleteDeleteCommandStateListDiagram.png" alt="DeleteDeleteCommandStateListDiagram" width="800">
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()
-`, so the address book state will not be saved into the `addressBookStateList</code>.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
-<p>Step 4: If the user now realizes that deleting the 7th person is a mistake,
-and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code>
-command will call <code>Model#undoAddressBook()</code>, which will shift the
-<code>currentStatePointer</code> once to the left, pointing it to the previous address
-book state, and restores the address book to that state.</p>
+<p>The following sequence diagram shows how the delete operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing the initial address book
-state, then there are no previous address book states to restore. The <code>undo</code>
-command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. In
-this case, it will return an error to the user rather than attempting to
-perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The redo command does the opposite&#8201;&#8212;&#8201;it calls Model#redoAddressBook(), which
-shifts the <code>currentStatePointer</code> once to the right, pointing to the
-previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>,
-pointing to the latest address book state, then there are no undone address
-book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code>
-to check if this is the case. If so, it will return an error to the user
-rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5: The user then executes the command <code>find</code>. Commands that do
-not modify the address book, such as <code>find</code>, will usually not call
-<code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or
-<code>Model#redoAddressBook()</code>.  Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateFindDiagram.png" alt="UndoRedoNewCommand3StateFindDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes clear, which calls Model#commitAddressBook(). Since
- the currentStatePointer is not pointing at the end of the addressBookStateList,
- all address book states after the currentStatePointer will be purged. We
- designed it this way because it no longer makes sense to redo the delete 7
- command. This is the behavior that most modern desktop
- applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a
-new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram" width="800">
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-how-delete-executes"><a class="link" href="#aspect-how-delete-executes">Aspect: How delete executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (Use tags):</strong> Inputs the type of the entity to be deleted.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
-</li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Easy for user to understand the usage.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p>Cons:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Needs to implement additional class type for checking which type of Entity and which Entity list to delete from.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Needs to search for the Entity in the whole list which may be slow.</p>
+</li>
+<li>
+<p>User input Entity name may not be valid, which needs extra prompt.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p><strong>Alternative 2:</strong> Inputs the index number of entity to be deleted.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement.</p>
+</li>
+<li>
+<p>Fast retrieval of Entity in the list.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p>Cons:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>User needs to know the index number of the Entity to be deleted.</p>
 </li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -490,4 +720,4 @@ new command:</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 14:47:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:02:25 UTC</div></div></div></body></html>

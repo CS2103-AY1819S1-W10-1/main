@@ -14,19 +14,20 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-an-entry-code-add-code">3.2. Adding an entry: <code>add[]</code></a></li>
+<li><a href="#adding-a-person-module-or-occasion-code-add-code">3.2. Adding a person, module or occasion: <code>add[]</code></a></li>
 <li><a href="#listing-all-entries-code-list-code">3.3. Listing all entries : <code>list[]</code></a></li>
 <li><a href="#editing-an-entry-code-edit-code">3.4. Editing an entry : <code>edit[]</code></a></li>
 <li><a href="#locating-entries-by-name-code-find-code">3.5. Locating entries by name: <code>find</code></a></li>
-<li><a href="#deleting-an-entry-code-delete-code">3.6. Deleting an entry : <code>delete[]</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.7. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.8. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#grouping-content-together-by-tag-code-group-code">3.9. Grouping content together by tag: <code>group</code></a></li>
-<li><a href="#show-command-history-code-history-code">3.10. Show command history: <code>history</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.11. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.12. Saving the data</a></li>
-<li><a href="#autocomplete-coming-in-v-1-4">3.13. Autocomplete (coming in v 1.4)</a></li>
-<li><a href="#import-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">3.14. Import module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></li>
+<li><a href="#locating-persons-modules-or-occasions-code-find-code">3.6. Locating persons, modules, or occasions: <code>find[]</code></a></li>
+<li><a href="#deleting-an-entry-code-delete-code">3.7. Deleting an entry : <code>delete[]</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.8. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.9. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#grouping-content-together-by-tag-code-group-code">3.10. Grouping content together by tag: <code>group</code></a></li>
+<li><a href="#show-command-history-code-history-code">3.11. Show command history: <code>history</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.13. Saving the data</a></li>
+<li><a href="#autocomplete-coming-in-v-1-4">3.14. Autocomplete (coming in v 1.4)</a></li>
+<li><a href="#import-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">3.15. Import module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -60,7 +61,17 @@
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/UI_v1.3_Persons.png" alt="UI v1.3 Persons" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UI_v1.3_Modules.png" alt="UI v1.3 Modules" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UI_v1.3_Occasions.png" alt="UI v1.3 Occasions" width="790">
 </div>
 </div>
 </li>
@@ -127,15 +138,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-an-entry-code-add-code"><a class="link" href="#adding-an-entry-code-add-code">3.2. Adding an entry: <code>add[]</code></a></h3>
-<div class="paragraph">
-<p>Adds a person, module or an occasion to the address book.<br></p>
-</div>
-<div class="paragraph">
-<p>Format to add person: <code>addperson n/NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/HOME_ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-Format to add module: <code>addmodule mc/MODULE_CODE mt/MODULE_TITLE ay/ACADEMIC_YEAR sem/SEMESTER [t/TAG]&#8230;&#8203;</code><br>
-Format to add occasion: <code>addoccasion on/OCCASION_NAME od/OCCASION_DATE loc/LOCATION [t/TAG]&#8230;&#8203;</code></p>
-</div>
+<h3 id="adding-a-person-module-or-occasion-code-add-code"><a class="link" href="#adding-a-person-module-or-occasion-code-add-code">3.2. Adding a person, module or occasion: <code>add[]</code></a></h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -143,26 +146,70 @@ Format to add occasion: <code>addoccasion on/OCCASION_NAME od/OCCASION_DATE loc/
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person, module or an occasion can have any number of tags (including 0) and in no particular order.
+A person, module or an occasion can have any number of tags (including 0) and in no particular order.<br>
 </td>
 </tr>
 </table>
 </div>
+<div class="sect3">
+<h4 id="adding-a-person-code-addperson-code"><a class="link" href="#adding-a-person-code-addperson-code">3.2.1. Adding a person: <code>addperson</code></a></h4>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Adds a person to TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>addperson n/NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/HOME_ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code><br></p>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-module-code-addmodule-code"><a class="link" href="#adding-a-module-code-addmodule-code">3.2.2. Adding a module: <code>addmodule</code></a></h4>
+<div class="paragraph">
+<p>Adds a module to TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>addmodule mc/MODULE_CODE mt/MODULE_TITLE ay/ACADEMIC_YEAR sem/SEMESTER [t/TAG]&#8230;&#8203;</code><br></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/AY1718 sem/1 t/gg</code><br></p>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-an-occasion-code-addoccasion-code"><a class="link" href="#adding-an-occasion-code-addoccasion-code">3.2.3. Adding an occasion: <code>addoccasion</code></a></h4>
+<div class="paragraph">
+<p>Adds an occasion to TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>addoccasion on/OCCASION_NAME od/OCCASION_DATE loc/LOCATION [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg</code></p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -258,51 +305,75 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 </div>
 <div class="sect2">
 <h3 id="locating-entries-by-name-code-find-code"><a class="link" href="#locating-entries-by-name-code-find-code">3.5. Locating entries by name: <code>find</code></a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="locating-persons-modules-or-occasions-code-find-code"><a class="link" href="#locating-persons-modules-or-occasions-code-find-code">3.6. Locating persons, modules, or occasions: <code>find[]</code></a></h3>
+<div class="sect3">
+<h4 id="finding-a-person-code-findperson-code"><a class="link" href="#finding-a-person-code-findperson-code">3.6.1. Finding a person: <code>findperson</code></a></h4>
 <div class="paragraph">
-<p>Finds a person, module or event whose tags contain any of the given keywords.<br>
-Format: <code>find x/VALUE t/VALUE ONE t/VALUE TWO&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p>Values a <code>x</code> can take:
-* n: Name of the Person you would like to find.<br>
-* m: name/Code of the module you would like to find.<br>
-* e: The event name that you would like to find.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code><br></p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code><br></p>
-</li>
-<li>
-<p>Persons, events or modules matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>t/Hans t/Bo</code> will return an item that has the following tags: <code>t/Hans t/Gruber</code> or <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
+<p>Finds a person in TheTracker.<br></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Format:<br>
+<code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find n/John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find n/Betsy n/Tim n/John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>findperson n/John Doe</code>, <code>findperson p/98765432</code>, <code>findperson e/johnd@example.com</code>,
+<code>findperson a/Clementi</code><br></p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-a-module-code-findmodule-code"><a class="link" href="#finding-a-module-code-findmodule-code">3.6.2. Finding a module: <code>findmodule</code></a></h4>
+<div class="paragraph">
+<p>Finds a module in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>findmodule mc/MODULE_CODE</code>, <code>findmodule mt/MODULE_TITLE</code>, <code>findmodule ay/ACADEMIC_YEAR</code>,
+ <code>findmodule sem/SEMESTER</code><br></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findmodule mc/CS2103</code>, <code>findmodule mt/SOFTWARE</code>, <code>findmodule ay/AY1718</code>, <code>findmodule sem/1</code><br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-an-occasion-code-findoccasion-code"><a class="link" href="#finding-an-occasion-code-findoccasion-code">3.6.3. Finding an occasion: <code>findoccasion</code></a></h4>
+<div class="paragraph">
+<p>Finds an occasion in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>findoccasion on/OCCASION_NAME</code>, <code>findoccasion od/OCCASION_DATE</code>, <code>findoccasion loc/LOCATION</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findoccasion on/discussion</code>, <code>findoccasion od/2018-01-01</code>, <code>findoccasion loc/SoC</code></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">3.6. Deleting an entry : <code>delete[]</code></a></h3>
+<h3 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">3.7. Deleting an entry : <code>delete[]</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person, module or occasion from the address book.<br>
 Format: <code>delete[] INDEX</code></p>
@@ -358,7 +429,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.7. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.8. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to undo previous commands.<br></p>
 </div>
@@ -409,7 +480,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.8. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.9. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to redo previously undone commands.<br></p>
 </div>
@@ -447,7 +518,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="grouping-content-together-by-tag-code-group-code"><a class="link" href="#grouping-content-together-by-tag-code-group-code">3.9. Grouping content together by tag: <code>group</code></a></h3>
+<h3 id="grouping-content-together-by-tag-code-group-code"><a class="link" href="#grouping-content-together-by-tag-code-group-code">3.10. Grouping content together by tag: <code>group</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to group students under a certain group tag.<br>
 Command Syntax:<br>
@@ -458,34 +529,34 @@ keyword: n/NAME The name of the person you want to put in this group.
 </div>
 </div>
 <div class="sect2">
-<h3 id="show-command-history-code-history-code"><a class="link" href="#show-command-history-code-history-code">3.10. Show command history: <code>history</code></a></h3>
+<h3 id="show-command-history-code-history-code"><a class="link" href="#show-command-history-code-history-code">3.11. Show command history: <code>history</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to see the history of commands used within the address book.+
 Command Syntax: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.11. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.12. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-coming-in-v-1-4"><a class="link" href="#autocomplete-coming-in-v-1-4">3.13. Autocomplete (coming in v 1.4)</a></h3>
+<h3 id="autocomplete-coming-in-v-1-4"><a class="link" href="#autocomplete-coming-in-v-1-4">3.14. Autocomplete (coming in v 1.4)</a></h3>
 <div class="paragraph">
 <p>A feature that gives a list of potential matches based on substrings of a result that a user types into any other command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#import-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">3.14. Import module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
+<h3 id="import-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#import-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">3.15. Import module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
 <div class="paragraph">
 <p>A command to allow the user to import information from NUSMods.+</p>
 </div>
@@ -548,4 +619,4 @@ e.g. <code>redo 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 14:47:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 15:02:25 UTC</div></div></div></body></html>
