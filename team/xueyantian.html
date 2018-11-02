@@ -631,20 +631,20 @@ It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occa
 <div class="paragraph">
 <p>This following section will use <code>DeletePersonCommand</code> as an example, <code>DeleteModuleCommand</code> and  <code>DeleteOccasionCommand</code>
 uses the same mechanism. <code>DeletePersonCommand`extends the `Command</code> class and uses inheritance to facilitate
-implementation.
-Generally, it implements the following operation:</p>
+implementation.</p>
+</div>
+<div class="paragraph">
+<p>Generally, it implements the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>DeletePersonCommand#excute(Model model, CommandHistory history)</code>:
-deletes the person passed to the <code>DeletePersonCommand</code> class</p>
+<p><code>DeleteCommand#excute(Model model, CommandHistory history)</code>: deletes the entity passed to the <code>DeleteCommand</code> class</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>This operation is exposed in the Model interface as Model#getFilteredEntity(), Model#deleteEntity() and
-Model#commitAddressBook() respectively.</p>
+<p>This operation is exposed in the Model interface as Model#getFilteredEntity(), Model#deleteEntity() and Model#commitAddressBook() respectively.</p>
 </div>
 <div class="paragraph">
 <p>Provided below is an usage scenario instance. It illustrates how the
@@ -776,4 +776,4 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 03:12:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 14:34:29 UTC</div></div></div></body></html>
