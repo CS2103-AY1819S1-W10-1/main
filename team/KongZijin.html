@@ -140,12 +140,18 @@ similar way of how he edit a person in his address book.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="editing-an-entry-code-edit-code"><a class="link" href="#editing-an-entry-code-edit-code">Editing an entry : <code>edit[]</code></a></h3>
+<h3 id="editing-an-entry-code-edit-code"><a class="link" href="#editing-an-entry-code-edit-code">Editing an entry : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person, module or occasion in TheTracker.<br></p>
 </div>
+<div class="sect3">
+<h4 id="editing-a-person-code-editperson-code"><a class="link" href="#editing-a-person-code-editperson-code">Editing a person : <code>editperson</code></a></h4>
 <div class="paragraph">
-<p>Format to edit person: <code>editPerson INDEX x/VALUE &#8230;&#8203;</code></p>
+<p>Edits an existing person in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>editperson INDEX x/VALUE &#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -158,8 +164,15 @@ similar way of how he edit a person in his address book.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-module-code-editmodule-code"><a class="link" href="#editing-a-module-code-editmodule-code">Editing a module : <code>editmodule</code></a></h4>
 <div class="paragraph">
-<p>Format to edit module: <code>editModule INDEX x/VALUE &#8230;&#8203;</code></p>
+<p>Edits an existing module in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>editmodule INDEX x/VALUE &#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -172,8 +185,13 @@ similar way of how he edit a person in his address book.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="editing-an-occasion-code-editoccasion-code"><a class="link" href="#editing-an-occasion-code-editoccasion-code">Editing an occasion : <code>editoccasion</code></a></h4>
 <div class="paragraph">
-<p>Format to edit occasion: <code>editOccasion x/VALUE &#8230;&#8203;</code></p>
+<p>Edits an existing occasion in TheTracker.<br>
+Format:<br>
+<code>editoccasion x/VALUE &#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -218,17 +236,12 @@ Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
 </li>
 <li>
 <p><code>editOccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
-Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17, edits the occasionLocation to NUS.</p>
+Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17, edits the occasionLocation to NUS.
+`
+=== Undoing previous command : <code>undo</code></p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="locating-entries-by-name-code-find-code"><a class="link" href="#locating-entries-by-name-code-find-code">Locating entries by name: <code>find</code></a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to undo previous commands.<br></p>
 </div>
@@ -276,6 +289,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <code>undo 2</code> (reverses the <code>clear</code> command and the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -332,12 +346,18 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="editing-an-entry-code-edit-code-2"><a class="link" href="#editing-an-entry-code-edit-code-2">Editing an entry : <code>edit[]</code></a></h3>
+<h3 id="editing-an-entry-code-edit-code-2"><a class="link" href="#editing-an-entry-code-edit-code-2">Editing an entry : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person, module or occasion in TheTracker.<br></p>
 </div>
+<div class="sect3">
+<h4 id="editing-a-person-code-editperson-code-2"><a class="link" href="#editing-a-person-code-editperson-code-2">Editing a person : <code>editperson</code></a></h4>
 <div class="paragraph">
-<p>Format to edit person: <code>editPerson INDEX x/VALUE &#8230;&#8203;</code></p>
+<p>Edits an existing person in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>editperson INDEX x/VALUE &#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -350,8 +370,15 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-module-code-editmodule-code-2"><a class="link" href="#editing-a-module-code-editmodule-code-2">Editing a module : <code>editmodule</code></a></h4>
 <div class="paragraph">
-<p>Format to edit module: <code>editModule INDEX x/VALUE &#8230;&#8203;</code></p>
+<p>Edits an existing module in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>editmodule INDEX x/VALUE &#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -364,8 +391,13 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="editing-an-occasion-code-editoccasion-code-2"><a class="link" href="#editing-an-occasion-code-editoccasion-code-2">Editing an occasion : <code>editoccasion</code></a></h4>
 <div class="paragraph">
-<p>Format to edit occasion: <code>editOccasion x/VALUE &#8230;&#8203;</code></p>
+<p>Edits an existing occasion in TheTracker.<br>
+Format:<br>
+<code>editoccasion x/VALUE &#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -410,27 +442,15 @@ Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
 </li>
 <li>
 <p><code>editOccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
-Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17, edits the occasionLocation to NUS.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="locating-entries-by-name-code-find-code-2"><a class="link" href="#locating-entries-by-name-code-find-code-2">Locating entries by name: <code>find</code></a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
+Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17, edits the occasionLocation to NUS.
+`
+=== Undo/Redo feature
+==== Current Implementation
+The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
 <code>AddressBook</code> with an command history, stored internally as an
 <code>addressBookStateList</code> and <code>currentStatePointer</code>.
 In addition, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><code>VersionedAddressBook#commit()</code>: Saves the current book state
 in the command history</p>
@@ -678,4 +698,4 @@ new command:</p>
 <p>In this Orbital Project, we designed a 2D-pixel-style music-adventure Unity game. It is played on iOS platform.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-01 18:13:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-02 03:12:46 UTC</div></div></div></body></html>
