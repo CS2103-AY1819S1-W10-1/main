@@ -17,7 +17,7 @@
 <li><a href="#adding-an-entry-code-add-code">3.2. Adding an entry: <code>add</code></a></li>
 <li><a href="#editing-an-entry-code-edit-code">3.3. Editing an entry : <code>edit</code></a></li>
 <li><a href="#locating-entries-code-find-code">3.4. Locating entries: <code>find</code></a></li>
-<li><a href="#deleting-an-entry-code-delete-code">3.5. Deleting an entry : <code>delete</code></a></li>
+<li><a href="#deleting-an-entry-from-active-list-code-delete-code">3.5. Deleting an entry from active list: <code>delete</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.6. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.7. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">3.8. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></li>
@@ -92,7 +92,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><code>addperson n/John Doe t/98765432 t/johnd@example.com t/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
 </li>
 <li>
-<p><code>deleteoccasion 2</code> : deletes the 2nd entry in your occasion list</p>
+<p><code>delete 2</code> : deletes the 2nd entry in the active list</p>
 </li>
 <li>
 <p><code>exit</code> : exits the app</p>
@@ -117,9 +117,6 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p>Commands with <code>[]</code> after them will include either <code>person</code>,<code>module</code> or <code>occasion</code> e.g. <code>add[]</code> refers to <code>addperson</code>, <code>addmodule</code> or <code>addoccasion</code>.</p>
-</li>
 <li>
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
@@ -384,15 +381,13 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">3.5. Deleting an entry : <code>delete</code></a></h3>
+<h3 id="deleting-an-entry-from-active-list-code-delete-code"><a class="link" href="#deleting-an-entry-from-active-list-code-delete-code">3.5. Deleting an entry from active list: <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person, module or occasion in TheTracker.</p>
 </div>
-<div class="sect3">
-<h4 id="deleting-a-person-code-deleteperson-code"><a class="link" href="#deleting-a-person-code-deleteperson-code">3.5.1. Deleting a person : <code>deleteperson</code></a></h4>
 <div class="paragraph">
 <p>Format:<br>
-<code>deleteperson INDEX</code></p>
+<code>delete INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -400,47 +395,10 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleteperson 2</code><br>
-Deletes the 2nd person.<br></p>
+<p><code>delete 1</code><br>
+Deletes the 1st entry of the active list.<br></p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-a-module-code-deletemodule-code"><a class="link" href="#deleting-a-module-code-deletemodule-code">3.5.2. Deleting a module : <code>deleteModule</code></a></h4>
-<div class="paragraph">
-<p>Format:<br>
-<code>deletemodule INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deletemodule 1</code><br>
-Deletes the 1st module.<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-an-occasion-code-deleteoccasion-code"><a class="link" href="#deleting-an-occasion-code-deleteoccasion-code">3.5.3. Deleting an occasion : <code>deleteOccasion</code></a></h4>
-<div class="paragraph">
-<p>Format:<br>
-<code>deleteoccasion INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deleteoccasion 5</code><br>
-Deletes the 5th occasion.</p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -643,16 +601,8 @@ e.g. ` addoccasion addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/g
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
-<p><strong>Delete Person</strong> : <code>deleteperson INDEX</code><br>
-e.g. <code>deleteperson 6</code></p>
-</li>
-<li>
-<p><strong>Delete Module</strong> : <code>deletemodule INDEX</code><br>
-e.g. <code>deletemodule 1</code></p>
-</li>
-<li>
-<p><strong>Delete Occasion</strong> : <code>deleteoccasion INDEX</code><br>
-e.g. <code>deleteoccasion 7</code></p>
+<p><strong>Delete</strong> : <code>delete INDEX</code><br>
+e.g. <code>delete 2</code></p>
 </li>
 <li>
 <p><strong>Edit Person</strong> : <code>editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
@@ -706,4 +656,4 @@ e.g. <code>redo 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 12:06:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 18:32:38 UTC</div></div></div></body></html>
