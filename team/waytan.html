@@ -323,10 +323,7 @@ Deletes the 1st entry of the active list.<br></p>
 <div class="paragraph">
 <p>Command Syntax:<br>
 <code>undo</code>:<br>
-This command will undo the user’s previous command.<br>
-<code>undo [number]</code>:<br>
-The number of commands you want to undo.
-This command will undo a certain number of commands. The number should be at least 1. If the number exceeds the number of operations that has been done, the application will undo all the previous operations.</p>
+This command will undo the user’s previous command.<br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -360,8 +357,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </li>
 <li>
 <p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo 2</code> (reverses the <code>clear</code> command and the <code>delete 1</code> command)<br></p>
+<code>clear</code><br></p>
 </li>
 </ul>
 </div>
@@ -398,26 +394,9 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <p><code>delete 1</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo 2</code> (reapplies the <code>delete 1</code> command and the <code>clear</code> command)<br></p>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="grouping-content-together-by-tag-code-group-code-coming-in-v-2-0"><a class="link" href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>A command to allow the user to group students under a certain group tag.<br>
-Command Syntax:<br>
-<code>group [group_name] [keyword]</code>:<br>
-group_name: The name of this group of people.<br>
-keyword: n/NAME The name of the person you want to put in this group.
-                  i/INDEX The index of the person you want to put in this group.
-=== Listing all entries of this kind: <code>list</code>
-Format:<br>
-* <strong>List Person</strong> : <code>listperson</code>
-* <strong>List Module</strong> : <code>listmodule</code>
-* <strong>List Occasion</strong> : <code>listoccasion</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -443,7 +422,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-data-in-this-application-coming-in-v-1-4"><a class="link" href="#exporting-data-in-this-application-coming-in-v-1-4">Exporting data in this application (coming in v 1.4)</a></h3>
+<h3 id="exporting-data-from-this-application-coming-in-v-1-4"><a class="link" href="#exporting-data-from-this-application-coming-in-v-1-4">Exporting data from this application (coming in v 1.4)</a></h3>
 <div class="paragraph">
 <p>Format: <code>export FILEPATH</code></p>
 </div>
@@ -479,7 +458,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-data-in-this-application-coming-in-v-1-4-2"><a class="link" href="#exporting-data-in-this-application-coming-in-v-1-4-2">Exporting data in this application (coming in v 1.4)</a></h3>
+<h3 id="exporting-data-in-this-application-coming-in-v-1-4"><a class="link" href="#exporting-data-in-this-application-coming-in-v-1-4">Exporting data in this application (coming in v 1.4)</a></h3>
 <div class="paragraph">
 <p>Format: <code>export FILEPATH</code></p>
 </div>
@@ -624,4 +603,4 @@ The diagram above shows that although these classes are separate, they serve ver
 Polymorphism may be implemented on some commands in later versions.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-08 07:50:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-08 12:47:11 UTC</div></div></div></body></html>
