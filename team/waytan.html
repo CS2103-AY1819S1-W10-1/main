@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Way Tan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Way Tan - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-thetracker-v1-3"><a class="link" href="#project-thetracker-v1-3">PROJECT: TheTracker (v1.3)</a></h2>
+<h2 id="project-thetracker-v1-4"><a class="link" href="#project-thetracker-v1-4">PROJECT: TheTracker (v1.4)</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -10,7 +10,8 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Tracker (v1.3) is a desktop application that helps NUS students to monitor contacts, modules and events.</p>
+<p>This Project Portfolio details my contributions to TheTracker.
+It demonstrates my ability to contribute as a team member of a software engineering project in both technical and non-technical ways.</p>
 </div>
 </div>
 </div>
@@ -20,34 +21,65 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: <strong>improved existing delete function to delete any type of entry</strong></p>
+<p><strong>Major enhancement</strong>: <strong>Improved <code>delete</code> function to properly delete any type of entry</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to delete a person, module or occasion by index</p>
+<p>Description: Allows the user to delete a person, module or occasion by index. It also removes this entry from all other linked entries.</p>
 </li>
 <li>
-<p>Justification: This feature is necessary for a user to simultaneously maintain all three types of entries.</p>
+<p>Importance: This feature makes it easy for a user to remove any unnecessary entries from TheTracker.
+It also saves users from manually removing the entry from all associated entries.</p>
 </li>
 <li>
-<p>Highlights: This enhancement required the different lists to be handled independently, but with all actions tracked simultaneously (e.g. for undo/redo).</p>
+<p>Highlights: This enhancement required deletion from the three lists to be handled independently, but with entries in all lists being updated.
+This was challenging to implement as it required new objects to be create and linked in order for the undo/redo operations to work.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: updated the browser window to search NUSMods for modules and Google persons/occasions.</p>
+<p><strong>Minor enhancement</strong>: Improved <code>select</code> function to handle the three lists</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Description: Allows the user to select an entry from the active list, and view additional info</p>
+</li>
+<li>
+<p>Importance: The implementation is symmetric across all 3 lists, so that the user does not need to use different commands for different lists.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code Contributed</strong>: <a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=waytan">Link to Code Contributions</a></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
+<p>Conceptualization:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Suggested context-inferring commands (e.g. <code>select</code>, <code>delete</code> instead of <code>selectmodule, `deletemodule</code>)</p>
+</li>
+<li>
+<p>Suggested implementing <code>insertperson</code> and <code>removeperson</code> to link persons with modules/occasions</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p>Project management:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Involved in distributing roles and consolidating tasks</p>
+</li>
+<li>
+<p>Manage Issue Tracker for v1.3, v1.4</p>
 </li>
 </ul>
 </div>
@@ -59,18 +91,8 @@
 <li>
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/81">#81</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/87">#87</a></p>
 </li>
-</ul>
-</div>
-</li>
 <li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Helped in identifying bugs and offered suggestions for debugging</p>
 </li>
 </ul>
 </div>
@@ -80,7 +102,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Wrote user stories for v1.0</p>
+<p>Wrote user stories, use cases for v1.0</p>
 </li>
 <li>
 <p>Updated description of user guide to match application design</p>
@@ -89,11 +111,14 @@
 </div>
 </li>
 <li>
-<p>Miscellaneous Enhancements</p>
+<p>Key Code Components</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Set up test utils for module and occasion commands: <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/97">#97</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/109">#109</a></p>
+<p>Set up module class, various components and their unit tests.</p>
+</li>
+<li>
+<p>Set up test utils for modules and occasions: <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/97">#97</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/109">#109</a></p>
 </li>
 </ul>
 </div>
@@ -118,460 +143,277 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gui-components"><a class="link" href="#gui-components">GUI Components</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section explains the components of the GUI, along with some ways you can interact with it.</p>
+</div>
 <div class="sect2">
-<h3 id="listing-all-entries-code-list-code"><a class="link" href="#listing-all-entries-code-list-code">Listing all entries : <code>list</code></a></h3>
+<h3 id="layout"><a class="link" href="#layout">Layout</a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons/modules/occasions in the address book.<br>
-Format: <code>list[]</code></p>
+<p>TheTracker&#8217;s GUI is divided into 5 main regions that you will interact with:</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="editing-an-entry-code-edit-code"><a class="link" href="#editing-an-entry-code-edit-code">Editing an entry : <code>edit</code></a></h3>
-<div class="paragraph">
-<p>Edits an existing person, module or occasion in TheTracker.<br></p>
-</div>
-<div class="sect3">
-<h4 id="editing-a-person-code-editperson-code"><a class="link" href="#editing-a-person-code-editperson-code">Editing a person : <code>editperson</code></a></h4>
-<div class="paragraph">
-<p>Edits an existing person in TheTracker.<br></p>
-</div>
-<div class="paragraph">
-<p>Format:<br>
-<code>editperson INDEX x/VALUE &#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
+<div class="imageblock">
 <div class="content">
-<div class="ulist">
-<ul>
+<img src="../images/GUIComponents.png" alt="GUIComponents" width="600">
+</div>
+<div class="title">Figure 1. TheTracker&#8217;s GUI</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Edits the person, name of part specified by x - "n | p | e | a | t" followed by the VALUE which is the value of the name, phone number, email, address or tag you want to change to.<br></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="editing-a-module-code-editmodule-code"><a class="link" href="#editing-a-module-code-editmodule-code">Editing a module : <code>editmodule</code></a></h4>
-<div class="paragraph">
-<p>Edits an existing module in TheTracker.<br></p>
-</div>
-<div class="paragraph">
-<p>Format:<br>
-<code>editmodule INDEX x/VALUE &#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the module, name of part specified by x - "mc | mt | ay | sem | t" followed by the VALUE which is the value of the moduleCode, moduleTitle, academicYear, semester or tag you want to change to.<br></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="editing-an-occasion-code-editoccasion-code"><a class="link" href="#editing-an-occasion-code-editoccasion-code">Editing an occasion : <code>editoccasion</code></a></h4>
-<div class="paragraph">
-<p>Edits an existing occasion in TheTracker.<br>
-Format:<br>
-<code>editoccasion x/VALUE &#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the occasion, name of part specified by x - "on | od | loc | t" followed by the VALUE which is the value of the occasionName, occasionDate, occasionLocation or tag you want to change to.<br></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Common format:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>At least one value to edit must be provided.<br></p>
+<p>Menu Bar: contains simple commands to switch between windows</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.<br></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editPerson 6 p/91234567 e/johndoe@example.com</code><br>
-Edits the person of INDEX 6 in TheTracker: edits his phone to 91234567 and email address to <a href="mailto:johndoe@example.com">johndoe@example.com</a>.</p>
+<p>Command Box: text box (equipped with auto-suggestions) to receive input commands</p>
 </li>
 <li>
-<p><code>editModule 1 mc/CS1101S</code><br>
-Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
+<p>Result Display: panel that displays the result of inputted commands</p>
 </li>
 <li>
-<p><code>editOccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
-Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17,
- edits the occasionLocation to NUS.</p>
+<p>List Panel: panel displaying all saved persons/modules/occasions</p>
 </li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="locating-entries-code-find-code"><a class="link" href="#locating-entries-code-find-code">Locating entries: <code>find</code></a></h3>
-<div class="sect3">
-<h4 id="finding-a-person-code-findperson-code"><a class="link" href="#finding-a-person-code-findperson-code">Finding a person: <code>findperson</code></a></h4>
-<div class="paragraph">
-<p>Finds a person in TheTracker.<br></p>
-</div>
-<div class="paragraph">
-<p>Format:<br>
-<code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p><code>findperson n/John Doe</code>, <code>findperson p/98765432</code>, <code>findperson e/johnd@example.com</code>,
-<code>findperson a/Clementi</code><br></p>
+<p>Info Panel: panel displaying additional information for selected entry</p>
 </li>
-</ul>
+</ol>
 </div>
-</div>
-<div class="sect3">
-<h4 id="finding-a-module-code-findmodule-code"><a class="link" href="#finding-a-module-code-findmodule-code">Finding a module: <code>findmodule</code></a></h4>
-<div class="paragraph">
-<p>Finds a module in TheTracker.<br></p>
-</div>
-<div class="paragraph">
-<p>Format:<br>
-<code>findmodule mc/MODULE_CODE</code>, <code>findmodule mt/MODULE_TITLE</code>, <code>findmodule ay/ACADEMIC_YEAR</code>,
- <code>findmodule sem/SEMESTER</code><br></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>findmodule mc/CS2103</code>, <code>findmodule mt/SOFTWARE</code>, <code>findmodule ay/AY1718</code>, <code>findmodule sem/1</code><br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="finding-an-occasion-code-findoccasion-code"><a class="link" href="#finding-an-occasion-code-findoccasion-code">Finding an occasion: <code>findoccasion</code></a></h4>
-<div class="paragraph">
-<p>Finds an occasion in TheTracker.<br></p>
-</div>
-<div class="paragraph">
-<p>Format:<br>
-<code>findoccasion on/OCCASION_NAME</code>, <code>findoccasion od/OCCASION_DATE</code>, <code>findoccasion loc/LOCATION</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>findoccasion on/discussion</code>, <code>findoccasion od/2018-01-01</code>, <code>findoccasion loc/SoC</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-an-entry-from-active-list-code-delete-code"><a class="link" href="#deleting-an-entry-from-active-list-code-delete-code">Deleting an entry from active list: <code>delete</code></a></h3>
-<div class="paragraph">
-<p>Deletes the specified person, module or occasion in TheTracker.</p>
-</div>
-<div class="paragraph">
-<p>Format:<br>
-<code>delete INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-Deletes the 1st entry of the active list.<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
-<div class="paragraph">
-<p>A command to allow the user to undo previous commands.<br></p>
-</div>
-<div class="paragraph">
-<p>Command Syntax:<br>
-<code>undo</code>:<br>
-This command will undo the user’s previous command.<br></p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
+The info panel does not refresh even after you switch between lists, just in case you want to refer to other lists
+while editing an entry. To refresh the info panel, use the <code>select</code> command.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Examples:</p>
 </div>
+<div class="sect2">
+<h3 id="using-the-gui"><a class="link" href="#using-the-gui">Using the GUI</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p>Switching between person, module and occasion lists can be done from the Menu Bar by clicking on the desired type,
+followed by "Show Persons/Modules/Occasions". You can also view these using the <code>listperson</code>, <code>listmodule</code> and <code>listoccasion</code> commands in the Command Box.</p>
 </li>
 <li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.<br></p>
+<p>Clicking on an entry in the List Panel <strong>selects</strong> the entry. This allows you to see its additional info in the Info Panel.
+Selecting an entry can also be done by using the <code>select</code> command in the Command Box.
+== Types of Entries</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This section explains the three types of entries - person, module and occasion.<br>
+Each of them contains a compulsory field, optional fields, optional tags and relevant lists as explained below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shared-tags"><a class="link" href="#shared-tags">Shared: Tags</a></h3>
+<div class="paragraph">
+<p>All three types of entries contain the following fields:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
 <li>
-<p><code>delete 1</code><br>
-<code>clear</code><br></p>
+<p><strong>Tags</strong> - One or more alphanumeric strings (A-Z, 0-9), with no limit on length.<br>
+Note: An entry can have 0 or any positive number of tags.<br>
+Valid: Friend, CS2103, Must RSVP<br>
+Invalid: Buddy!, CS2103:(, 25/12/2018</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="person"><a class="link" href="#person">Person</a></h3>
 <div class="paragraph">
-<p>A command to allow the user to redo previously undone commands.<br></p>
+<p>A <strong>Person</strong> has the following fields:</p>
 </div>
-<div class="paragraph">
-<p>Command Syntax:
-<code>redo</code>: <br>
-This command will redo the user’s previous undone command.<br>
-<code>redo [number]</code>:<br>
-The number of undone commands you want to redo.
-This command will redo a certain number of undone commands. The number should be at least 1. If the number exceeds the number of operations that has been undone, the application will redo all the previous operations that have been undone.</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+<p><strong>Name</strong> (compuslory) - One or more alphanumeric strings, with no limit on length.<br>
+Valid: Ashwin Raj, Damith Rajapakse, Bob12345<br>
+Invalid: Ashwin Raj S/O Yadav, Damith C. Rajapakse, Bob12345!!!</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+<p><strong>Phone Number</strong> - 3 or more digits (0-9), with no limit on length.<br>
+Valid: 999, 1800123456, 659192939495<br>
+Invalid: 9, 1800 123456, +659192939495</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p><strong>Email</strong> - A single string with an @ character in between the username and domain name.<br>
+Username can contain the following special characters: !#$%&amp;'*+/=?`{|}~^.-<br>
+Domain name should be at least 3 letters long.<br>
+Valid: alex@abc, <a href="mailto:bob123@xyz.com">bob123@xyz.com</a>, example!<a href="mailto:123@nus.edu.sg">123@nus.edu.sg</a><br>
+Invalid: alex, bob@co, example@<a href="mailto:123@nus.edu.sg">123@nus.edu.sg</a></p>
+</li>
+<li>
+<p><strong>Address</strong> - Any non-blank input, with no limit on length.<br>
+Valid: NIL, Singapore, 123 Clementi Ave 999 S(654123)</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-entries-of-this-kind-code-list-code"><a class="link" href="#listing-all-entries-of-this-kind-code-list-code">Listing all entries of this kind: <code>list</code></a></h3>
-<div class="paragraph">
-<p>Format:<br>
-* <strong>List Person</strong> : <code>listperson</code>
-* <strong>List Module</strong> : <code>listmodule</code>
-* <strong>List Occasion</strong> : <code>listoccasion</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="showing-command-history-code-history-code"><a class="link" href="#showing-command-history-code-history-code">Showing command history: <code>history</code></a></h3>
 <div class="paragraph">
-<p>A command to allow the user to see the history of commands used within the address book.+
-Format: <code>history</code></p>
+<p>A person will also have a <strong>module list</strong> and <strong>occasion list</strong>. These are comprised of modules and occasions that <strong>are currently</strong> in the address book.<br>
+These lists will be initialized as empty until modules or occasions are added.</p>
+</div>
+<div class="paragraph">
+<p>Warning: Persons with the same name are permitted as long as they differ in at least one other field.
+Use with caution, as they may be difficult to distinguish (e.g. in a module&#8217;s registration list).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete-coming-in-v-1-4"><a class="link" href="#autocomplete-coming-in-v-1-4">Autocomplete (coming in v 1.4)</a></h3>
+<h3 id="module"><a class="link" href="#module">Module</a></h3>
 <div class="paragraph">
-<p>A feature that gives a list of potential matches based on substrings of a result that a user types into any other command.</p>
+<p>A <strong>Module</strong> has the following fields:</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="exporting-data-from-this-application-coming-in-v-1-4"><a class="link" href="#exporting-data-from-this-application-coming-in-v-1-4">Exporting data from this application (coming in v 1.4)</a></h3>
-<div class="paragraph">
-<p>Format: <code>export FILEPATH</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>A command to allow the user to import information from NUSMods.+</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>importmodule [modulecode]</code><br>
-If the specified module in the current semester is not found, it will be imported with information extracted from NUSMods.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="showing-command-history-code-history-code-2"><a class="link" href="#showing-command-history-code-history-code-2">Showing command history: <code>history</code></a></h3>
-<div class="paragraph">
-<p>A command to allow the user to see the history of commands used within the address book.+
-Format: <code>history</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="autocomplete-coming-in-v-1-4-2"><a class="link" href="#autocomplete-coming-in-v-1-4-2">Autocomplete (coming in v 1.4)</a></h3>
-<div class="paragraph">
-<p>A feature that gives a list of potential matches based on substrings of a result that a user types into any other command.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exporting-data-in-this-application-coming-in-v-1-4"><a class="link" href="#exporting-data-in-this-application-coming-in-v-1-4">Exporting data in this application (coming in v 1.4)</a></h3>
-<div class="paragraph">
-<p>Format: <code>export FILEPATH</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0-2"><a class="link" href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0-2">Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>A command to allow the user to import information from NUSMods.+</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>importmodule [modulecode]</code><br>
-If the specified module in the current semester is not found, it will be imported with information extracted from NUSMods.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code-2"><a class="link" href="#exiting-the-program-code-exit-code-2">Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">Saving the data</a></h3>
-<div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
-<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add Person</strong> <code>addperson n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code></p>
+<p><strong>Module Code</strong> (compulsory) - 2 or 3 letters, followed by 4 digits and an optional letter behind.<br>
+Note: Does not check whether the module is an actual NUS module.<br>
+Valid: CS2103, CS2103T, GER1001<br>
+Invalid: CS210, CS2103AB, GER10000</p>
 </li>
 <li>
-<p><strong>Add Module</strong> <code>mc/MODULE_CODE mt/MODULE_TITLE ay/ACADEMIC_YEAR sem/SEMESTER[t/TAG]&#8230;&#8203;</code><br>
-e.g. ` addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1718 sem/1 t/gg `</p>
+<p><strong>Module Title</strong> - One or more alphanumeric strings, with no limit on length.<br>
+Note: Does not check whether the module title matches the module code.<br>
+Valid: Software Engineering, Programming Methodology, A very annoying module<br>
+Invalid: Software Engineering!, Object-Oriented Design, ARGH:o</p>
 </li>
 <li>
-<p><strong>Add Occasion</strong> <code>on/OCCASION_NAME od/OCCASION_DATE loc/LOCATION [t/TAG]&#8230;&#8203;</code><br>
-e.g. ` addoccasion addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg `</p>
+<p><strong>Academic Year</strong> - 4 digit number, with the first and last 2 numbers representing consecutive years.<br>
+Valid: 1819, 9900, 0001, 0304<br>
+Invalid: 123, AY1819, 18/19, 2018</p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 2</code></p>
-</li>
-<li>
-<p><strong>Edit Person</strong> : <code>editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>editperson 1 p/91234567 e/johndoe@example.com</code></p>
-</li>
-<li>
-<p><strong>Edit Module</strong> : <code>editmodule INDEX [mc/MODULE CODE] [mt/MODULE TITLE] [ay/ACADEMIC YEAR] [sem/SEMESTER] [t/TAG]&#8230;&#8203;</code><br>
-e.g. `editmodule 1 mc/CS1101S `</p>
-</li>
-<li>
-<p><strong>Edit Occasion</strong> :  <code>INDEX [on/OCCASION NAME] [od/OCCASION DATE] [loc/OCCASION LOCATION] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>editoccasion 1 on/Barbecue od/2019-6-17 loc/NUS</code></p>
-</li>
-<li>
-<p><strong>Find Person</strong> : <code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code><br>
-e.g. <code>findperson n/John Doe</code>, <code>findperson p/98765432</code>, <code>findperson e/johnd@example.com</code>,
- <code>findperson a/Clementi</code><br></p>
-</li>
-<li>
-<p><strong>Find Module</strong> :  <code>findmodule mc/MODULE_CODE</code>, <code>findmodule mt/MODULE_TITLE</code>, <code>findmodule ay/ACADEMIC_YEAR</code>,
- <code>findmodule sem/SEMESTER</code><br>
-e.g. <code>findmodule mc/CS2103</code>, <code>findmodule mt/SOFTWARE</code>, <code>findmodule ay/AY1718</code>, <code>findmodule sem/1</code><br></p>
-</li>
-<li>
-<p><strong>Find Occasion</strong> : <code>findoccasion on/OCCASION_NAME</code>, <code>findoccasion od/OCCASION_DATE</code>, <code>findoccasion loc/LOCATION</code><br>
-e.g. <code>findoccasion on/discussion</code>, <code>findoccasion od/2018-01-01</code>, <code>findoccasion loc/SoC</code></p>
-</li>
-<li>
-<p><strong>List Person</strong> : <code>listperson</code></p>
-</li>
-<li>
-<p><strong>List Module</strong> : <code>listmodule</code></p>
-</li>
-<li>
-<p><strong>List Occasion</strong> : <code>listoccasion</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo [NUMBER]</code><br>
-e.g. <code>undo 1</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo [NUMBER]</code><br>
-e.g. <code>redo 1</code></p>
+<p><strong>Semester</strong> - 1 digit number between 1 and 4.<br>
+Remark: Semesters 3 and 4 are used to refer to Special Term I and II.<br>
+Valid: 1, 2, 3, 4<br>
+Invalid: Sem 1, 01, 1819/1</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>A module will also have a <strong>person list</strong>. This will be consistent with the persons in the list
+(i.e. the module will appear in their module lists).</p>
+</div>
+<div class="paragraph">
+<p>Warning: Module with the same code are permitted as long as they differ in at least one other field.
+Use with caution, as they may be difficult to distinguish (e.g. in a person&#8217;s module list).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="occasion"><a class="link" href="#occasion">Occasion</a></h3>
+<div class="paragraph">
+<p>An <strong>Occasion</strong> has the following features:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Occasion Name</strong> (compuslory) - One or more alphanumeric strings, with no limit on length.<br>
+Valid: Project Discussion, CS2103 Exam, Recess Week<br>
+Invalid: Ad-hoc Work, Meeting**, Friend&#8217;s Birthday</p>
+</li>
+<li>
+<p><strong>Occasion Date</strong> - Date in YYYY-MM-DD format.<br>
+Remark: Checks whether date is valid.<br>
+Valid: 2018-11-13, 2000-02-29, 2010-10-31<br>
+Invalid: 2018/11/13, 2001-02-29, 2010-09-31</p>
+</li>
+<li>
+<p><strong>Occasion Location</strong> - One or more alphanumeric strings, with no limit on length.<br>
+Valid: Home, NUS COM1, 123 Clementi Rd<br>
+Invalid: John&#8217;s Home, NUS COM1 02-18, 123 Clementi Rd S(654123)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>An occasion will also have a <strong>person list</strong>. This will be consistent with the persons in the list
+(i.e. the occasion will appear in their occasion lists).</p>
+</div>
+<div class="paragraph">
+<p>Warning: Occasions with the same name are permitted as long as they differ in at least one other field.
+Use with caution, as they may be difficult to distinguish (e.g. in a person&#8217;s occasion list).
+=== Deleting an entry: <code>delete</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes the specified entry from the active list in TheTracker.<br>
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the entry at the specified <code>INDEX</code> shown. The index refers to the index number shown in the List Panel.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong>: 1, 2, 3, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The specified entry will be removed from all linked entries. For example, a deleted person will be removed from the student list of all modules.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:
+* <code>listperson</code><br>
+<code>delete 1</code><br>
+Deletes the 1st person in TheTracker.
+* <code>listmodule</code><br>
+<code>findmodule sem/1</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd module of the <code>find</code> command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-an-entry-code-select-code"><a class="link" href="#selecting-an-entry-code-select-code">Selecting an Entry: <code>select</code></a></h3>
+<div class="paragraph">
+<p>Selects the event identified by the index number in the List Panel.
+The Info Panel will display the additional information for that entry.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>select INDEX</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+On startup, no entry should be selected. Entries will not be deselected until another entry is selected.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -589,18 +431,17 @@ e.g. <code>redo 1</code></p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Even though the storage unit contains three types of Entities - Person, Module and Occasion, the behaviour of all three types is generally similar to each other.</p>
+<p>Even though the storage unit contains three types of entries - Person, Module and Occasion, the behaviour of all three types is generally similar to each other.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AddActivityDiagram.png" alt="AddActivityDiagram" width="800">
+<img src="../images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram" width="800">
 </div>
-<div class="title">Figure 1. Activity Diagram when user adds any entity</div>
+<div class="title">Figure 2. Activity Diagram when user deletes any entity</div>
 </div>
 <div class="paragraph">
-<p>As of v1.3, the storage, commands, and parsers are distinct classes for each type of entity.
-The diagram above shows that although these classes are separate, they serve very similar purposes.
-Polymorphism may be implemented on some commands in later versions.</p>
+<p>The diagram above shows that although these classes are separate, they serve very similar purposes.
+They are handled by the same parser, with the model determining the appropriate list to act upon.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-08 12:47:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-09 11:45:16 UTC</div></div></div></body></html>
