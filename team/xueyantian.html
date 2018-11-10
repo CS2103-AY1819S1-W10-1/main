@@ -163,7 +163,7 @@ commands.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="adding-an-entry-code-add-code"><a class="link" href="#adding-an-entry-code-add-code">Adding an entry: <code>add</code></a></h3>
+<h3 id="adding-an-entry-code-add-code"><a class="link" href="#adding-an-entry-code-add-code">Adding an entry: <code>add[]</code></a></h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -183,18 +183,32 @@ A person, module or an occasion can have any number of tags (including 0) and in
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>addperson n/NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/HOME_ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<code>addperson n/NAME [p/PHONE_NUMBER] [e/EMAIL_ADDRESS] [a/HOME_ADDRESS] [t/TAG]&#8230;&#8203;</code><br></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>addperson n/John Doe</code><br>
+<code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code><br></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code><br>
-Adds John Doe to TheTracker with his associated info.</p>
+<p>Persons with the same Name and either one or both of Phone and Email are considered to be the same person.</p>
+</li>
+<li>
+<p>Name must be specified to create a person contact.</p>
+</li>
+<li>
+<p>If not enetered, Phone number, Email Address, Home Address and tags are empty.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -204,18 +218,35 @@ Adds John Doe to TheTracker with his associated info.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>addmodule mc/MODULE_CODE mt/MODULE_TITLE ay/ACADEMIC_YEAR sem/SEMESTER [t/TAG]&#8230;&#8203;</code><br></p>
+<code>addmodule mc/MODULE_CODE [mt/MODULE_TITLE] [ay/ACADEMIC_YEAR] [sem/SEMESTER] [t/TAG]&#8230;&#8203;</code><br></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>addmodule mc/CS2103</code><br>
+<code>addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1718 sem/1 t/gg</code><br></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1819 sem/1 t/gg</code><br>
-Adds CS2103 to TheTracker with its associated info.</p>
+<p>Module with the same Module Code, Academic Year and Semester are considered to be the same module.</p>
+</li>
+<li>
+<p>Module Code must be specified to create a module.</p>
+</li>
+<li>
+<p>If not entered, Academic Year, Module Title, Semester and Tags are empty.</p>
+</li>
+<li>
+<p>Semester number 3 and 4 are used to refer to special terms at NUS.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -225,18 +256,32 @@ Adds CS2103 to TheTracker with its associated info.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>addoccasion on/OCCASION_NAME od/OCCASION_DATE loc/LOCATION [t/TAG]&#8230;&#8203;</code></p>
+<code>addoccasion on/OCCASION_NAME [od/OCCASION_DATE] [loc/LOCATION] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>addoccasion on/discussion</code><br>
+<code>addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addoccasion on/group discussion od/2018-01-01 loc/SoC t/project t/gg</code>
-Adds a group discussion to TheTracker with its associated info.</p>
+<p>Occasion with the same Occasion Name and Occasion Date are considered to be the same occasion.</p>
+</li>
+<li>
+<p>Occasion Name must be specified to create an occasion. The length of Occasion Name should be between 3 - 30.</p>
+</li>
+<li>
+<p>If not entered, Occasion Date, Occasion Location and Tags are empty.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -249,7 +294,8 @@ Adds a group discussion to TheTracker with its associated info.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code></p>
+<code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code>,
+<code>findperson mc/cs2103</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -257,7 +303,9 @@ Adds a group discussion to TheTracker with its associated info.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>findperson n/John Doe</code>, <code>findperson p/98765432</code>, <code>findperson e/johnd@example.com</code>,
+<p><code>findperson n/John Doe</code><br>
+<code>findperson p/98765432</code><br>
+<code>findperson e/johnd@example.com</code><br>
 <code>findperson a/Clementi</code><br></p>
 </li>
 </ul>
@@ -345,9 +393,8 @@ Deletes the 2nd module of the <code>find</code> command.</p>
 <p>A command to allow the user to undo previous commands.<br></p>
 </div>
 <div class="paragraph">
-<p>Command Syntax:<br>
-<code>undo</code>:<br>
-This command will undo the user’s previous command.<br></p>
+<p>Format:<br>
+<code>undo</code><br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -357,7 +404,7 @@ This command will undo the user’s previous command.<br></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code> and <code>insertperson</code>).</p>
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add[]</code>, <code>delete</code>, <code>edit[]</code>, <code>clear</code> and <code>insertperson</code>).</p>
 </div>
 </td>
 </tr>
@@ -388,9 +435,8 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p>A command to allow the user to redo previously undone commands.<br></p>
 </div>
 <div class="paragraph">
-<p>Command Syntax:
-<code>redo</code>: <br>
-This command will redo the user’s previous undone command.<br></p>
+<p>Format:
+<code>redo</code>: <br></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -406,6 +452,12 @@ This command will redo the user’s previous undone command.<br></p>
 <p><code>delete 1</code><br>
 <code>redo</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>redo</code> (reverses the <code>undo</code> command, which clears again)<br></p>
 </li>
 </ul>
 </div>
@@ -434,6 +486,12 @@ If this was done by mistake, you can <code>undo</code> the action, and all lists
 <div class="paragraph">
 <p>A command to allow the user to see the history of commands used within the address book.+
 Format: <code>history</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-data-from-this-application-coming-in-v-1-4"><a class="link" href="#exporting-data-from-this-application-coming-in-v-1-4">Exporting data from this application (coming in v 1.4)</a></h3>
+<div class="paragraph">
+<p>Format: <code>export FILEPATH</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -474,33 +532,6 @@ Format: <code>exit</code></p>
 There is no need to save manually.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="exporting-data-in-this-application-coming-in-v-2-0"><a class="link" href="#exporting-data-in-this-application-coming-in-v-2-0">Exporting data in this application (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>Format: <code>export FILEPATH</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>A command to allow the user to import information from NUSMods.+</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>importmodule [modulecode]</code><br>
-If the specified module in the current semester is not found, it will be imported with information extracted from NUSMods.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="grouping-content-together-by-tag-code-group-code-coming-in-v-2-0"><a class="link" href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>A command to allow the user to group students under a certain group tag.<br>
-Command Syntax:<br>
-<code>group [group_name] [keyword]</code>:<br>
-group_name: The name of this group of people.<br>
-keyword: n/NAME The name of the person you want to put in this group.
-                  i/INDEX The index of the person you want to put in this group.</p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -530,9 +561,6 @@ e.g. ` addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1718 sem/1 t/gg `</p>
 e.g. ` addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg `</p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
 e.g. <code>delete 2</code></p>
 </li>
@@ -551,7 +579,7 @@ e.g. <code>editoccasion 1 on/Barbecue od/2019-6-17 loc/NUS</code></p>
 <li>
 <p><strong>Find Person</strong> : <code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code><br>
 e.g. <code>findperson n/John Doe</code>, <code>findperson p/98765432</code>, <code>findperson e/johnd@example.com</code>,
- <code>findperson a/Clementi</code><br></p>
+ <code>findperson a/Clementi</code>, <code>findperson mc/cs2103</code>+</p>
 </li>
 <li>
 <p><strong>Find Module</strong> :  <code>findmodule mc/MODULE_CODE</code>, <code>findmodule mt/MODULE_TITLE</code>, <code>findmodule ay/ACADEMIC_YEAR</code>,
@@ -572,16 +600,21 @@ e.g. <code>findoccasion on/discussion</code>, <code>findoccasion od/2018-01-01</
 <p><strong>List Occasion</strong> : <code>listoccasion</code></p>
 </li>
 <li>
+<p><strong>Undo</strong> : <code>undo</code><br>
+e.g. <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code><br>
+e.g. <code>redo</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
 </li>
 </ul>
 </div>
@@ -757,4 +790,4 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 09:09:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 11:58:33 UTC</div></div></div></body></html>

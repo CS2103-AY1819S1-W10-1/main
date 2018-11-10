@@ -142,9 +142,8 @@
 <p>A command to allow the user to undo previous commands.<br></p>
 </div>
 <div class="paragraph">
-<p>Command Syntax:<br>
-<code>undo</code>:<br>
-This command will undo the user’s previous command.<br></p>
+<p>Format:<br>
+<code>undo</code><br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -154,7 +153,7 @@ This command will undo the user’s previous command.<br></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code> and <code>insertperson</code>).</p>
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add[]</code>, <code>delete</code>, <code>edit[]</code>, <code>clear</code> and <code>insertperson</code>).</p>
 </div>
 </td>
 </tr>
@@ -185,9 +184,8 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p>A command to allow the user to redo previously undone commands.<br></p>
 </div>
 <div class="paragraph">
-<p>Command Syntax:
-<code>redo</code>: <br>
-This command will redo the user’s previous undone command.<br></p>
+<p>Format:
+<code>redo</code>: <br></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -203,6 +201,12 @@ This command will redo the user’s previous undone command.<br></p>
 <p><code>delete 1</code><br>
 <code>redo</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>redo</code> (reverses the <code>undo</code> command, which clears again)<br></p>
 </li>
 </ul>
 </div>
@@ -471,4 +475,4 @@ new command:</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 09:09:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 11:58:33 UTC</div></div></div></body></html>

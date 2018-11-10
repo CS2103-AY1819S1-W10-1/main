@@ -28,22 +28,20 @@
 <li><a href="#Features">5. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">5.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-an-entry-code-add-code">5.2. Adding an entry: <code>add</code></a></li>
+<li><a href="#adding-an-entry-code-add-code">5.2. Adding an entry: <code>add[]</code></a></li>
 <li><a href="#listing-all-entries-code-list-code">5.3. Listing all entries : <code>list</code></a></li>
 <li><a href="#selecting-an-entry-code-select-code">5.4. Selecting an Entry: <code>select</code></a></li>
-<li><a href="#editing-an-entry-code-edit-code">5.5. Editing an entry : <code>edit</code></a></li>
+<li><a href="#editing-an-entry-code-edit-code">5.5. Editing an entry : <code>edit[]</code></a></li>
 <li><a href="#locating-entries-code-find-code">5.6. Locating entries: <code>find</code></a></li>
 <li><a href="#deleting-an-entry-code-delete-code">5.7. Deleting an entry: <code>delete</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">5.8. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">5.9. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clear-all-lists-code-clear-code">5.10. Clear all lists: <code>clear</code></a></li>
 <li><a href="#showing-command-history-code-history-code">5.11. Showing command history: <code>history</code></a></li>
-<li><a href="#autocomplete">5.12. Autocomplete</a></li>
-<li><a href="#exiting-the-program-code-exit-code">5.13. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">5.14. Saving the data</a></li>
-<li><a href="#exporting-data-in-this-application-coming-in-v-2-0">5.15. Exporting data in this application (coming in v 2.0)</a></li>
-<li><a href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">5.16. Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></li>
-<li><a href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">5.17. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></li>
+<li><a href="#exporting-data-from-this-application-coming-in-v-1-4">5.12. Exporting data from this application (coming in v 1.4)</a></li>
+<li><a href="#autocomplete">5.13. Autocomplete</a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.14. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.15. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">6. FAQ</a></li>
@@ -71,10 +69,10 @@
 <p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level4/releases">here</a>.</p>
+<p>Download the latest <code>TheTracker.jar</code> <a href="https://github.com/CS2103-AY1819S1-W10-1/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your TheTracker.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -106,7 +104,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><code>listmodule</code> : lists all modules</p>
 </li>
 <li>
-<p><code>addperson n/John Doe t/98765432 t/johnd@example.com t/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><code>addperson n/John Doe t/98765432 t/johnd@example.com t/John street, block 123, #01-01</code> : adds a contact named
+<code>John Doe</code> to TheTracker.</p>
 </li>
 <li>
 <p><code>delete 2</code> : deletes the 2nd entry in the active list</p>
@@ -355,18 +354,24 @@ Use with caution, as they may be difficult to distinguish (e.g. in a person&#821
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>Command Format</strong>`</p>
+<p><strong>Notice</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which
+can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional e.g <code>n/NAME [t/VALUE]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code>
+(i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+</li>
+<li>
+<p><code>[]</code> after a command word (eg. <code>add[]</code>) refers to the postfix of the command. It may be person, module and
+occasion respectively.</p>
 </li>
 </ul>
 </div>
@@ -380,7 +385,7 @@ Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-an-entry-code-add-code"><a class="link" href="#adding-an-entry-code-add-code">5.2. Adding an entry: <code>add</code></a></h3>
+<h3 id="adding-an-entry-code-add-code"><a class="link" href="#adding-an-entry-code-add-code">5.2. Adding an entry: <code>add[]</code></a></h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -400,18 +405,32 @@ A person, module or an occasion can have any number of tags (including 0) and in
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>addperson n/NAME p/PHONE_NUMBER e/EMAIL_ADDRESS a/HOME_ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<code>addperson n/NAME [p/PHONE_NUMBER] [e/EMAIL_ADDRESS] [a/HOME_ADDRESS] [t/TAG]&#8230;&#8203;</code><br></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>addperson n/John Doe</code><br>
+<code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code><br></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code><br>
-Adds John Doe to TheTracker with his associated info.</p>
+<p>Persons with the same Name and either one or both of Phone and Email are considered to be the same person.</p>
+</li>
+<li>
+<p>Name must be specified to create a person contact.</p>
+</li>
+<li>
+<p>If not enetered, Phone number, Email Address, Home Address and tags are empty.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -421,18 +440,35 @@ Adds John Doe to TheTracker with his associated info.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>addmodule mc/MODULE_CODE mt/MODULE_TITLE ay/ACADEMIC_YEAR sem/SEMESTER [t/TAG]&#8230;&#8203;</code><br></p>
+<code>addmodule mc/MODULE_CODE [mt/MODULE_TITLE] [ay/ACADEMIC_YEAR] [sem/SEMESTER] [t/TAG]&#8230;&#8203;</code><br></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>addmodule mc/CS2103</code><br>
+<code>addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1718 sem/1 t/gg</code><br></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1819 sem/1 t/gg</code><br>
-Adds CS2103 to TheTracker with its associated info.</p>
+<p>Module with the same Module Code, Academic Year and Semester are considered to be the same module.</p>
+</li>
+<li>
+<p>Module Code must be specified to create a module.</p>
+</li>
+<li>
+<p>If not entered, Academic Year, Module Title, Semester and Tags are empty.</p>
+</li>
+<li>
+<p>Semester number 3 and 4 are used to refer to special terms at NUS.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -442,18 +478,32 @@ Adds CS2103 to TheTracker with its associated info.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>addoccasion on/OCCASION_NAME od/OCCASION_DATE loc/LOCATION [t/TAG]&#8230;&#8203;</code></p>
+<code>addoccasion on/OCCASION_NAME [od/OCCASION_DATE] [loc/LOCATION] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>addoccasion on/discussion</code><br>
+<code>addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addoccasion on/group discussion od/2018-01-01 loc/SoC t/project t/gg</code>
-Adds a group discussion to TheTracker with its associated info.</p>
+<p>Occasion with the same Occasion Name and Occasion Date are considered to be the same occasion.</p>
+</li>
+<li>
+<p>Occasion Name must be specified to create an occasion. The length of Occasion Name should be between 3 - 30.</p>
+</li>
+<li>
+<p>If not entered, Occasion Date, Occasion Location and Tags are empty.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -520,9 +570,10 @@ On startup, no entry should be selected. Entries will not be deselected until an
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-an-entry-code-edit-code"><a class="link" href="#editing-an-entry-code-edit-code">5.5. Editing an entry : <code>edit</code></a></h3>
+<h3 id="editing-an-entry-code-edit-code"><a class="link" href="#editing-an-entry-code-edit-code">5.5. Editing an entry : <code>edit[]</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person, module or occasion in TheTracker.<br></p>
+<p>Edits an existing person, module or occasion in TheTracker.<br>
+It can be used to add optional field that is not specified in the add command.</p>
 </div>
 <div class="sect3">
 <h4 id="editing-a-person-code-editperson-code"><a class="link" href="#editing-a-person-code-editperson-code">5.5.1. Editing a person : <code>editperson</code></a></h4>
@@ -533,12 +584,24 @@ On startup, no entry should be selected. Entries will not be deselected until an
 <p>Format:<br>
 <code>editperson INDEX x/VALUE &#8230;&#8203;</code></p>
 </div>
-<div class="sidebarblock">
+<div class="paragraph">
+<p>Example:<br>
+<code>editPerson 6 p/91234567 e/johndoe@example.com</code><br>
+Edits the person at INDEX 6 in TheTracker: edits his phone to 91234567 and email address to <a href="mailto:johndoe@example.com">johndoe@example.com</a>.</p>
+</div>
+<div class="exampleblock">
 <div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person, name of part specified by x - "n | p | e | a | t" followed by the VALUE which is the value of the name, phone number, email, address or tag you want to change to.<br></p>
+<p>The <code>x/</code> in the format can should be replaced by <code>n/</code>, <code>p/</code>, <code>e/</code>, <code>a/</code>, <code>t/</code> to edit the Name, Phone, Email,
+Address and Tag respectively of the Person which is specified by INDEX.</p>
+</li>
+<li>
+<p>The INDEX must exist.</p>
 </li>
 </ul>
 </div>
@@ -554,12 +617,24 @@ On startup, no entry should be selected. Entries will not be deselected until an
 <p>Format:<br>
 <code>editmodule INDEX x/VALUE &#8230;&#8203;</code></p>
 </div>
-<div class="sidebarblock">
+<div class="paragraph">
+<p>Example:<br>
+<code>editModule 1 mc/CS1101S</code><br>
+Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
+</div>
+<div class="exampleblock">
 <div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the module, name of part specified by x - "mc | mt | ay | sem | t" followed by the VALUE which is the value of the moduleCode, moduleTitle, academicYear, semester or tag you want to change to.<br></p>
+<p>The <code>x/</code> in the format can should be replaced by <code>mc/</code>, <code>mt/</code>, <code>ay/</code>, <code>sem/</code>, <code>t/</code> to edit the Module Code,
+Module Title, Academic Year, Semester and Tag respectively of the Module which is specified by INDEX respectively.</p>
+</li>
+<li>
+<p>The INDEX must exist.</p>
 </li>
 </ul>
 </div>
@@ -573,53 +648,29 @@ On startup, no entry should be selected. Entries will not be deselected until an
 Format:<br>
 <code>editoccasion x/VALUE &#8230;&#8203;</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the occasion, name of part specified by x - "on | od | loc | t" followed by the VALUE which is the value of the occasionName, occasionDate, occasionLocation or tag you want to change to.<br></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="paragraph">
-<p>Common format:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>At least one value to edit must be provided.<br></p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.<br></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editPerson 6 p/91234567 e/johndoe@example.com</code><br>
-Edits the person of INDEX 6 in TheTracker: edits his phone to 91234567 and email address to <a href="mailto:johndoe@example.com">johndoe@example.com</a>.</p>
-</li>
-<li>
-<p><code>editModule 1 mc/CS1101S</code><br>
-Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
-</li>
-<li>
-<p><code>editOccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
+<p>Example:<br>
+<code>editOccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
 Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17,
  edits the occasionLocation to NUS.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Notice</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>x/</code> in the format can should be replaced by <code>on/</code>, <code>od/</code>, <code>loc/</code>, <code>t/</code> to edit the Occasion Name,
+Occasion Date, Occasion Location and Tag respectively of the Occasion which is specified by INDEX respectively.</p>
+</li>
+<li>
+<p>The INDEX must exist.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -632,7 +683,8 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code></p>
+<code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code>,
+<code>findperson mc/cs2103</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -640,7 +692,9 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 <div class="ulist">
 <ul>
 <li>
-<p><code>findperson n/John Doe</code>, <code>findperson p/98765432</code>, <code>findperson e/johnd@example.com</code>,
+<p><code>findperson n/John Doe</code><br>
+<code>findperson p/98765432</code><br>
+<code>findperson e/johnd@example.com</code><br>
 <code>findperson a/Clementi</code><br></p>
 </li>
 </ul>
@@ -728,9 +782,8 @@ Deletes the 2nd module of the <code>find</code> command.</p>
 <p>A command to allow the user to undo previous commands.<br></p>
 </div>
 <div class="paragraph">
-<p>Command Syntax:<br>
-<code>undo</code>:<br>
-This command will undo the user’s previous command.<br></p>
+<p>Format:<br>
+<code>undo</code><br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -740,7 +793,7 @@ This command will undo the user’s previous command.<br></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code> and <code>insertperson</code>).</p>
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add[]</code>, <code>delete</code>, <code>edit[]</code>, <code>clear</code> and <code>insertperson</code>).</p>
 </div>
 </td>
 </tr>
@@ -771,9 +824,8 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p>A command to allow the user to redo previously undone commands.<br></p>
 </div>
 <div class="paragraph">
-<p>Command Syntax:
-<code>redo</code>: <br>
-This command will redo the user’s previous undone command.<br></p>
+<p>Format:
+<code>redo</code>: <br></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -789,6 +841,12 @@ This command will redo the user’s previous undone command.<br></p>
 <p><code>delete 1</code><br>
 <code>redo</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>redo</code> (reverses the <code>undo</code> command, which clears again)<br></p>
 </li>
 </ul>
 </div>
@@ -820,7 +878,13 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete"><a class="link" href="#autocomplete">5.12. Autocomplete</a></h3>
+<h3 id="exporting-data-from-this-application-coming-in-v-1-4"><a class="link" href="#exporting-data-from-this-application-coming-in-v-1-4">5.12. Exporting data from this application (coming in v 1.4)</a></h3>
+<div class="paragraph">
+<p>Format: <code>export FILEPATH</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete"><a class="link" href="#autocomplete">5.13. Autocomplete</a></h3>
 <div class="paragraph">
 <p>A feature that gives a drop-down list of suggested commands based on substrings that a user types.</p>
 </div>
@@ -844,44 +908,17 @@ You can use the up &amp; down arrows to find your intended command in the drop-d
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.13. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.14. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.14. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.15. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exporting-data-in-this-application-coming-in-v-2-0"><a class="link" href="#exporting-data-in-this-application-coming-in-v-2-0">5.15. Exporting data in this application (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>Format: <code>export FILEPATH</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">5.16. Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>A command to allow the user to import information from NUSMods.+</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>importmodule [modulecode]</code><br>
-If the specified module in the current semester is not found, it will be imported with information extracted from NUSMods.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="grouping-content-together-by-tag-code-group-code-coming-in-v-2-0"><a class="link" href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">5.17. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></h3>
-<div class="paragraph">
-<p>A command to allow the user to group students under a certain group tag.<br>
-Command Syntax:<br>
-<code>group [group_name] [keyword]</code>:<br>
-group_name: The name of this group of people.<br>
-keyword: n/NAME The name of the person you want to put in this group.
-                  i/INDEX The index of the person you want to put in this group.</p>
 </div>
 </div>
 </div>
@@ -913,9 +950,6 @@ e.g. ` addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1718 sem/1 t/gg `</p>
 e.g. ` addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg `</p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
 e.g. <code>delete 2</code></p>
 </li>
@@ -934,7 +968,7 @@ e.g. <code>editoccasion 1 on/Barbecue od/2019-6-17 loc/NUS</code></p>
 <li>
 <p><strong>Find Person</strong> : <code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code><br>
 e.g. <code>findperson n/John Doe</code>, <code>findperson p/98765432</code>, <code>findperson e/johnd@example.com</code>,
- <code>findperson a/Clementi</code><br></p>
+ <code>findperson a/Clementi</code>, <code>findperson mc/cs2103</code>+</p>
 </li>
 <li>
 <p><strong>Find Module</strong> :  <code>findmodule mc/MODULE_CODE</code>, <code>findmodule mt/MODULE_TITLE</code>, <code>findmodule ay/ACADEMIC_YEAR</code>,
@@ -955,18 +989,23 @@ e.g. <code>findoccasion on/discussion</code>, <code>findoccasion od/2018-01-01</
 <p><strong>List Occasion</strong> : <code>listoccasion</code></p>
 </li>
 <li>
+<p><strong>Undo</strong> : <code>undo</code><br>
+e.g. <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code><br>
+e.g. <code>redo</code></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 09:09:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 11:58:33 UTC</div></div></div></body></html>
