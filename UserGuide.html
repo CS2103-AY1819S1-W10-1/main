@@ -38,10 +38,13 @@
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">5.9. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clear-all-lists-code-clear-code">5.10. Clear all lists: <code>clear</code></a></li>
 <li><a href="#showing-command-history-code-history-code">5.11. Showing command history: <code>history</code></a></li>
-<li><a href="#exporting-data-from-this-application-coming-in-v-1-4">5.12. Exporting data from this application (coming in v 1.4)</a></li>
-<li><a href="#autocomplete">5.13. Autocomplete</a></li>
-<li><a href="#exiting-the-program-code-exit-code">5.14. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">5.15. Saving the data</a></li>
+<li><a href="#autocomplete">5.12. Autocomplete</a></li>
+<li><a href="#exporting-user-data-to-xml-txt-code-export-code">5.13. Exporting user data to xml/txt: <code>export</code></a></li>
+<li><a href="#importing-data-into-thetracker-code-import-code-coming-in-v-2-0">5.14. Importing data into TheTracker: <code>import</code> (coming in v 2.0)</a></li>
+<li><a href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">5.15. Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></li>
+<li><a href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">5.16. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.17. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.18. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">6. FAQ</a></li>
@@ -586,7 +589,7 @@ It can be used to add optional field that is not specified in the add command.</
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>editPerson 6 p/91234567 e/johndoe@example.com</code><br>
+<code>editperson 6 p/91234567 e/johndoe@example.com</code><br>
 Edits the person at INDEX 6 in TheTracker: edits his phone to 91234567 and email address to <a href="mailto:johndoe@example.com">johndoe@example.com</a>.</p>
 </div>
 <div class="exampleblock">
@@ -601,7 +604,7 @@ Edits the person at INDEX 6 in TheTracker: edits his phone to 91234567 and email
 Address and Tag respectively of the Person which is specified by INDEX.</p>
 </li>
 <li>
-<p>The INDEX must exist.</p>
+<p>The INDEX must be valid.</p>
 </li>
 </ul>
 </div>
@@ -619,7 +622,7 @@ Address and Tag respectively of the Person which is specified by INDEX.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>editModule 1 mc/CS1101S</code><br>
+<code>editmodule 1 mc/CS1101S</code><br>
 Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
 </div>
 <div class="exampleblock">
@@ -634,7 +637,7 @@ Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
 Module Title, Academic Year, Semester and Tag respectively of the Module which is specified by INDEX respectively.</p>
 </li>
 <li>
-<p>The INDEX must exist.</p>
+<p>The INDEX must be valid.</p>
 </li>
 </ul>
 </div>
@@ -650,7 +653,7 @@ Format:<br>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>editOccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
+<code>editoccasion 7 on/Barbecue od/2019-6-17 loc/NUS</code><br>
 Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue, edits the occasionDate to 2019-6-17,
  edits the occasionLocation to NUS.</p>
 </div>
@@ -666,7 +669,7 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 Occasion Date, Occasion Location and Tag respectively of the Occasion which is specified by INDEX respectively.</p>
 </li>
 <li>
-<p>The INDEX must exist.</p>
+<p>The INDEX must be valid.</p>
 </li>
 </ul>
 </div>
@@ -827,6 +830,20 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p>Format:
 <code>redo</code>: <br></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -878,13 +895,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-data-from-this-application-coming-in-v-1-4"><a class="link" href="#exporting-data-from-this-application-coming-in-v-1-4">5.12. Exporting data from this application (coming in v 1.4)</a></h3>
-<div class="paragraph">
-<p>Format: <code>export FILEPATH</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="autocomplete"><a class="link" href="#autocomplete">5.13. Autocomplete</a></h3>
+<h3 id="autocomplete"><a class="link" href="#autocomplete">5.12. Autocomplete</a></h3>
 <div class="paragraph">
 <p>A feature that gives a drop-down list of suggested commands based on substrings that a user types.</p>
 </div>
@@ -908,14 +919,183 @@ You can use the up &amp; down arrows to find your intended command in the drop-d
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.14. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exporting-user-data-to-xml-txt-code-export-code"><a class="link" href="#exporting-user-data-to-xml-txt-code-export-code">5.13. Exporting user data to xml/txt: <code>export</code></a></h3>
+<div class="paragraph">
+<p>A command to allow the user to export data from TheTracker to a specified location.</p>
+</div>
+<div class="sect3">
+<h4 id="exporting-data-to-xml-file"><a class="link" href="#exporting-data-to-xml-file">5.13.1. Exporting data to xml file</a></h4>
+<div class="paragraph">
+<p>Format:<br>
+<code>export --xml [FILEPATH]</code></p>
+</div>
+<div class="paragraph">
+<p>This command:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Export data to xml file.</p>
+</li>
+<li>
+<p>The xml file will be stored in [FILEPATH] if the export succeeds.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use a single whitespace to divide <code>--xml</code> and <code>[FILEPATH]</code>.</p>
+</li>
+<li>
+<p><code>[FILEPATH]</code> should be a valid file path.</p>
+</li>
+<li>
+<p><code>[FILEPATH]</code> should not contain any whitespace.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For MacOS and Linux users: <code>export --xml /Users/Anna/Desktop/exported.xml</code></p>
+</li>
+<li>
+<p>For Windows users: <code>export --xml C:\Users\Anna\desktop\exported.xml</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exporting-data-to-txt-file"><a class="link" href="#exporting-data-to-txt-file">5.13.2. Exporting data to txt file</a></h4>
+<div class="paragraph">
+<p>Format:<br>
+<code>export --txt [FILEPATH]</code></p>
+</div>
+<div class="paragraph">
+<p>This command:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Export data to txt file with predefined style and layout.</p>
+</li>
+<li>
+<p>The txt file will be stored in [FILEPATH] if the export succeeds.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use a single whitespace to divide <code>--txt</code> and <code>[FILEPATH]</code>.</p>
+</li>
+<li>
+<p><code>[FILEPATH]</code> should be a valid file path.</p>
+</li>
+<li>
+<p><code>[FILEPATH]</code> should not contain any whitespace.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For MacOS and Linux users: <code>export --txt /Users/Anna/Desktop/exported.txt</code></p>
+</li>
+<li>
+<p>For Windows users: <code>export --txt C:\Users\Anna\desktop\exported.txt</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-data-into-thetracker-code-import-code-coming-in-v-2-0"><a class="link" href="#importing-data-into-thetracker-code-import-code-coming-in-v-2-0">5.14. Importing data into TheTracker: <code>import</code> (coming in v 2.0)</a></h3>
+<div class="paragraph">
+<p>A command to allow the user to import information from external sources.</p>
+</div>
+<div class="sect3">
+<h4 id="importing-xml-file"><a class="link" href="#importing-xml-file">5.14.1. Importing xml file</a></h4>
+<div class="paragraph">
+<p>Format:<br>
+<code>import --xml [FILEPATH]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For MacOS and Linux users: <code>import --xml /Users/Anna/Desktop/imported.xml</code></p>
+</li>
+<li>
+<p>For Windows users: <code>import --xml C:\Users\Anna\desktop\imported.xml</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">5.15. Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
+<div class="paragraph">
+<p>A command to allow the user to import information from NUSMods.+</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>importmodule [modulecode]</code><br>
+If the specified module in the current semester is not found, it will be imported with information extracted from NUSMods.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grouping-content-together-by-tag-code-group-code-coming-in-v-2-0"><a class="link" href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">5.16. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></h3>
+<div class="paragraph">
+<p>A command to allow the user to group students under a certain group tag.<br></p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>group [group_name] [keyword]</code>:<br>
+group_name: The name of this group of people.<br>
+keyword: n/NAME The name of the person you want to put in this group.
+                  i/INDEX The index of the person you want to put in this group.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.17. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.15. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.18. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -1005,7 +1185,23 @@ e.g. <code>redo</code></p>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Export data to xml file</strong> : <code>export --xml [FILEPATH]</code><br>
+e.g. (MacOS, Linux) <code>export --xml /Users/Anna/Desktop/exported.xml</code>
+e.g. (Windows) <code>export --xml C:\Users\Anna\desktop\exported.xml</code></p>
+</li>
+<li>
+<p><strong>Export data to txt file</strong> : <code>export --txt [FILEPATH]</code><br>
+e.g. (MacOS, Linux) <code>export --txt /Users/Anna/Desktop/exported.txt</code>
+e.g. (Windows) <code>export --txt C:\Users\Anna\desktop\exported.txt</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 16:23:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 17:56:47 UTC</div></div></div></body></html>

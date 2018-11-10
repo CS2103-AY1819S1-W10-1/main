@@ -187,6 +187,20 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p>Format:
 <code>redo</code>: <br></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -257,7 +271,7 @@ undone state.</p>
 Model#commitAddressBook(), Model#undoAddressBook() and Model#redoAddressBook() respectively.</p>
 </div>
 <div class="paragraph">
-<p>Provided below is an usage scenario instance. It illustrates how the
+<p>Provided below is a usage scenario instance. It illustrates how the
 undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
@@ -272,7 +286,7 @@ state, which the <code>currentStatePointer</code> is currently pointing to.</p>
 </div>
 <div class="paragraph">
 <p>Step 2: The user executes <code>add n/David&#8230;&#8203;</code> command to add a person called
-David in his TheTracker. The <code>find</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker after the <code>find David&#8230;&#8203;</code> command
+David in his TheTracker. The <code>add</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker after the <code>add David&#8230;&#8203;</code> command
 executes to be saved in the <code>addressBookStateList</code>, and the
 <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
 </div>
@@ -475,4 +489,4 @@ new command:</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 16:23:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 17:56:47 UTC</div></div></div></body></html>
