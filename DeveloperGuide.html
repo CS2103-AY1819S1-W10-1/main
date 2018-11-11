@@ -30,17 +30,18 @@
 </li>
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#find-person-module-occasion-feature">4.1. Find Person/Module/Occasion Feature</a></li>
-<li><a href="#select-person-module-occasion-feature">4.2. Select Person/Module/Occasion Feature</a></li>
-<li><a href="#edit-person-module-occasion-feature">4.3. Edit Person/Module/Occasion Feature</a></li>
-<li><a href="#undo-redo-feature">4.4. Undo/Redo feature</a></li>
-<li><a href="#history-feature">4.5. History feature</a></li>
-<li><a href="#proposed-autocomplete">4.6. [Proposed] Autocomplete</a></li>
-<li><a href="#export">4.7. Export</a></li>
-<li><a href="#import-coming-in-v-2-0">4.8. Import (Coming in v 2.0)</a></li>
-<li><a href="#logging">4.9. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.10. Configuration</a></li>
-<li><a href="#delete">4.11. Delete</a></li>
+<li><a href="#add-person-module-occasion-feature">4.1. Add Person/Module/Occasion Feature</a></li>
+<li><a href="#find-person-module-occasion-feature">4.2. Find Person/Module/Occasion Feature</a></li>
+<li><a href="#select-person-module-occasion-feature">4.3. Select Person/Module/Occasion Feature</a></li>
+<li><a href="#edit-person-module-occasion-feature">4.4. Edit Person/Module/Occasion Feature</a></li>
+<li><a href="#undo-redo-feature">4.5. Undo/Redo feature</a></li>
+<li><a href="#history-feature">4.6. History feature</a></li>
+<li><a href="#proposed-autocomplete">4.7. [Proposed] Autocomplete</a></li>
+<li><a href="#export">4.8. Export</a></li>
+<li><a href="#import-coming-in-v-2-0">4.9. Import (Coming in v 2.0)</a></li>
+<li><a href="#logging">4.10. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.11. Configuration</a></li>
+<li><a href="#delete">4.12. Delete</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -641,7 +642,15 @@ TheTracker to be able to track the modules a person takes, as
 well as the occasions he participates in.</p>
 </div>
 <div class="sect2">
-<h3 id="find-person-module-occasion-feature"><a class="link" href="#find-person-module-occasion-feature">4.1. Find Person/Module/Occasion Feature</a></h3>
+<h3 id="add-person-module-occasion-feature"><a class="link" href="#add-person-module-occasion-feature">4.1. Add Person/Module/Occasion Feature</a></h3>
+<div class="paragraph">
+<p>The add feature is currently implemented the same way to add persons, modules and occasions.
+There are thus three similar commands which are related to this add command:
+<code>addperson</code>, <code>addmodule</code>, <code>addoccasion</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-person-module-occasion-feature"><a class="link" href="#find-person-module-occasion-feature">4.2. Find Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
 <p>The find feature currently is implemented the same way to find persons, modules, and occasions.
 There are thus three similar commands which are related to this find command:
@@ -660,7 +669,7 @@ fields.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>As the <code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code> commands' logic are similar to one another,
 the <code>findperson</code> command will be taken as the sole example in this document. The findperson string
@@ -672,7 +681,7 @@ persons based on the filter specified.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-find-executes"><a class="link" href="#aspect-how-find-executes">Aspect: How find executes</a></h5>
 <div class="ulist">
@@ -718,14 +727,14 @@ attribute name, title, etc.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="select-person-module-occasion-feature"><a class="link" href="#select-person-module-occasion-feature">4.2. Select Person/Module/Occasion Feature</a></h3>
+<h3 id="select-person-module-occasion-feature"><a class="link" href="#select-person-module-occasion-feature">4.3. Select Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
 <p>The select feature currently is implemented the same way to select persons, modules, and occasions.
 Currently, the select feature selects by index in the observed list which has been loaded into the
 UI.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The select string command input in the command line is passed into the <code>AddressBookParser</code> object,
 which parses the input and creates a <code>SelectCommandParser</code> to help it further parse the argument and
@@ -736,14 +745,14 @@ the currently shown list in the UI, by posting a new <code>JumpToListRequestEven
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-person-module-occasion-feature"><a class="link" href="#edit-person-module-occasion-feature">4.3. Edit Person/Module/Occasion Feature</a></h3>
+<h3 id="edit-person-module-occasion-feature"><a class="link" href="#edit-person-module-occasion-feature">4.4. Edit Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
 <p><code>edit</code> is a basic feature for <code>TheTracker</code>.<br>
 It supports editing of <code>Person</code>, <code>Module</code> and <code>Occasion</code> by command <code>editperson</code>,
 <code>editmodule</code> and <code>editoccasion</code> respectively.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The following section will use <code>EditPersonCommand</code> as an example to explain the implementation.
 <code>EditModuleCommand</code> and <code>EditOccasionCommand</code> use the same mechanism.<br></p>
@@ -810,7 +819,7 @@ state of addressBook after the <code>editperson 6 p/91234567 e/johndoe@example.c
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-editperson-editmodule-editoccasion-executes"><a class="link" href="#aspect-how-editperson-editmodule-editoccasion-executes">Aspect: How editperson/editmodule/editoccasion executes</a></h5>
 <div class="ulist">
@@ -865,9 +874,9 @@ polymorphism and put everything together</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.4. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.5. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
 <code>AddressBook</code> with an command history, stored internally as an
@@ -1034,7 +1043,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1104,7 +1113,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="history-feature"><a class="link" href="#history-feature">4.5. History feature</a></h3>
+<h3 id="history-feature"><a class="link" href="#history-feature">4.6. History feature</a></h3>
 <div class="paragraph">
 <p>History feature allows the user to review all the commands he has typed in.
 The following sequence diagram shows how the <code>history</code> operation works:</p>
@@ -1116,7 +1125,7 @@ The following sequence diagram shows how the <code>history</code> operation work
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-autocomplete"><a class="link" href="#proposed-autocomplete">4.6. [Proposed] Autocomplete</a></h3>
+<h3 id="proposed-autocomplete"><a class="link" href="#proposed-autocomplete">4.7. [Proposed] Autocomplete</a></h3>
 <div class="paragraph">
 <p>The autocomplete feature is facilitated by a stored list of commands and its own parser on the user&#8217;s command line inputs.</p>
 </div>
@@ -1131,13 +1140,13 @@ The following sequence diagram shows how the <code>history</code> operation work
 </div>
 </div>
 <div class="sect2">
-<h3 id="export"><a class="link" href="#export">4.7. Export</a></h3>
+<h3 id="export"><a class="link" href="#export">4.8. Export</a></h3>
 <div class="paragraph">
 <p>Export is a feature to enhance the functionality of TheTracker.
 TheTracker (v1.4) supports exporting user data to xml file and txt file.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> are both inherited from <code>ExportCommand</code>, which inherits from <code>Command</code> class</p>
 </div>
@@ -1172,7 +1181,7 @@ and stored in the <code>exportedFilePath</code> specified by the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.8.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-the-role-of-exported-file-type"><a class="link" href="#aspect-the-role-of-exported-file-type">Aspect: The role of exported file type</a></h5>
 <div class="ulist">
@@ -1314,18 +1323,18 @@ checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary 
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-coming-in-v-2-0"><a class="link" href="#import-coming-in-v-2-0">4.8. Import (Coming in v 2.0)</a></h3>
+<h3 id="import-coming-in-v-2-0"><a class="link" href="#import-coming-in-v-2-0">4.9. Import (Coming in v 2.0)</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.9. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.10. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.10, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.11, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1356,20 +1365,20 @@ checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.10. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.11. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">4.11. Delete</a></h3>
+<h3 id="delete"><a class="link" href="#delete">4.12. Delete</a></h3>
 <div class="paragraph">
 <p><code>delete</code> is a basic feature provided by every version of <code>TheTracker</code>.
 It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion</code>, by the same <code>DeletePersonCommand</code> <code>DeleteModuleCommand</code> and
 <code>DeleteOccasionCommand</code> respectively.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.11.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.12.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>This following section will use <code>DeletePersonCommand</code> as an example, <code>DeleteModuleCommand</code> and  <code>DeleteOccasionCommand</code>
 uses the same mechanism. <code>DeletePersonCommand`extends the `Command</code> class and uses inheritance to facilitate
@@ -1435,7 +1444,7 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.11.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.12.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-delete-executes"><a class="link" href="#aspect-how-delete-executes">Aspect: How delete executes</a></h5>
 <div class="ulist">
@@ -2689,7 +2698,7 @@ multiple pre-existing platforms and consolidates all this information in a neat 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NUS Student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">create a profile of myself and be able to edit it to join the address book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create a profile of myself and be able to edit it to join theTracker</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I can share my schedule and profile with other people</p></td>
 </tr>
 <tr>
@@ -3157,4 +3166,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:03:08 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:32:09 UTC</div></div></div></body></html>
