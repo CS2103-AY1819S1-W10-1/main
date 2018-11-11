@@ -36,9 +36,11 @@
 <li><a href="#undo-redo-feature">4.4. Undo/Redo feature</a></li>
 <li><a href="#history-feature">4.5. History feature</a></li>
 <li><a href="#proposed-autocomplete">4.6. [Proposed] Autocomplete</a></li>
-<li><a href="#logging">4.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.8. Configuration</a></li>
-<li><a href="#delete">4.9. Delete</a></li>
+<li><a href="#export">4.7. Export</a></li>
+<li><a href="#import-coming-in-v-2-0">4.8. Import (Coming in v 2.0)</a></li>
+<li><a href="#logging">4.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.10. Configuration</a></li>
+<li><a href="#delete">4.11. Delete</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -803,8 +805,61 @@ state of addressBook after the <code>editperson 6 p/91234567 e/johndoe@example.c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre> `editmodule` and `editoccasion` works in a similar way as `editperson`
-// end::edit[]</pre>
+<pre>`editmodule` and `editoccasion` works in a similar way as `editperson`</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-editperson-editmodule-editoccasion-executes"><a class="link" href="#aspect-how-editperson-editmodule-editoccasion-executes">Aspect: How editperson/editmodule/editoccasion executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Implementation):</strong> <code>EditPersonCommand</code>, <code>EditModuleCommand</code> and <code>EditOccasionCommand</code> are totally inrelevant to each other
+**Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implementation is easy to understand
+**Cons:</p>
+</li>
+<li>
+<p>Lack of the essence of polymorphism, which is a key feature in OOP</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 :</strong> Let <code>EditPersonCommand</code>, <code>EditModuleCommand</code> and <code>EditOccasionCommand</code>
+inherits from <code>EditCommand</code>, then use <code>TypeUtil</code> to detect the kind of entity that is going to be edited</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A good utilisation of polymorphism</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Person</code>, <code>Module</code>, <code>Occasion</code> are three relatively independent entity, it could be hard to handle when using
+polymorphism and put everything together</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -979,7 +1034,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1051,7 +1106,8 @@ new command:</p>
 <div class="sect2">
 <h3 id="history-feature"><a class="link" href="#history-feature">4.5. History feature</a></h3>
 <div class="paragraph">
-<p>The following sequence diagram shows how the <code>history</code> operation works:</p>
+<p>History feature allows the user to review all the commands he has typed in.
+The following sequence diagram shows how the <code>history</code> operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1075,14 +1131,201 @@ new command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
+<h3 id="export"><a class="link" href="#export">4.7. Export</a></h3>
+<div class="paragraph">
+<p>Export is a feature to enhance the functionality of TheTracker.
+TheTracker (v1.4) supports exporting user data to xml file and txt file.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> are both inherited from <code>ExportCommand</code>, which inherits from <code>Command</code> class</p>
+</div>
+<div class="paragraph">
+<p>In order to a direct access to the <code>Storage</code> component, the method <code>setStorage(Storage storage)</code> is added to <code>Command</code><br>
+In order to reduce redundant code in commands that are not directly dependent on <code>Storage</code>, <code>setStorage(Storage storage)</code> is
+designed to be a non-abstract method. Only <code>ExportCommand</code> overrides this method.</p>
+</div>
+<div class="paragraph">
+<p>Both <code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> inherits from <code>ExportCommand</code>.</p>
+</div>
+<div class="sect4">
+<h5 id="for-exportxmlcommand"><a class="link" href="#for-exportxmlcommand">For ExportXmlCommand</a></h5>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>ExportXmlCommand</code> works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditXmlCommandSequenceDiagram.png" alt="EditXmlCommandSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="for-exporttxtcommand"><a class="link" href="#for-exporttxtcommand">For ExportTxtCommand</a></h5>
+<div class="paragraph">
+<p><code>ExportTxtCommand</code> can be regarded as an extension of <code>ExportXmlCommand</code>.<br>
+This interaction of <code>ExportTxtCommand</code> and <code>Storage</code> component works in the same way of <code>ExportXmlCommand</code>.<br>
+The difference is: <code>ExportTxtCommand</code> first stored the exported xml file <code>temp.xml</code>;
+then, the method <code>parse()</code> of <code>XmlToTxtUtil</code> will parse the xml file to a txt file with defaulted style and layout
+and stored in the <code>exportedFilePath</code> specified by the user.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-the-role-of-exported-file-type"><a class="link" href="#aspect-the-role-of-exported-file-type">Aspect: The role of exported file type</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>As a parameter (current implementation):</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format: <code>export --xml [FILEPATH]</code> and <code>export --txt [FILEPATH]</code></p>
+</li>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can utilise polymorphism</p>
+</li>
+<li>
+<p>Can avoid unnecessary repetition of code</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Not consistent with the format of other command (command + parameterPrefix + parameter)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>As a part of command :</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format: <code>exportxml fp/[FILEPATH]</code> and <code>exporttxt fp/[FILEPATH]</code></p>
+</li>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can keep consistent with the format of other command (command + parameterPrefix + parameter)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> have to be two independent command, which does not utilise polymorphism</p>
+</li>
+<li>
+<p>Have unnecessary repetition of code</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-the-location-of-valid-filepath-check"><a class="link" href="#aspect-the-location-of-valid-filepath-check">Aspect: The Location of valid filepath check</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Check in <code>ExportCommand</code> (current implementation) :</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As only export commands are directly related to external file path that the user types in, which needs to check validation,
+checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary checking.</p>
+</li>
+<li>
+<p>Easy to implement and clear to understand</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can only check the validation of external file path that the user types in</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Check in <code>AddressBookStorage</code> :</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can check the validation of all the file paths occurred in <code>Storage</code> component of this project</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Have unnecessary checking of the validation of file paths</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import-coming-in-v-2-0"><a class="link" href="#import-coming-in-v-2-0">4.8. Import (Coming in v 2.0)</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">4.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1113,20 +1356,20 @@ new command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">4.9. Delete</a></h3>
+<h3 id="delete"><a class="link" href="#delete">4.11. Delete</a></h3>
 <div class="paragraph">
 <p><code>delete</code> is a basic feature provided by every version of <code>TheTracker</code>.
 It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion</code>, by the same <code>DeletePersonCommand</code> <code>DeleteModuleCommand</code> and
 <code>DeleteOccasionCommand</code> respectively.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.9.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>This following section will use <code>DeletePersonCommand</code> as an example, <code>DeleteModuleCommand</code> and  <code>DeleteOccasionCommand</code>
 uses the same mechanism. <code>DeletePersonCommand`extends the `Command</code> class and uses inheritance to facilitate
@@ -1192,7 +1435,7 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.9.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.11.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-delete-executes"><a class="link" href="#aspect-how-delete-executes">Aspect: How delete executes</a></h5>
 <div class="ulist">
@@ -2914,4 +3157,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 03:42:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 04:10:56 UTC</div></div></div></body></html>
