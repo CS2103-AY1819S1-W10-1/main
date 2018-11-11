@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Tian Xueyan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Tian Xueyan - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-thetracker-v1-3"><a class="link" href="#project-thetracker-v1-3">PROJECT: TheTracker v1.3</a></h2>
+<h2 id="project-thetracker"><a class="link" href="#project-thetracker">PROJECT: TheTracker</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -793,143 +793,73 @@ e.g. (Windows) <code>export --txt C:\Users\Anna\desktop\exported.txt</code></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">Delete</a></h3>
+<h3 id="find-person-module-occasion-feature"><a class="link" href="#find-person-module-occasion-feature">Find Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
-<p><code>delete</code> is a basic feature provided by every version of <code>TheTracker</code>.
-It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion</code>, by the same <code>DeletePersonCommand</code> <code>DeleteModuleCommand</code> and
-<code>DeleteOccasionCommand</code> respectively.</p>
+<p>The find feature currently is implemented the same way to find persons, modules, and occasions.
+There are thus three similar commands which are related to this find command:
+<code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code>.</p>
+</div>
+<div class="paragraph">
+<p>The find command family finds the entity (person, module, occasion), based on their attributes /
+fields.</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows how the find command is processed through the logic of the address book:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommandLogicDiagram.png" alt="FindCommandLogicDiagram" width="800">
+</div>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>This following section will use <code>DeletePersonCommand</code> as an example, <code>DeleteModuleCommand</code> and  <code>DeleteOccasionCommand</code>
-uses the same mechanism. <code>DeletePersonCommand`extends the `Command</code> class and uses inheritance to facilitate
-implementation.</p>
-</div>
-<div class="paragraph">
-<p>Generally, it implements the following operation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>DeleteCommand#excute(Model model, CommandHistory history)</code>: deletes the entity passed to the <code>DeleteCommand</code> class</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This operation is exposed in the Model interface as Model#getFilteredEntity(), Model#deleteEntity() and Model#commitAddressBook() respectively.</p>
-</div>
-<div class="paragraph">
-<p>Provided below is an usage scenario instance. It illustrates how the
-delete mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1: The user launches TheTracker for the first time. The
-<code>VersionedAddressBook</code> will be initialised with the initial address book
-state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteStartingStateListDiagram.png" alt="DeleteStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2: The user executes <code>addperson n/David&#8230;&#8203;</code> command to add a person named
-David in his TheTracker. The parser <code>AddPersonCommandParser</code> will identify by
-the 'n/' tag that the entity to be added is a person. The <code>addperson</code> command
-calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker
-after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be saved in the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteNewCommand1StateListDiagram.png" alt="DeleteNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3: The user executes <code>deleteperson 1</code> to delete the person named David in the address
-book who has an index 1. The parser <code>DeletePersonCommandParser</code> will identify by the index of the person to be
-deleted.The <code>deleteperson</code> command calls Model#getFilteredPersonList(), Model#deletePerson()
-and <code>Model#commitAddressBook()</code>, and causes modified address book state to be saved into the <code>addressBookStateList</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteDeleteCommandStateListDiagram.png" alt="DeleteDeleteCommandStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the delete operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram" width="800">
-</div>
+<p>As the <code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code> commands' logic are similar to one another,
+the <code>findperson</code> command will be taken as the sole example in this document. The findperson string
+input in the command line is passed into the <code>AddressBookParser</code> object, which parses the input and
+creates a <code>FindPersonCommandParser</code> to help it further parse the argument and create a
+<code>FindPersonCommand</code>. This <code>FindPersonCommand</code> filters the entire person list based on the keyword
+in the specific field stipulated and updates the Address Book Model to create an Observable List of
+persons based on the filter specified.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-delete-executes"><a class="link" href="#aspect-how-delete-executes">Aspect: How delete executes</a></h5>
+<h5 id="aspect-how-find-executes"><a class="link" href="#aspect-how-find-executes">Aspect: How find executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (Use tags):</strong> Inputs the type of the entity to be deleted.</p>
+<p><strong>Alternative 1 (current choice):</strong> Match full keyword.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
+<p>E.g. If there is a person named "Alex", only the command <code>findperson n/alex</code> will find the
+person. <code>findperson n/ale</code> will not find the person.</p>
+</li>
 <li>
-<p>Easy for user to understand the usage.</p>
+<p>Pros: Very target and precise finding of person.</p>
+</li>
+<li>
+<p>Cons: Cannot find parts of the person&#8217;s attributes especially if user cannot remember full
+attribute name, title, etc.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Cons:</p>
+<p><strong>Alternative 2:</strong> Match keyword to part of the attribute.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Needs to implement additional class type for checking which type of Entity and which Entity list to delete from.</p>
+<p>E.g. If there is a person named "Alex", the commands <code>findperson n/e</code>, <code>findperson n/ex</code>,
+<code>findperson n/le</code>, <code>findperson n/alex</code> will find the person.</p>
 </li>
 <li>
-<p>Needs to search for the Entity in the whole list which may be slow.</p>
+<p>Pros: Can find multiple entries of persons with keyword in name.</p>
 </li>
 <li>
-<p>User input Entity name may not be valid, which needs extra prompt.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Inputs the index number of entity to be deleted.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Easy to implement.</p>
-</li>
-<li>
-<p>Fast retrieval of Entity in the list.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Cons:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User needs to know the index number of the Entity to be deleted.</p>
-</li>
-</ul>
-</div>
+<p>Cons: May not limit the search of persons, hard to pinpoint exact person.</p>
 </li>
 </ul>
 </div>
@@ -949,4 +879,4 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 07:49:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 12:59:09 UTC</div></div></div></body></html>
