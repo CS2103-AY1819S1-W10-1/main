@@ -382,7 +382,7 @@ A person, module or an occasion can have any number of tags (including 0) and in
 <div class="sect3">
 <h4 id="adding-a-person-code-addperson-code"><a class="link" href="#adding-a-person-code-addperson-code">5.2.1. Adding a person: <code>addperson</code></a></h4>
 <div class="paragraph">
-<p>Adds a person to TheTracker.<br></p>
+<p>A command to allow user to add a person to TheTracker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
@@ -417,7 +417,7 @@ A person, module or an occasion can have any number of tags (including 0) and in
 <div class="sect3">
 <h4 id="adding-a-module-code-addmodule-code"><a class="link" href="#adding-a-module-code-addmodule-code">5.2.2. Adding a module: <code>addmodule</code></a></h4>
 <div class="paragraph">
-<p>Adds a module to TheTracker.<br></p>
+<p>A command to allow user to add a module to TheTracker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
@@ -455,7 +455,7 @@ A person, module or an occasion can have any number of tags (including 0) and in
 <div class="sect3">
 <h4 id="adding-an-occasion-code-addoccasion-code"><a class="link" href="#adding-an-occasion-code-addoccasion-code">5.2.3. Adding an occasion: <code>addoccasion</code></a></h4>
 <div class="paragraph">
-<p>Adds an occasion to TheTracker.<br></p>
+<p>A command to allow user to add an occasion to TheTracker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
@@ -491,26 +491,26 @@ A person, module or an occasion can have any number of tags (including 0) and in
 <div class="sect2">
 <h3 id="listing-all-entries-code-list-code"><a class="link" href="#listing-all-entries-code-list-code">5.3. Listing all entries : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Shows a desired list in TheTracker.<br></p>
+<p>A command to show a desired list in TheTracker.<br></p>
 </div>
 <div class="sect3">
 <h4 id="list-all-persons-code-listperson-code"><a class="link" href="#list-all-persons-code-listperson-code">5.3.1. List all Persons: <code>listperson</code></a></h4>
 <div class="paragraph">
-<p>Shows the complete list of persons in TheTracker.<br>
+<p>A command to show the complete list of persons in TheTracker.<br>
 Format: <code>listperson</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="list-all-modules-code-listmodule-code"><a class="link" href="#list-all-modules-code-listmodule-code">5.3.2. List all Modules: <code>listmodule</code></a></h4>
 <div class="paragraph">
-<p>Shows the complete list of modules in TheTracker.<br>
+<p>A command to show the complete list of modules in TheTracker.<br>
 Format: <code>listmodule</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="list-all-occasions-code-listoccasion-code"><a class="link" href="#list-all-occasions-code-listoccasion-code">5.3.3. List all Occasions: <code>listoccasion</code></a></h4>
 <div class="paragraph">
-<p>Shows the complete list of occasions in TheTracker.<br>
+<p>A command to show the complete list of occasions in TheTracker.<br>
 Format: <code>listoccasion</code></p>
 </div>
 <div class="admonitionblock tip">
@@ -531,7 +531,7 @@ and <code>listoccasion</code> commands to populate the entire list again.
 <div class="sect2">
 <h3 id="selecting-an-entry-code-select-code"><a class="link" href="#selecting-an-entry-code-select-code">5.4. Selecting an Entry: <code>select</code></a></h3>
 <div class="paragraph">
-<p>Selects the event identified by the index number in the List Panel.
+<p>A command to allow the user to select the event identified by the index number in the List Panel.
 The Info Panel will display the additional information for that entry.</p>
 </div>
 <div class="paragraph">
@@ -553,17 +553,17 @@ On startup, no entry should be selected. Entries will not be deselected until an
 <div class="sect2">
 <h3 id="editing-an-entry-code-edit-code"><a class="link" href="#editing-an-entry-code-edit-code">5.5. Editing an entry : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person, module or occasion in TheTracker.<br>
+<p>A command to allow the user to edit an existing person, module or occasion in TheTracker.<br>
 It can be used to add optional field that is not specified in the add command.</p>
 </div>
 <div class="sect3">
 <h4 id="editing-a-person-code-editperson-code"><a class="link" href="#editing-a-person-code-editperson-code">5.5.1. Editing a person : <code>editperson</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing person in TheTracker.<br></p>
+<p>A command to allow the user to edit an existing person in TheTracker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>editperson INDEX x/VALUE &#8230;&#8203;</code></p>
+<code>editperson INDEX [PREFIX]/VALUE &#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
@@ -578,11 +578,23 @@ Edits the person at INDEX 6 in TheTracker: edits his phone to 91234567 and email
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>x/</code> in the format can should be replaced by <code>n/</code>, <code>p/</code>, <code>e/</code>, <code>a/</code>, <code>t/</code> to edit the Name, Phone, Email,
-Address and Tag respectively of the Person which is specified by INDEX.</p>
+<p>The <code>[PREFIX]/</code> should be replaced by <code>n/</code> (for Name), <code>p/</code> (Person), <code>e/</code> (Email), <code>a/</code> (Address), <code>t/</code> (Tag) to specify the field you want to edit.</p>
 </li>
 <li>
-<p>The INDEX must be valid.</p>
+<p>You can specify multiple fields you want to edit</p>
+</li>
+<li>
+<p>The INDEX must be valid:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Be a positive number</p>
+</li>
+<li>
+<p>Not larger than the size of the address book list</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -592,11 +604,11 @@ Address and Tag respectively of the Person which is specified by INDEX.</p>
 <div class="sect3">
 <h4 id="editing-a-module-code-editmodule-code"><a class="link" href="#editing-a-module-code-editmodule-code">5.5.2. Editing a module : <code>editmodule</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing module in TheTracker.<br></p>
+<p>A command to allow the user to edit an existing module in TheTracker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>editmodule INDEX x/VALUE &#8230;&#8203;</code></p>
+<code>editmodule INDEX [PREFIX]/VALUE &#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
@@ -611,11 +623,21 @@ Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>x/</code> in the format can should be replaced by <code>mc/</code>, <code>mt/</code>, <code>ay/</code>, <code>sem/</code>, <code>t/</code> to edit the Module Code,
-Module Title, Academic Year, Semester and Tag respectively of the Module which is specified by INDEX respectively.</p>
+<p>The <code>[PREFIX]/</code> should be replaced by <code>mc/</code> (for Module Code), <code>mt/</code> (for Module Title), <code>ay/</code> (for Academic Year), <code>sem/</code> (for Semester), <code>t/</code> (for Tag) to
+specify the field you want to edit</p>
 </li>
 <li>
-<p>The INDEX must be valid.</p>
+<p>The INDEX must be valid:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Be a positive number</p>
+</li>
+<li>
+<p>Not larger than the size of the address book list</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -625,7 +647,7 @@ Module Title, Academic Year, Semester and Tag respectively of the Module which i
 <div class="sect3">
 <h4 id="editing-an-occasion-code-editoccasion-code"><a class="link" href="#editing-an-occasion-code-editoccasion-code">5.5.3. Editing an occasion : <code>editoccasion</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing occasion in TheTracker.<br>
+<p>A command to allow the user to edit an existing occasion in TheTracker.<br>
 Format:<br>
 <code>editoccasion x/VALUE &#8230;&#8203;</code></p>
 </div>
@@ -643,11 +665,21 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>x/</code> in the format can should be replaced by <code>on/</code>, <code>od/</code>, <code>loc/</code>, <code>t/</code> to edit the Occasion Name,
-Occasion Date, Occasion Location and Tag respectively of the Occasion which is specified by INDEX respectively.</p>
+<p>The <code>[PREFIX]/</code> should be replaced by <code>on/</code> (for Occasion Name), <code>od/</code> (for Occasion Date), <code>loc/</code> (for Occasion Location), <code>t/</code> (for Tag) to
+specify the field you want to edit</p>
 </li>
 <li>
-<p>The INDEX must be valid.</p>
+<p>The INDEX must be valid:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Be a positive number</p>
+</li>
+<li>
+<p>Not larger than the size of the address book list</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -707,7 +739,7 @@ into <code>occasion</code> 1.</p>
 <div class="sect3">
 <h4 id="finding-a-person-code-findperson-code"><a class="link" href="#finding-a-person-code-findperson-code">5.7.1. Finding a person: <code>findperson</code></a></h4>
 <div class="paragraph">
-<p>Finds a person in TheTracker.<br></p>
+<p>A command to allow the user to find a person in TheTracker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
@@ -731,7 +763,7 @@ into <code>occasion</code> 1.</p>
 <div class="sect3">
 <h4 id="finding-a-module-code-findmodule-code"><a class="link" href="#finding-a-module-code-findmodule-code">5.7.2. Finding a module: <code>findmodule</code></a></h4>
 <div class="paragraph">
-<p>Finds a module in TheTracker.<br></p>
+<p>A command to allow the user to find a module in TheTracker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
@@ -752,7 +784,7 @@ into <code>occasion</code> 1.</p>
 <div class="sect3">
 <h4 id="finding-an-occasion-code-findoccasion-code"><a class="link" href="#finding-an-occasion-code-findoccasion-code">5.7.3. Finding an occasion: <code>findoccasion</code></a></h4>
 <div class="paragraph">
-<p>Finds an occasion in TheTracker.<br></p>
+<p>A command to allow the user to find an occasion in TheTracker.<br></p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
@@ -773,7 +805,7 @@ into <code>occasion</code> 1.</p>
 <div class="sect2">
 <h3 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">5.8. Deleting an entry: <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified entry from the active list in TheTracker.<br>
+<p>A command to allow the user to delete the specified entry from the active list in TheTracker.<br>
 Format: <code>delete INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -976,7 +1008,18 @@ You can use the up &amp; down arrows to find your intended command in the drop-d
 <p>Use a single whitespace to divide <code>--xml</code> and <code>[FILEPATH]</code>.</p>
 </li>
 <li>
-<p>A valid <code>[FILEPATH]</code> can only contain alphanumeric and underscore.</p>
+<p>The <code>[FILEPATH]</code> should be valid:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>file name</code> and <code>folder names</code> specified in the <code>file path</code>
+should contain only alphanumeric and underscores (whitespaces are not allowed)</p>
+</li>
+<li>
+<p>The <code>file name</code> should end with <code>.xml</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1016,7 +1059,18 @@ You can use the up &amp; down arrows to find your intended command in the drop-d
 <p>Use a single whitespace to divide <code>--txt</code> and <code>[FILEPATH]</code>.</p>
 </li>
 <li>
-<p>A valid <code>[FILEPATH]</code> can only contain alphanumeric and underscore.</p>
+<p>The <code>[FILEPATH]</code> should be valid:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>file name</code> and <code>folder names</code> specified in the <code>file path</code>
+should contain only alphanumeric and underscores (whitespaces are not allowed)</p>
+</li>
+<li>
+<p>The <code>file name</code> should end with <code>.txt</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1203,4 +1257,4 @@ e.g. (Windows) <code>export --txt C:\Users\Anna\desktop\exported.txt</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:19:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:21:56 UTC</div></div></div></body></html>
