@@ -33,27 +33,50 @@ may be a part of.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to remove a person, who was recently added into module or
-occasion, from it</strong>.</p>
+<p><strong>Major enhancements</strong>: added <strong>removeperson</strong>, <strong>list</strong>.</p>
+</li>
+<li>
+<p><code>removeperson</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to remove a person who was recently inserted into a module or occasion.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature helps the user, when a student is not in a module or occasion anymore,
+to remove the person from the said module or occasion.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement removes the tie between a person and module or occasion.
+It required an in-depth linkage between person and module and to be able to remove one module or
+occasion from a person without affecting the rest of the list structure, and vice versa.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><code>list</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to switch between contexts, the different contexts of <strong>PERSON</strong>,
+<strong>MODULE</strong>, and <strong>OCCASION</strong>.</p>
+</li>
+<li>
+<p>Justification: This feature helps users contextualize. When they are viewing all students, they
+are thus able to view the student&#8217;s modules and occasions that they are a part of. It is the same
+for the students list in modules tab and attendance list in occasions tab.</p>
+</li>
+<li>
+<p>Highlights: This enhancement dealt with the loading of the graphical user interface with the right
+updated contents and the ability to for the model to be updated with the right context.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added an <strong>autocomplete</strong> feature, a command suggestion for the user to see all
+possible commands containing the specified letters as the user types.</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=alistairong">Functional code &amp; Test code</a>]_</p>
@@ -67,7 +90,7 @@ occasion, from it</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed releases <code>v1.3</code> - <code>v1.4</code> (2 releases) on GitHub</p>
 </li>
 </ul>
 </div>
@@ -77,20 +100,21 @@ occasion, from it</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated the GUI color scheme and look of different contexts
+(Pull request <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/184">#184</a>,
+<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/167">#167</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
+<p>Object specific tests for modules and its internal components
+(Pull request <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/103/files">#103</a>)</p>
 </li>
 <li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
+<p>Made XML storage for modules and its related tests
+(Pull request <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/87/files">#87</a>)</p>
+</li>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Made UI components for modules, and its related tests
+(Pull request <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/51/files">#51</a>)</p>
 </li>
 </ul>
 </div>
@@ -100,29 +124,10 @@ occasion, from it</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed</p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Internal cross checking and debugging for other teams in the class</p>
 </li>
 </ul>
 </div>
@@ -131,9 +136,6 @@ occasion, from it</strong>.</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -151,92 +153,119 @@ occasion, from it</strong>.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
+<h3 id="removing-person-from-event-code-removeperson-code"><a class="link" href="#removing-person-from-event-code-removeperson-code">Removing person from event: <code>removeperson</code></a></h3>
 <div class="paragraph">
-<p>A command to allow the user to undo previous commands.<br></p>
+<p>A command which will remove a person from a module or an occasion.<br></p>
 </div>
 <div class="paragraph">
-<p>Format:<br>
-<code>undo</code><br></p>
+<p>Format for module:<br>
+<code>removeperson pi/PERSON_INDEX mi/MODULE_INDEX</code><br>
+Format for occasion:<br>
+<code>removeperson pi/PERSON_INDEX oi/OCCASION_INDEX</code></p>
 </div>
-<div class="admonitionblock note">
+<div class="paragraph">
+<p><code>removeperson</code> will only work if there is an existing person inside an existing module or
+occasion and vice versa.</p>
+</div>
+<div class="paragraph">
+<p>If the person is not inside the module or occasion, or vice versa, it will not work.</p>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add[]</code>, <code>delete</code>, <code>edit[]</code>, <code>clear</code> and <code>insertperson</code>).</p>
-</div>
+If you cannot see your module or occasion to select to remove (as the GUI is in PERSON context),
+just click the menu bar items to swap context, and continue typing your command in the
+command box.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.<br></p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="listing-code-list-code-code-person-code"><a class="link" href="#listing-code-list-code-code-person-code">Listing: <code>list</code> + <code>person</code></a></h3>
 <div class="paragraph">
-<p>A command to allow the user to redo previously undone commands.<br></p>
+<p>The different list commands will show the specified list in TheTracker.<br></p>
+</div>
+<div class="sect3">
+<h4 id="list-all-persons-code-listperson-code"><a class="link" href="#list-all-persons-code-listperson-code">List all Persons: <code>listperson</code></a></h4>
+<div class="paragraph">
+<p>Switches context to that of PERSON in TheTracker.<br></p>
 </div>
 <div class="paragraph">
-<p>Format:
-<code>redo</code>: <br></p>
+<p>It will show the complete list of persons in the TheTracker and the user is able to
+view the modules and occasions each person is taking.<br></p>
 </div>
-<div class="admonitionblock note">
+<div class="paragraph">
+<p>Format: <code>listperson</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-all-modules-code-listmodule-code"><a class="link" href="#list-all-modules-code-listmodule-code">List all Modules: <code>listmodule</code></a></h4>
+<div class="paragraph">
+<p>Switches context to that of MODULE in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>It will show the complete list of modules in the TheTracker and the user is able to
+view the students list of each module.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>listmodule</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-all-occasions-code-listoccasion-code"><a class="link" href="#list-all-occasions-code-listoccasion-code">List all Occasions: <code>listoccasion</code></a></h4>
+<div class="paragraph">
+<p>Switches context to that of OCCASION in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>It will show the complete list of occasions in the TheTracker and the user is able to
+view the attendance list of each occasion.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>listoccasion</code></p>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
+If you have filtered the list using the <code>find</code> command, you can use the <code>listperson</code>, <code>listmodule</code>
+and <code>listoccasion</code> commands to populate the entire list again.
 </td>
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete"><a class="link" href="#autocomplete">Autocomplete</a></h3>
+<div class="paragraph">
+<p>A feature that gives a drop-down list of suggested commands based on substrings that a user types.</p>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>redo</code> (reverses the <code>undo</code> command, which clears again)<br></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>"add" - <code>addperson</code>, <code>addmodule</code>, <code>addoccasion</code> are suggested.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can use the up &amp; down arrows to find your intended command in the drop-down list,
+and press <kbd>Enter</kbd> to select it.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -255,252 +284,180 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="removeperson-feature"><a class="link" href="#removeperson-feature">RemovePerson Feature</a></h3>
+<div class="paragraph">
+<p>The <code>removeperson</code> command is a complementary feature to the <code>insertperson</code> command. It enables the
+removal of a <code>Person</code> from either a <code>Module</code> students list or an <code>Occasion</code> attendance list. This thus
+means that the module or occasion will be removed from the respective list that the <code>Person</code> carries.
+The activity diagram below illustrates what happens when <code>removeperson</code> is called:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RemovePersonActivityDiagram.png" alt="RemovePersonActivityDiagram" width="800">
+</div>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
-<code>AddressBook</code> with an command history, stored internally as an
-<code>addressBookStateList</code> and <code>currentStatePointer</code>.
-In addition, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedAddressBook#commit()</code>: Saves the current book state
-in the command history</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#undo()</code>: Restores the address book to its previous
-state.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>: Restores the address book to its previously
-undone state.</p>
-</li>
-</ul>
+<p>Currently, removeperson creates a whole new copy of the <code>Person</code>, and a whole new copy of the <code>Module</code> to replace.
+The difference with the copy and the original is that their internal elements contain one less element,
+and the new copy is populated with shallow duplicates.</p>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the Model interface as
-Model#commitAddressBook(), Model#undoAddressBook() and Model#redoAddressBook() respectively.</p>
+<p>A shallow duplicate is a copy but with an empty internal list.
+For example, a shallow duplicate of Person contains an empty module list and empty occasion list.
+A shallow duplicate of Module contains an empty students list.</p>
 </div>
 <div class="paragraph">
-<p>Provided below is a usage scenario instance. It illustrates how the
-undo/redo mechanism behaves at each step.</p>
+<p>The reason why this is done will be explained in the design considerations below.</p>
 </div>
 <div class="paragraph">
-<p>Step 1: The user launches TheTracker for the first time. The
-<code>VersionedAddressBook</code> will be initialised with the initial address book
-state, which the <code>currentStatePointer</code> is currently pointing to.</p>
+<p>The following sequence diagram shows how the <code>removeperson</code> operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2: The user executes <code>add n/David&#8230;&#8203;</code> command to add a person called
-David in his TheTracker. The <code>add</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker after the <code>add David&#8230;&#8203;</code> command
-executes to be saved in the <code>addressBookStateList</code>, and the
-<code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3: The user executes <code>delete 7</code> to delete the 7th person in the address
-book. The <code>delete</code> command also calls <code>Model#commitAddressBook()</code>, causing
-another modified address book state to be saved into the <code>addressBookStateList</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>,
-so the address book state will not be saved into the <code>addressBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4: If the user now realizes that deleting the 7th person is a mistake,
-and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code>
-command will call <code>Model#undoAddressBook()</code>, which will shift the
-<code>currentStatePointer</code> once to the left, pointing it to the previous address
-book state, and restores the address book to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing the initial address book
-state, then there are no previous address book states to restore. The <code>undo</code>
-command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. In
-this case, it will return an error to the user rather than attempting to
-perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The redo command does the opposite&#8201;&#8212;&#8201;it calls Model#redoAddressBook(), which
-shifts the <code>currentStatePointer</code> once to the right, pointing to the
-previously undone state, and restores the address book to that state.</p>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>,
-pointing to the latest address book state, then there are no undone address
-book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code>
-to check if this is the case. If so, it will return an error to the user
-rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5: The user then executes the command <code>find</code>. Commands that do
-not modify the address book, such as <code>find</code>, will usually not call
-<code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or
-<code>Model#redoAddressBook()</code>.  Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateFindDiagram.png" alt="UndoRedoNewCommand3StateFindDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes clear, which calls Model#commitAddressBook(). Since
- the currentStatePointer is not pointing at the end of the addressBookStateList,
- all address book states after the currentStatePointer will be purged. We
- designed it this way because it no longer makes sense to redo the delete 7
- command. This is the behavior that most modern desktop
- applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a
-new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<img src="../images/RemovePersonSequenceDiagram.png" alt="RemovePersonSequenceDiagram" width="800">
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>For this feature to be possible, it has to be possible to somehow remove the link between said <code>Person</code>
+and <code>Module</code>/<code>Occasion</code>.
+The link (or pointer) to the objects can be best illustrated in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PersonModuleOccasionClassDiagram.png" alt="PersonModuleOccasionClassDiagram" width="800">
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:00:15 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>As seen, the <code>Person</code> class is associated with the <code>Module</code> class and the <code>Occasion</code> class as <code>Person</code>
+stores a list of modules and occasions. A person can thus have associations with multiple modules and
+occasions. This relationship is bidirectional as a <code>Module</code> can have associations with multiple persons.
+This is the same for occasions with persons. There is no association between <code>Module</code> and occasion.
+Thus, the relationships between <code>Person</code> and module, &amp; <code>Person</code> and occasion are bidirectional.</p>
+</div>
+<div class="paragraph">
+<p>Let us take an example of a <code>Person</code> associated with many modules, and vice versa. A possible implementation
+of the removeperson feature may be to remove the pointers between said <code>Person</code> and the corresponding
+<code>Module</code> in mind. However, this is not feasible in TheTracker due to our implementation of <code>VersionedAddressBook</code>.
+TheTracker keeps various states of itself and its components after every command which changes an object.
+Below is a simple state list diagram of the <code>VersionedAddressBook</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/VersionedABStateListDiagram.png" alt="VersionedABStateListDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>When the user first opens up TheTracker, an instance of the <code>VersionedAddressBook</code> is opened and the
+<code>currentStatePointer</code> points to instance 1 as shown in the diagram. When the user changes the person object,
+an entirely new copy of the state of <code>TheTracker</code> is created and inserted as a new <code>VersionedAddressBook</code> with
+currentStatePointer being updated.</p>
+</div>
+<div class="paragraph">
+<p>As removing a pointer from an object does not entail changing an attribute inside the object, a brand
+new object has to be created for every instance when <code>removeperson</code> is called. This would enable the
+<code>removeperson</code> command to be compatible with <code>undo</code> and <code>redo</code> which use the different <code>VersionedAddressBook</code>
+to complete the job.</p>
+</div>
+<div class="paragraph">
+<p>This new object would have to be fundamentally almost an exact replica of the old object, with the only
+difference being the internal lists of modules <code>Person</code> keeps or internal lists of persons <code>Module</code> keeps.
+However, let us take an example <code>Person</code> who is linked to several Modules. If this <code>Person</code> severs links with
+a <code>Module</code>, and a new list is created (only without said <code>Module</code>), this means that the list will try to add
+the other Modules into itself. These other Modules already contain an old instance of this <code>Person</code>, but
+their lists will also have to be updated with the new <code>Person</code>, which is adding these Modules in the first
+place! This creates an infinite recursive loop.</p>
+</div>
+<div class="paragraph">
+<p>To mitigate this problem, we had to make a shallow duplicate of the <code>Person</code> / <code>Module</code> / <code>Occasion</code> (with an empty
+list to prevent infinite recursion), and put in a complete duplicate (we named it deep duplicate) when
+repopulating the internal list of <code>Person</code> / <code>Module</code> / <code>Occasion</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-feature"><a class="link" href="#list-feature">List feature</a></h3>
+<div class="paragraph">
+<p>The list feature acts as a switching between the lists of <code>Person</code>, <code>Module</code>, <code>Occasion</code>.
+In essence, it acts as a context switch between the 3.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Currently, the list command will raise a context switch event, a <code>ShowPersonRequestEvent</code>
+if the <code>listperson</code> command is called. This then tells the MainWindow to update with
+the correct list of persons in its list panel, and to change the browser panel to
+show the lists of <code>Module</code> and <code>Occasion</code> that <code>Person</code> may have.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> handlePerson() {
+    getBrowserPlaceholder().getChildren().clear();
+    getEntityListPanelPlaceholder().getChildren().clear();
+    personListPanel.clearSelection();
+
+    personListPanel.updatePanel(logic.getFilteredPersonList());
+    getBrowserPlaceholder().getChildren().add(personBrowserPanel.getRoot());
+    getEntityListPanelPlaceholder().getChildren().add(personListPanel.getRoot());
+
+    logic.setActiveType(PERSON);
+    AttendanceListUtil.postClearEvent();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code shows how the <code>MainWindow</code> deals with the context switch, which includes the
+setting of the active type (the context of the current window), so that contextual commands
+such as <code>delete</code> and <code>select</code> are able to function properly with correct indices.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p>We had to examine whether it was better to:
+Alternative 1:
+Be able to make all commands contextual, and commands cannot be used out of context.
+This means that the <code>list</code> will set the context to limit other commands.</p>
+</div>
+<div class="paragraph">
+<p>Alternative 2:
+Leave it possible for other commands to be called even if the context is not correct.</p>
+</div>
+<div class="paragraph">
+<p>In the end, we chose alternative 1 so that users have the freedom to call specific commands
+without even looking at the specific list of choice, and to have more freedom to play around
+in the application.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="autocomplete-2"><a class="link" href="#autocomplete-2">Autocomplete</a></h3>
+<div class="paragraph">
+<p>The autocomplete feature is facilitated by a stored list of commands and its own parser on the user&#8217;s
+command line inputs. The parser will enable the autocomplete to check the user&#8217;s input against a list
+of commands which are final and known by the address book. The autocomplete parser will be checking
+after every input in the command line, making it a real time feature.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Currently, the feature calls on ControlsFX API to enable the autocomplete feature.
+It uses TextFields to have an autocomplete binding on the command box created which takes in the
+user input for commands. The list is populated by an inbuilt base commands list where all possible
+known commands are stored.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="proposed-improvements-coming-in-v2-0"><a class="link" href="#proposed-improvements-coming-in-v2-0">Proposed Improvements (Coming in v2.0)</a></h4>
+<div class="paragraph">
+<p>While checking, the feature will try to give a regex match of the command and also provide suggestions
+on correct arguments based on current entities stored in TheTracker&#8217;s address book.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:14:11 UTC</div></div></div></body></html>

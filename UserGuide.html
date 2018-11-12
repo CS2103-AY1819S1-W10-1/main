@@ -28,24 +28,25 @@
 <li><a href="#Features">5. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">5.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-an-entry-code-add-code">5.2. Adding an entry: <code>add</code></a></li>
-<li><a href="#listing-all-entries-code-list-code">5.3. Listing all entries : <code>list</code></a></li>
+<li><a href="#adding-an-entry-code-add-code-code-person-code">5.2. Adding an entry: <code>add</code> + <code>person</code></a></li>
+<li><a href="#listing-code-list-code-code-person-code">5.3. Listing: <code>list</code> + <code>person</code></a></li>
 <li><a href="#selecting-an-entry-code-select-code">5.4. Selecting an Entry: <code>select</code></a></li>
-<li><a href="#editing-an-entry-code-edit-code">5.5. Editing an entry : <code>edit</code></a></li>
+<li><a href="#editing-an-entry-code-edit-code-code-person-code">5.5. Editing an entry : <code>edit</code> + <code>person</code></a></li>
 <li><a href="#inserting-a-person-code-insertperson-code">5.6. Inserting a Person: <code>insertperson</code></a></li>
-<li><a href="#locating-entries-code-find-code">5.7. Locating entries: <code>find</code></a></li>
-<li><a href="#deleting-an-entry-code-delete-code">5.8. Deleting an entry: <code>delete</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">5.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">5.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clear-all-lists-code-clear-code">5.11. Clear all lists: <code>clear</code></a></li>
-<li><a href="#showing-command-history-code-history-code">5.12. Showing command history: <code>history</code></a></li>
-<li><a href="#autocomplete">5.13. Autocomplete</a></li>
-<li><a href="#exporting-user-data-to-xml-txt-code-export-code">5.14. Exporting user data to xml/txt: <code>export</code></a></li>
-<li><a href="#importing-data-into-thetracker-code-import-code-coming-in-v-2-0">5.15. Importing data into TheTracker: <code>import</code> (coming in v 2.0)</a></li>
-<li><a href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">5.16. Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></li>
-<li><a href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">5.17. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></li>
-<li><a href="#exiting-the-program-code-exit-code">5.18. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">5.19. Saving the data</a></li>
+<li><a href="#removing-person-from-event-code-removeperson-code">5.7. Removing person from event: <code>removeperson</code></a></li>
+<li><a href="#locating-entries-code-find-code-code-person-code">5.8. Locating entries: <code>find</code> + <code>person</code></a></li>
+<li><a href="#deleting-an-entry-code-delete-code">5.9. Deleting an entry: <code>delete</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">5.10. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">5.11. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clear-all-lists-code-clear-code">5.12. Clear all lists: <code>clear</code></a></li>
+<li><a href="#showing-command-history-code-history-code">5.13. Showing command history: <code>history</code></a></li>
+<li><a href="#autocomplete">5.14. Autocomplete</a></li>
+<li><a href="#exporting-user-data-to-xml-txt-code-export-code">5.15. Exporting user data to xml/txt: <code>export</code></a></li>
+<li><a href="#importing-data-into-thetracker-code-import-code-coming-in-v-2-0">5.16. Importing data into TheTracker: <code>import</code> (coming in v 2.0)</a></li>
+<li><a href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">5.17. Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></li>
+<li><a href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">5.18. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></li>
+<li><a href="#exiting-the-program-code-exit-code">5.19. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">5.20. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">6. FAQ</a></li>
@@ -351,7 +352,7 @@ can be used as <code>add n/John Doe</code>.</p>
 (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
-<p><code>[]</code> after a command word (eg. <code>add[]</code>) refers to the postfix of the command. It may be person, module and
+<p><code>+</code> after a command word (eg. <code>add +</code>) refers to the postfix of the command. It may be person, module and
 occasion respectively.</p>
 </li>
 </ul>
@@ -366,7 +367,7 @@ Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-an-entry-code-add-code"><a class="link" href="#adding-an-entry-code-add-code">5.2. Adding an entry: <code>add</code></a></h3>
+<h3 id="adding-an-entry-code-add-code-code-person-code"><a class="link" href="#adding-an-entry-code-add-code-code-person-code">5.2. Adding an entry: <code>add</code> + <code>person</code></a></h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -489,29 +490,47 @@ A person, module or an occasion can have any number of tags (including 0) and in
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-entries-code-list-code"><a class="link" href="#listing-all-entries-code-list-code">5.3. Listing all entries : <code>list</code></a></h3>
+<h3 id="listing-code-list-code-code-person-code"><a class="link" href="#listing-code-list-code-code-person-code">5.3. Listing: <code>list</code> + <code>person</code></a></h3>
 <div class="paragraph">
-<p>A command to show a desired list in TheTracker.<br></p>
+<p>The different list commands will show the specified list in TheTracker.<br></p>
 </div>
 <div class="sect3">
 <h4 id="list-all-persons-code-listperson-code"><a class="link" href="#list-all-persons-code-listperson-code">5.3.1. List all Persons: <code>listperson</code></a></h4>
 <div class="paragraph">
-<p>A command to show the complete list of persons in TheTracker.<br>
-Format: <code>listperson</code></p>
+<p>Switches context to that of PERSON in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>It will show the complete list of persons in the TheTracker and the user is able to
+view the modules and occasions each person is taking.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>listperson</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="list-all-modules-code-listmodule-code"><a class="link" href="#list-all-modules-code-listmodule-code">5.3.2. List all Modules: <code>listmodule</code></a></h4>
 <div class="paragraph">
-<p>A command to show the complete list of modules in TheTracker.<br>
-Format: <code>listmodule</code></p>
+<p>Switches context to that of MODULE in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>It will show the complete list of modules in the TheTracker and the user is able to
+view the students list of each module.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>listmodule</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="list-all-occasions-code-listoccasion-code"><a class="link" href="#list-all-occasions-code-listoccasion-code">5.3.3. List all Occasions: <code>listoccasion</code></a></h4>
 <div class="paragraph">
-<p>A command to show the complete list of occasions in TheTracker.<br>
-Format: <code>listoccasion</code></p>
+<p>Switches context to that of OCCASION in TheTracker.<br></p>
+</div>
+<div class="paragraph">
+<p>It will show the complete list of occasions in the TheTracker and the user is able to
+view the attendance list of each occasion.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>listoccasion</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -551,7 +570,7 @@ On startup, no entry should be selected. Entries will not be deselected until an
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-an-entry-code-edit-code"><a class="link" href="#editing-an-entry-code-edit-code">5.5. Editing an entry : <code>edit</code></a></h3>
+<h3 id="editing-an-entry-code-edit-code-code-person-code"><a class="link" href="#editing-an-entry-code-edit-code-code-person-code">5.5. Editing an entry : <code>edit</code> + <code>person</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to edit an existing person, module or occasion in TheTracker.<br>
 It can be used to add optional field that is not specified in the add command.</p>
@@ -741,9 +760,42 @@ into <code>occasion</code> 1.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-entries-code-find-code"><a class="link" href="#locating-entries-code-find-code">5.7. Locating entries: <code>find</code></a></h3>
+<h3 id="removing-person-from-event-code-removeperson-code"><a class="link" href="#removing-person-from-event-code-removeperson-code">5.7. Removing person from event: <code>removeperson</code></a></h3>
+<div class="paragraph">
+<p>A command which will remove a person from a module or an occasion.<br></p>
+</div>
+<div class="paragraph">
+<p>Format for module:<br>
+<code>removeperson pi/PERSON_INDEX mi/MODULE_INDEX</code><br>
+Format for occasion:<br>
+<code>removeperson pi/PERSON_INDEX oi/OCCASION_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p><code>removeperson</code> will only work if there is an existing person inside an existing module or
+occasion and vice versa.</p>
+</div>
+<div class="paragraph">
+<p>If the person is not inside the module or occasion, or vice versa, it will not work.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you cannot see your module or occasion to select to remove (as the GUI is in PERSON context),
+just click the menu bar items to swap context, and continue typing your command in the
+command box.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locating-entries-code-find-code-code-person-code"><a class="link" href="#locating-entries-code-find-code-code-person-code">5.8. Locating entries: <code>find</code> + <code>person</code></a></h3>
 <div class="sect3">
-<h4 id="finding-a-person-code-findperson-code"><a class="link" href="#finding-a-person-code-findperson-code">5.7.1. Finding a person: <code>findperson</code></a></h4>
+<h4 id="finding-a-person-code-findperson-code"><a class="link" href="#finding-a-person-code-findperson-code">5.8.1. Finding a person: <code>findperson</code></a></h4>
 <div class="paragraph">
 <p>A command to allow the user to find a person in TheTracker.<br></p>
 </div>
@@ -767,7 +819,7 @@ into <code>occasion</code> 1.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-a-module-code-findmodule-code"><a class="link" href="#finding-a-module-code-findmodule-code">5.7.2. Finding a module: <code>findmodule</code></a></h4>
+<h4 id="finding-a-module-code-findmodule-code"><a class="link" href="#finding-a-module-code-findmodule-code">5.8.2. Finding a module: <code>findmodule</code></a></h4>
 <div class="paragraph">
 <p>A command to allow the user to find a module in TheTracker.<br></p>
 </div>
@@ -788,7 +840,7 @@ into <code>occasion</code> 1.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-an-occasion-code-findoccasion-code"><a class="link" href="#finding-an-occasion-code-findoccasion-code">5.7.3. Finding an occasion: <code>findoccasion</code></a></h4>
+<h4 id="finding-an-occasion-code-findoccasion-code"><a class="link" href="#finding-an-occasion-code-findoccasion-code">5.8.3. Finding an occasion: <code>findoccasion</code></a></h4>
 <div class="paragraph">
 <p>A command to allow the user to find an occasion in TheTracker.<br></p>
 </div>
@@ -809,7 +861,7 @@ into <code>occasion</code> 1.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">5.8. Deleting an entry: <code>delete</code></a></h3>
+<h3 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">5.9. Deleting an entry: <code>delete</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to delete the specified entry from the active list in TheTracker.<br>
 Format: <code>delete INDEX</code></p>
@@ -851,7 +903,7 @@ Deletes the 2nd module of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">5.9. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">5.10. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to undo previous commands.<br></p>
 </div>
@@ -893,7 +945,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">5.10. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">5.11. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to redo previously undone commands.<br></p>
 </div>
@@ -940,7 +992,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear-all-lists-code-clear-code"><a class="link" href="#clear-all-lists-code-clear-code">5.11. Clear all lists: <code>clear</code></a></h3>
+<h3 id="clear-all-lists-code-clear-code"><a class="link" href="#clear-all-lists-code-clear-code">5.12. Clear all lists: <code>clear</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to clear all 3 lists.
 Format: <code>clear</code></p>
@@ -959,14 +1011,14 @@ If this was done by mistake, you can <code>undo</code> the action, and all lists
 </div>
 </div>
 <div class="sect2">
-<h3 id="showing-command-history-code-history-code"><a class="link" href="#showing-command-history-code-history-code">5.12. Showing command history: <code>history</code></a></h3>
+<h3 id="showing-command-history-code-history-code"><a class="link" href="#showing-command-history-code-history-code">5.13. Showing command history: <code>history</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to see the history of commands used within the address book.+
 Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete"><a class="link" href="#autocomplete">5.13. Autocomplete</a></h3>
+<h3 id="autocomplete"><a class="link" href="#autocomplete">5.14. Autocomplete</a></h3>
 <div class="paragraph">
 <p>A feature that gives a drop-down list of suggested commands based on substrings that a user types.</p>
 </div>
@@ -983,19 +1035,20 @@ Format: <code>history</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You can use the up &amp; down arrows to find your intended command in the drop-down list, and press <kbd>Enter</kbd> to select it.
+You can use the up &amp; down arrows to find your intended command in the drop-down list,
+and press <kbd>Enter</kbd> to select it.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-user-data-to-xml-txt-code-export-code"><a class="link" href="#exporting-user-data-to-xml-txt-code-export-code">5.14. Exporting user data to xml/txt: <code>export</code></a></h3>
+<h3 id="exporting-user-data-to-xml-txt-code-export-code"><a class="link" href="#exporting-user-data-to-xml-txt-code-export-code">5.15. Exporting user data to xml/txt: <code>export</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to export data from TheTracker to a specified location.</p>
 </div>
 <div class="sect3">
-<h4 id="exporting-data-to-xml-file"><a class="link" href="#exporting-data-to-xml-file">5.14.1. Exporting data to xml file</a></h4>
+<h4 id="exporting-data-to-xml-file"><a class="link" href="#exporting-data-to-xml-file">5.15.1. Exporting data to xml file</a></h4>
 <div class="paragraph">
 <p>Export data to a xml file.</p>
 </div>
@@ -1046,7 +1099,7 @@ should contain only alphanumeric and underscores (whitespaces are not allowed)</
 </div>
 </div>
 <div class="sect3">
-<h4 id="exporting-data-to-txt-file"><a class="link" href="#exporting-data-to-txt-file">5.14.2. Exporting data to txt file</a></h4>
+<h4 id="exporting-data-to-txt-file"><a class="link" href="#exporting-data-to-txt-file">5.15.2. Exporting data to txt file</a></h4>
 <div class="paragraph">
 <p>Export data to a txt file.</p>
 </div>
@@ -1098,12 +1151,12 @@ should contain only alphanumeric and underscores (whitespaces are not allowed)</
 </div>
 </div>
 <div class="sect2">
-<h3 id="importing-data-into-thetracker-code-import-code-coming-in-v-2-0"><a class="link" href="#importing-data-into-thetracker-code-import-code-coming-in-v-2-0">5.15. Importing data into TheTracker: <code>import</code> (coming in v 2.0)</a></h3>
+<h3 id="importing-data-into-thetracker-code-import-code-coming-in-v-2-0"><a class="link" href="#importing-data-into-thetracker-code-import-code-coming-in-v-2-0">5.16. Importing data into TheTracker: <code>import</code> (coming in v 2.0)</a></h3>
 <div class="paragraph">
 <p>A command to allow the user to import information from external sources.</p>
 </div>
 <div class="sect3">
-<h4 id="importing-xml-file"><a class="link" href="#importing-xml-file">5.15.1. Importing xml file</a></h4>
+<h4 id="importing-xml-file"><a class="link" href="#importing-xml-file">5.16.1. Importing xml file</a></h4>
 <div class="paragraph">
 <p>Format:<br>
 <code>import --xml [FILEPATH]</code></p>
@@ -1124,7 +1177,7 @@ should contain only alphanumeric and underscores (whitespaces are not allowed)</
 </div>
 </div>
 <div class="sect2">
-<h3 id="importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">5.16. Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
+<h3 id="importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0"><a class="link" href="#importing-module-information-from-external-platform-code-importmodule-code-coming-in-v-2-0">5.17. Importing module information from external platform: <code>importmodule</code> (coming in v 2.0)</a></h3>
 <div class="paragraph">
 <p>A command to allow the user to import information from NUSMods.+</p>
 </div>
@@ -1134,7 +1187,7 @@ If the specified module in the current semester is not found, it will be importe
 </div>
 </div>
 <div class="sect2">
-<h3 id="grouping-content-together-by-tag-code-group-code-coming-in-v-2-0"><a class="link" href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">5.17. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></h3>
+<h3 id="grouping-content-together-by-tag-code-group-code-coming-in-v-2-0"><a class="link" href="#grouping-content-together-by-tag-code-group-code-coming-in-v-2-0">5.18. Grouping content together by tag: <code>group</code> (coming in v 2.0)</a></h3>
 <div class="paragraph">
 <p>A command to allow the user to group students under a certain group tag.<br></p>
 </div>
@@ -1147,14 +1200,14 @@ keyword: n/NAME The name of the person you want to put in this group.
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.18. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">5.19. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.19. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">5.20. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -1203,6 +1256,11 @@ e.g. `editmodule 1 mc/CS1101S `</p>
 <li>
 <p><strong>Edit Occasion</strong> :  <code>INDEX [on/OCCASION NAME] [od/OCCASION DATE] [loc/OCCASION LOCATION] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>editoccasion 1 on/Barbecue od/2019-6-17 loc/NUS</code></p>
+</li>
+<li>
+<p><strong>Remove from Event</strong>: <code>removeperson pi/PERSON_INDEX mi/MODULE_INDEX</code>,
+<code>removeperson pi/PERSON_INDEX oi/OCCASION_INDEX</code><br>
+e.g. <code>removeperson pi/2 mi/2</code></p>
 </li>
 <li>
 <p><strong>Find Person</strong> : <code>findperson n/NAME</code>, <code>findperson p/PHONE_NUMBER</code>, <code>findperson e/EMAIL_ADDRESS</code>, <code>findperson a/ADDRESS</code><br>
@@ -1263,4 +1321,4 @@ e.g. (Windows) <code>export --txt C:\Users\Anna\desktop\exported.txt</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:00:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:14:11 UTC</div></div></div></body></html>

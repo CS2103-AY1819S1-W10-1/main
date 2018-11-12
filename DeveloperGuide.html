@@ -36,15 +36,17 @@
 <li><a href="#select-person-module-occasion-feature">4.4. Select Person/Module/Occasion Feature</a></li>
 <li><a href="#edit-person-module-occasion-feature">4.5. Edit Person/Module/Occasion Feature</a></li>
 <li><a href="#insertperson-feature">4.6. InsertPerson feature</a></li>
-<li><a href="#undo-redo-feature">4.7. Undo/Redo feature</a></li>
-<li><a href="#history-feature">4.8. History feature</a></li>
-<li><a href="#proposed-autocomplete">4.9. [Proposed] Autocomplete</a></li>
-<li><a href="#export">4.10. Export</a></li>
-<li><a href="#import-coming-in-v-2-0">4.11. Import (Coming in v 2.0)</a></li>
-<li><a href="#logging">4.12. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.13. Configuration</a></li>
-<li><a href="#delete">4.14. Delete</a></li>
-<li><a href="#Updating-Lists">4.15. Updating of Lists (General)</a></li>
+<li><a href="#removeperson-feature">4.7. RemovePerson Feature</a></li>
+<li><a href="#list-feature">4.8. List feature</a></li>
+<li><a href="#undo-redo-feature">4.9. Undo/Redo feature</a></li>
+<li><a href="#history-feature">4.10. History feature</a></li>
+<li><a href="#autocomplete">4.11. Autocomplete</a></li>
+<li><a href="#export">4.12. Export</a></li>
+<li><a href="#import-coming-in-v-2-0">4.13. Import (Coming in v 2.0)</a></li>
+<li><a href="#logging">4.14. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.15. Configuration</a></li>
+<li><a href="#delete">4.16. Delete</a></li>
+<li><a href="#Updating-Lists">4.17. Updating of Lists (General)</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1152,9 +1154,160 @@ error.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.7. Undo/Redo feature</a></h3>
+<h3 id="removeperson-feature"><a class="link" href="#removeperson-feature">4.7. RemovePerson Feature</a></h3>
+<div class="paragraph">
+<p>The <code>removeperson</code> command is a complementary feature to the <code>insertperson</code> command. It enables the
+removal of a <code>Person</code> from either a <code>Module</code> students list or an <code>Occasion</code> attendance list. This thus
+means that the module or occasion will be removed from the respective list that the <code>Person</code> carries.
+The activity diagram below illustrates what happens when <code>removeperson</code> is called:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemovePersonActivityDiagram.png" alt="RemovePersonActivityDiagram" width="800">
+</div>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Currently, removeperson creates a whole new copy of the <code>Person</code>, and a whole new copy of the <code>Module</code> to replace.
+The difference with the copy and the original is that their internal elements contain one less element,
+and the new copy is populated with shallow duplicates.</p>
+</div>
+<div class="paragraph">
+<p>A shallow duplicate is a copy but with an empty internal list.
+For example, a shallow duplicate of Person contains an empty module list and empty occasion list.
+A shallow duplicate of Module contains an empty students list.</p>
+</div>
+<div class="paragraph">
+<p>The reason why this is done will be explained in the design considerations below.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>removeperson</code> operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemovePersonSequenceDiagram.png" alt="RemovePersonSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.7.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>For this feature to be possible, it has to be possible to somehow remove the link between said <code>Person</code>
+and <code>Module</code>/<code>Occasion</code>.
+The link (or pointer) to the objects can be best illustrated in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PersonModuleOccasionClassDiagram.png" alt="PersonModuleOccasionClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As seen, the <code>Person</code> class is associated with the <code>Module</code> class and the <code>Occasion</code> class as <code>Person</code>
+stores a list of modules and occasions. A person can thus have associations with multiple modules and
+occasions. This relationship is bidirectional as a <code>Module</code> can have associations with multiple persons.
+This is the same for occasions with persons. There is no association between <code>Module</code> and occasion.
+Thus, the relationships between <code>Person</code> and module, &amp; <code>Person</code> and occasion are bidirectional.</p>
+</div>
+<div class="paragraph">
+<p>Let us take an example of a <code>Person</code> associated with many modules, and vice versa. A possible implementation
+of the removeperson feature may be to remove the pointers between said <code>Person</code> and the corresponding
+<code>Module</code> in mind. However, this is not feasible in TheTracker due to our implementation of <code>VersionedAddressBook</code>.
+TheTracker keeps various states of itself and its components after every command which changes an object.
+Below is a simple state list diagram of the <code>VersionedAddressBook</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/VersionedABStateListDiagram.png" alt="VersionedABStateListDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>When the user first opens up TheTracker, an instance of the <code>VersionedAddressBook</code> is opened and the
+<code>currentStatePointer</code> points to instance 1 as shown in the diagram. When the user changes the person object,
+an entirely new copy of the state of <code>TheTracker</code> is created and inserted as a new <code>VersionedAddressBook</code> with
+currentStatePointer being updated.</p>
+</div>
+<div class="paragraph">
+<p>As removing a pointer from an object does not entail changing an attribute inside the object, a brand
+new object has to be created for every instance when <code>removeperson</code> is called. This would enable the
+<code>removeperson</code> command to be compatible with <code>undo</code> and <code>redo</code> which use the different <code>VersionedAddressBook</code>
+to complete the job.</p>
+</div>
+<div class="paragraph">
+<p>This new object would have to be fundamentally almost an exact replica of the old object, with the only
+difference being the internal lists of modules <code>Person</code> keeps or internal lists of persons <code>Module</code> keeps.
+However, let us take an example <code>Person</code> who is linked to several Modules. If this <code>Person</code> severs links with
+a <code>Module</code>, and a new list is created (only without said <code>Module</code>), this means that the list will try to add
+the other Modules into itself. These other Modules already contain an old instance of this <code>Person</code>, but
+their lists will also have to be updated with the new <code>Person</code>, which is adding these Modules in the first
+place! This creates an infinite recursive loop.</p>
+</div>
+<div class="paragraph">
+<p>To mitigate this problem, we had to make a shallow duplicate of the <code>Person</code> / <code>Module</code> / <code>Occasion</code> (with an empty
+list to prevent infinite recursion), and put in a complete duplicate (we named it deep duplicate) when
+repopulating the internal list of <code>Person</code> / <code>Module</code> / <code>Occasion</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-feature"><a class="link" href="#list-feature">4.8. List feature</a></h3>
+<div class="paragraph">
+<p>The list feature acts as a switching between the lists of <code>Person</code>, <code>Module</code>, <code>Occasion</code>.
+In essence, it acts as a context switch between the 3.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.8.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Currently, the list command will raise a context switch event, a <code>ShowPersonRequestEvent</code>
+if the <code>listperson</code> command is called. This then tells the MainWindow to update with
+the correct list of persons in its list panel, and to change the browser panel to
+show the lists of <code>Module</code> and <code>Occasion</code> that <code>Person</code> may have.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> handlePerson() {
+    getBrowserPlaceholder().getChildren().clear();
+    getEntityListPanelPlaceholder().getChildren().clear();
+    personListPanel.clearSelection();
+
+    personListPanel.updatePanel(logic.getFilteredPersonList());
+    getBrowserPlaceholder().getChildren().add(personBrowserPanel.getRoot());
+    getEntityListPanelPlaceholder().getChildren().add(personListPanel.getRoot());
+
+    logic.setActiveType(PERSON);
+    AttendanceListUtil.postClearEvent();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code shows how the <code>MainWindow</code> deals with the context switch, which includes the
+setting of the active type (the context of the current window), so that contextual commands
+such as <code>delete</code> and <code>select</code> are able to function properly with correct indices.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.8.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>We had to examine whether it was better to:
+Alternative 1:
+Be able to make all commands contextual, and commands cannot be used out of context.
+This means that the <code>list</code> will set the context to limit other commands.</p>
+</div>
+<div class="paragraph">
+<p>Alternative 2:
+Leave it possible for other commands to be called even if the context is not correct.</p>
+</div>
+<div class="paragraph">
+<p>In the end, we chose alternative 1 so that users have the freedom to call specific commands
+without even looking at the specific list of choice, and to have more freedom to play around
+in the application.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.9. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.9.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
 <code>AddressBook</code> with an command history, stored internally as an
@@ -1321,7 +1474,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.9.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1391,7 +1544,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="history-feature"><a class="link" href="#history-feature">4.8. History feature</a></h3>
+<h3 id="history-feature"><a class="link" href="#history-feature">4.10. History feature</a></h3>
 <div class="paragraph">
 <p>History feature allows the user to review all the commands he has typed in.
 The following sequence diagram shows how the <code>history</code> operation works:</p>
@@ -1403,28 +1556,38 @@ The following sequence diagram shows how the <code>history</code> operation work
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-autocomplete"><a class="link" href="#proposed-autocomplete">4.9. [Proposed] Autocomplete</a></h3>
+<h3 id="autocomplete"><a class="link" href="#autocomplete">4.11. Autocomplete</a></h3>
 <div class="paragraph">
-<p>The autocomplete feature is facilitated by a stored list of commands and its own parser on the user&#8217;s command line inputs.</p>
+<p>The autocomplete feature is facilitated by a stored list of commands and its own parser on the user&#8217;s
+command line inputs. The parser will enable the autocomplete to check the user&#8217;s input against a list
+of commands which are final and known by the address book. The autocomplete parser will be checking
+after every input in the command line, making it a real time feature.</p>
 </div>
+<div class="sect3">
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.11.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The parser will enable the autocomplete to check the user&#8217;s input against a list of commands which are final and known by the address book.</p>
+<p>Currently, the feature calls on ControlsFX API to enable the autocomplete feature.
+It uses TextFields to have an autocomplete binding on the command box created which takes in the
+user input for commands. The list is populated by an inbuilt base commands list where all possible
+known commands are stored.</p>
 </div>
-<div class="paragraph">
-<p>The autocomplete parser will be checking after every input in the command line, making it a real time feature.</p>
 </div>
+<div class="sect3">
+<h4 id="proposed-improvements-coming-in-v2-0"><a class="link" href="#proposed-improvements-coming-in-v2-0">4.11.2. Proposed Improvements (Coming in v2.0)</a></h4>
 <div class="paragraph">
-<p>While checking, the feature will try to give a regex match of the command and also provide suggestions on correct arguments based on current entities stored in TheTracker&#8217;s address book.</p>
+<p>While checking, the feature will try to give a regex match of the command and also provide suggestions
+on correct arguments based on current entities stored in TheTracker&#8217;s address book.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export"><a class="link" href="#export">4.10. Export</a></h3>
+<h3 id="export"><a class="link" href="#export">4.12. Export</a></h3>
 <div class="paragraph">
 <p>Export is a feature to enhance the functionality of TheTracker.
 TheTracker (v1.4) supports exporting user data to xml file and txt file.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.10.1. Current Implementation</a></h4>
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">4.12.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> are both inherited from <code>ExportCommand</code>, which inherits from <code>Command</code> class</p>
 </div>
@@ -1457,7 +1620,7 @@ and stored in the <code>exportedFilePath</code> specified by the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.10.2. Design Considerations</a></h4>
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.12.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-the-role-of-exported-file-type"><a class="link" href="#aspect-the-role-of-exported-file-type">Aspect: The role of exported file type</a></h5>
 <div class="ulist">
@@ -1599,18 +1762,18 @@ checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary 
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-coming-in-v-2-0"><a class="link" href="#import-coming-in-v-2-0">4.11. Import (Coming in v 2.0)</a></h3>
+<h3 id="import-coming-in-v-2-0"><a class="link" href="#import-coming-in-v-2-0">4.13. Import (Coming in v 2.0)</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.12. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.14. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.13, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.15, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1641,15 +1804,15 @@ checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.13. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.15. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">4.14. Delete</a></h3>
+<h3 id="delete"><a class="link" href="#delete">4.16. Delete</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.14.1. Current Implementation</a></h4>
+<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">4.16.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>delete</code> command will delete a <code>Person</code>, <code>Module</code> or <code>Occasion</code>.
 Similar to other commands, a new <code>ReadOnlyAddressBook</code> is created upon the execution of this command.<br>
@@ -1757,7 +1920,7 @@ It has a new <code>UniquePersonList</code> which is empty.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.14.2. Design Considerations</a></h4>
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">4.16.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-explicit-implicit-deletion"><a class="link" href="#aspect-explicit-implicit-deletion">Aspect: Explicit/Implicit Deletion</a></h5>
 <div class="ulist">
@@ -1995,7 +2158,7 @@ It has a new <code>UniquePersonList</code> which is empty.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Updating-Lists"><a class="link" href="#Updating-Lists">4.15. Updating of Lists (General)</a></h3>
+<h3 id="Updating-Lists"><a class="link" href="#Updating-Lists">4.17. Updating of Lists (General)</a></h3>
 <div class="paragraph">
 <p>When executing commands for a particular type of entry, <em>another</em> type of entry can modified.</p>
 </div>
@@ -2014,7 +2177,7 @@ However, both <code>edit</code> and <code>delete</code> also can affect multiple
 </ul>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.15.1. Current Implementation</a></h4>
+<h4 id="current-implementation-13"><a class="link" href="#current-implementation-13">4.17.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>To facilitate the execution of <code>undo</code> and <code>redo</code>, a new replacement person, module or occasion is created
 to replace the original entry. By avoiding modification of these entries, previous versions of
@@ -2044,7 +2207,7 @@ the <code>ReadOnlyAddressBook</code> will not be incorrectly modified.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.15.2. Design Considerations</a></h4>
+<h4 id="design-considerations-11"><a class="link" href="#design-considerations-11">4.17.2. Design Considerations</a></h4>
 
 </div>
 </div>
@@ -3694,4 +3857,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:00:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:14:11 UTC</div></div></div></body></html>
