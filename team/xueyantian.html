@@ -44,19 +44,13 @@ extended FindCommand to <strong>FindPersonCommand, FindModuleCommand, FindOccasi
 <ul>
 <li>
 <p>What it does: allows the user to finds Person by name, phone, or email, address, modules they are taking, and
-occasions they are involved in; similarly, it allows finding Modules by module code, module name, academic year or
-semester; finding occasions by occasion name, occasion date, or occasion location.</p>
+occasions they are involved in; similarly, it allows finding Modules and Occasions by respective attributes.</p>
 </li>
 <li>
 <p>Justification: These features largely improve the convenience for finding a specific Person, Module or Occasion. For
 instance, a Person now can be found by his or her name, phone, email, address, module code of the module he is taking,
 and occasion name of the occasion he is involved in. Multiple steps of findperson command
 can be used to find a person by more than one kind of conditions.</p>
-</li>
-<li>
-<p>Highlights: The finding is based on the prefixes entered by the user when he or she adds a Person, Module
-or Occasion. It is compatible with the Add Command, such that Person, Module and Occasion will only be found by the
-attributes that have been entered by the user.</p>
 </li>
 </ul>
 </div>
@@ -106,7 +100,7 @@ commands.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/88">#88</a>,
+<p>Did cosmetic tweaks to existing contents of the User Guide:
 <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/202">#202</a></p>
 </li>
 </ul>
@@ -118,8 +112,7 @@ commands.</p>
 <ul>
 <li>
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/108">#108</a>,
-<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/121">#121</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/171">#171</a>,
-<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/188">#188</a></p>
+<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/121">#121</a>,</p>
 </li>
 <li>
 <p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/125">125</a>)</p>
@@ -385,7 +378,7 @@ state, which the <code>currentStatePointer</code> is currently pointing to.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AddStartingStateListDiagram.png" alt="AddStartingStateListDiagram" width="500">
+<img src="../images/AddStartingStateListDiagram.png" alt="AddStartingStateListDiagram" width="300">
 </div>
 </div>
 <div class="paragraph">
@@ -400,7 +393,7 @@ after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be s
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AddNewCommand1StateListDiagram.png" alt="AddNewCommand1StateListDiagram" width="500">
+<img src="../images/AddNewCommand1StateListDiagram.png" alt="AddNewCommand1StateListDiagram" width="300">
 </div>
 </div>
 <div class="paragraph">
@@ -409,7 +402,7 @@ after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be s
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AddCommandLogicDiagram.png" alt="AddCommandLogicDiagram" width="500">
+<img src="../images/AddCommandLogicDiagram.png" alt="AddCommandLogicDiagram" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -475,7 +468,7 @@ the high-level implementation is similar to the earlier commands.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
+<img src="../images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -496,7 +489,7 @@ the high-level implementation is similar to the earlier commands.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram" width="800">
+<img src="../images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -504,7 +497,7 @@ the high-level implementation is similar to the earlier commands.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/DeleteDeleteCommandStateListDiagram.png" alt="DeleteDeleteCommandStateListDiagram" width="500">
+<img src="../images/DeleteDeleteCommandStateListDiagram.png" alt="DeleteDeleteCommandStateListDiagram" width="400">
 </div>
 </div>
 <div class="exampleblock">
@@ -527,7 +520,7 @@ the high-level implementation is similar to the earlier commands.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram" width="500">
+<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram" width="400">
 </div>
 </div>
 </div>
@@ -795,11 +788,7 @@ It has a new <code>UniquePersonList</code> which is empty.</p>
 <p>Very tedious to remove all mentions of an entry <strong>after</strong> it has been deleted</p>
 </li>
 <li>
-<p>User may be misled that an entry still exists
-=== Find Person/Module/Occasion Feature
-The find feature currently is implemented the same way to find persons, modules, and occasions.
-There are thus three similar commands which are related to this find command:
-<code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code>.</p>
+<p>User may be misled that an entry still exists</p>
 </li>
 </ul>
 </div>
@@ -809,77 +798,8 @@ There are thus three similar commands which are related to this find command:
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>The find command family finds the entity (person, module, occasion), based on their attributes /
-fields.</p>
-</div>
-<div class="paragraph">
-<p>The figure below shows how the find command is processed through the logic of TheTracker:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/FindCommandLogicDiagram.png" alt="FindCommandLogicDiagram" width="500">
 </div>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
-<div class="paragraph">
-<p>As the <code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code> commands' logic are similar to one another,
-the <code>findperson</code> command will be taken as the sole example in this document. The findperson string
-input in the command line is passed into the <code>AddressBookParser</code> object, which parses the input and
-creates a <code>FindPersonCommandParser</code> to help it further parse the argument and create a
-<code>FindPersonCommand</code>. This <code>FindPersonCommand</code> filters the entire person list based on the keyword
-in the specific field stipulated and updates the Address Book Model to create an Observable List of
-persons based on the filter specified.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-find-executes"><a class="link" href="#aspect-how-find-executes">Aspect: How find executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Match full keyword.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>E.g. If there is a person named "Alex", only the command <code>findperson n/alex</code> will find the
-person. <code>findperson n/ale</code> will not find the person.</p>
-</li>
-<li>
-<p>Pros: Very target and precise finding of person.</p>
-</li>
-<li>
-<p>Cons: Cannot find parts of the person&#8217;s attributes especially if user cannot remember full
-attribute name, title, etc.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Match keyword to part of the attribute.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>E.g. If there is a person named "Alex", the commands <code>findperson n/e</code>, <code>findperson n/ex</code>,
-<code>findperson n/le</code>, <code>findperson n/alex</code> will find the person.</p>
-</li>
-<li>
-<p>Pros: Can find multiple entries of persons with keyword in name.</p>
-</li>
-<li>
-<p>Cons: May not limit the search of persons, hard to pinpoint exact person.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:30:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:43:50 UTC</div></div></div></body></html>
