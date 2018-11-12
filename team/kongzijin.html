@@ -18,12 +18,6 @@ The Tracker is optimized for those who prefer to work with a Command Line Interf
 the benefits of a Graphical User Interface (GUI). It is designed for programmers who are used to CLI
 applications and are good at typing.</p>
 </div>
-<div class="paragraph">
-<p>TheTracker is implemented for applying CS2103 learning outcomes and show understanding of the software design.
-It is implemented by our CS2103 Project group. My key contribution is edit commands.
-TheTracker is written in Java and JavaFX, and is morphed from AddressBook-level4,
-the application used for teaching Software Engineering principles.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -206,7 +200,7 @@ It can be used to add optional field that is not specified in the add command.</
 <div class="paragraph">
 <p>Example:<br>
 <code>editperson 6 p/91234567 e/johndoe@example.com</code><br>
-Edits the person at INDEX 6 in TheTracker: edits his phone to 91234567 and email address to <a href="mailto:johndoe@example.com">johndoe@example.com</a>.</p>
+Edits the person at INDEX 6 in TheTracker: edits his phone number to 91234567 and email address to <a href="mailto:johndoe@example.com">johndoe@example.com</a>.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -219,7 +213,7 @@ Edits the person at INDEX 6 in TheTracker: edits his phone to 91234567 and email
 <p>The <code>[PREFIX]/</code> should be replaced by <code>n/</code> (for Name), <code>p/</code> (Person), <code>e/</code> (Email), <code>a/</code> (Address), <code>t/</code> (Tag) to specify the field you want to edit.</p>
 </li>
 <li>
-<p>You can specify multiple fields you want to edit</p>
+<p>You can edit multiple fields</p>
 </li>
 <li>
 <p>The INDEX must be valid:</p>
@@ -229,7 +223,7 @@ Edits the person at INDEX 6 in TheTracker: edits his phone to 91234567 and email
 <p>Be a positive number</p>
 </li>
 <li>
-<p>Not larger than the size of the address book list</p>
+<p>Not larger than the size of the person list</p>
 </li>
 </ul>
 </div>
@@ -251,7 +245,7 @@ Edits the person at INDEX 6 in TheTracker: edits his phone to 91234567 and email
 <div class="paragraph">
 <p>Example:<br>
 <code>editmodule 1 mc/CS1101S</code><br>
-Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
+Edits the module of INDEX 1 in TheTracker: edits the module code to CS1101S.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -265,6 +259,9 @@ Edits the module of INDEX 1 in TheTracker: edits the moduleCode to CS1101S.</p>
 specify the field you want to edit</p>
 </li>
 <li>
+<p>You can edit multiple fields</p>
+</li>
+<li>
 <p>The INDEX must be valid:</p>
 <div class="ulist">
 <ul>
@@ -272,7 +269,7 @@ specify the field you want to edit</p>
 <p>Be a positive number</p>
 </li>
 <li>
-<p>Not larger than the size of the address book list</p>
+<p>Not larger than the size of the module list</p>
 </li>
 </ul>
 </div>
@@ -307,6 +304,9 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 specify the field you want to edit</p>
 </li>
 <li>
+<p>You can edit multiple fields</p>
+</li>
+<li>
 <p>The INDEX must be valid:</p>
 <div class="ulist">
 <ul>
@@ -314,7 +314,7 @@ specify the field you want to edit</p>
 <p>Be a positive number</p>
 </li>
 <li>
-<p>Not larger than the size of the address book list</p>
+<p>Not larger than the size of the occasion list</p>
 </li>
 </ul>
 </div>
@@ -427,12 +427,16 @@ should contain only alphanumeric and underscores (whitespaces are not allowed)</
 <p>For MacOS and Linux users: <code>export --txt /Users/Anna/Desktop/exported.txt</code></p>
 </li>
 <li>
-<p>For Windows users: <code>export --txt C:\Users\Anna\desktop\exported.txt</code>
-=== Importing data into TheTracker: <code>import</code> (coming in v 2.0)
-A command to allow the user to import information from external sources.</p>
+<p>For Windows users: <code>export --txt C:\Users\Anna\desktop\exported.txt</code></p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-data-into-thetracker-code-import-code-coming-in-v-2-0"><a class="link" href="#importing-data-into-thetracker-code-import-code-coming-in-v-2-0">Importing data into TheTracker: <code>import</code> (coming in v 2.0)</a></h3>
+<div class="paragraph">
+<p>A command to allow the user to import information from external sources.</p>
 </div>
 <div class="sect3">
 <h4 id="importing-xml-file"><a class="link" href="#importing-xml-file">Importing xml file</a></h4>
@@ -526,10 +530,11 @@ Returns an unmodifiable view of the list of Person backed by the internal list o
 <img src="../images/EditPersonSequenceDiagram.png" alt="EditPersonSequenceDiagram" width="500">
 </div>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>`editmodule` and `editoccasion` works in a similar way as `editperson`</pre>
+<div class="paragraph">
+<p><code>editmodule</code> and <code>editoccasion</code> works in a similar way as <code>editperson</code></p>
 </div>
+<div class="paragraph">
+<p>The mechanism for modifying <code>edit</code> commands to fit <code>insert</code> commands is similiar to and explained in <code>delete</code> command</p>
 </div>
 </div>
 <div class="sect3">
@@ -539,16 +544,31 @@ Returns an unmodifiable view of the list of Person backed by the internal list o
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (Current Implementation):</strong> <code>EditPersonCommand</code>, <code>EditModuleCommand</code> and <code>EditOccasionCommand</code> are totally irrelevant to each other
-**Pros:</p>
+<p><strong>Alternative 1 (Current Implementation):</strong> <code>EditPersonCommand</code>, <code>EditModuleCommand</code> and <code>EditOccasionCommand</code> are three separate classes</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Implementation is easy to understand
-**Cons:</p>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implementation is easy to understand</p>
 </li>
 <li>
+<p>Easy to manage the three entity lists</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
 <p>Lack of the essence of polymorphism, which is a key feature in OOP</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -573,7 +593,7 @@ inherits from <code>EditCommand</code>, then use <code>TypeUtil</code> to detect
 <div class="ulist">
 <ul>
 <li>
-<p><code>Person</code>, <code>Module</code>, <code>Occasion</code> are three relatively independent entity, it could be hard to handle when using
+<p><code>Person</code>, <code>Module</code>, <code>Occasion</code> are three relatively independent entities, it could be hard to handle when using
 polymorphism and put everything together</p>
 </li>
 </ul>
@@ -599,12 +619,9 @@ TheTracker (v1.4) supports exporting user data to xml file and txt file.</p>
 <p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> are both inherited from <code>ExportCommand</code>, which inherits from <code>Command</code> class</p>
 </div>
 <div class="paragraph">
-<p>In order to a direct access to the <code>Storage</code> component, the method <code>setStorage(Storage storage)</code> is added to <code>Command</code><br>
+<p>In order to gain a direct access to the <code>Storage</code> component, the method <code>setStorage(Storage storage)</code> is added to <code>Command</code><br>
 In order to reduce redundant code in commands that are not directly dependent on <code>Storage</code>, <code>setStorage(Storage storage)</code> is
 designed to be a non-abstract method. Only <code>ExportCommand</code> overrides this method.</p>
-</div>
-<div class="paragraph">
-<p>Both <code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> inherits from <code>ExportCommand</code>.</p>
 </div>
 <div class="sect4">
 <h5 id="for-exportxmlcommand"><a class="link" href="#for-exportxmlcommand">For ExportXmlCommand</a></h5>
@@ -620,10 +637,11 @@ designed to be a non-abstract method. Only <code>ExportCommand</code> overrides 
 <div class="sect4">
 <h5 id="for-exporttxtcommand"><a class="link" href="#for-exporttxtcommand">For ExportTxtCommand</a></h5>
 <div class="paragraph">
-<p><code>ExportTxtCommand</code> can be regarded as an extension of <code>ExportXmlCommand</code>.<br>
-This interaction of <code>ExportTxtCommand</code> and <code>Storage</code> component works in the same way of <code>ExportXmlCommand</code>.<br>
-The difference is: <code>ExportTxtCommand</code> first stored the exported xml file <code>temp.xml</code>;
-then, the method <code>parse()</code> of <code>XmlToTxtUtil</code> will parse the xml file to a txt file with defaulted style and layout
+<p><code>ExportTxtCommand</code> can be regarded as an extension of <code>ExportXmlCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>This interaction of <code>ExportTxtCommand</code> and <code>Storage</code> component works in the same way of <code>ExportXmlCommand</code>. The difference is: <code>ExportTxtCommand</code> first stored the exported xml file <code>temp.xml</code>;
+then, the method <code>XmlToTxtUtil.parse()</code> will parse the xml file to a txt file with defaulted style and layout
 and stored in the <code>exportedFilePath</code> specified by the user.</p>
 </div>
 </div>
@@ -659,7 +677,7 @@ and stored in the <code>exportedFilePath</code> specified by the user.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Not consistent with the format of other command (command + parameterPrefix + parameter)</p>
+<p>Not consistent with the format of other commands (command + parameterPrefix + parameter)</p>
 </li>
 </ul>
 </div>
@@ -689,7 +707,7 @@ and stored in the <code>exportedFilePath</code> specified by the user.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> have to be two independent command, which does not utilise polymorphism</p>
+<p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> have to be two independent commands, which does not utilise polymorphism</p>
 </li>
 <li>
 <p>Have unnecessary repetition of code</p>
@@ -771,22 +789,4 @@ checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary 
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="project-orbital-2018"><a class="link" href="#project-orbital-2018">PROJECT: ORBITAL 2018</a></h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">_Project Description</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>In this Orbital Project, we designed a 2D-pixel-style music-adventure Unity game. It is played on iOS platform.</p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:33:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:47:41 UTC</div></div></div></body></html>
