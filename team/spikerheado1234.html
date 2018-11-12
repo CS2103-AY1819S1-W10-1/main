@@ -91,6 +91,53 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="inserting-a-person-code-insertperson-code"><a class="link" href="#inserting-a-person-code-insertperson-code">Inserting a Person: <code>insertperson</code></a></h3>
+<div class="sect3">
+<h4 id="inserting-a-person-into-a-module-code-insertperson-code"><a class="link" href="#inserting-a-person-into-a-module-code-insertperson-code">Inserting a person into a module: <code>insertperson</code></a></h4>
+<div class="paragraph">
+<p>Builds an association between a module and a person within <code>TheTracker</code> by inserting
+a <code>person</code> bi-directionally into a <code>module</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>insertperson pi/PERSON_INDEX mi/MODULE_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>insertperson pi/1 mi/1</code> Builds an association between the first <code>person</code> and <code>module</code> by inserting <code>person</code> 1 bi-directionally
+into <code>module</code> 1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="inserting-a-person-into-an-occasion-code-insertperson-code"><a class="link" href="#inserting-a-person-into-an-occasion-code-insertperson-code">Inserting a person into an occasion: <code>insertperson</code></a></h4>
+<div class="paragraph">
+<p>Builds an association between an occasion and a person within <code>TheTracker</code> by inserting
+a <code>person</code> bi-directionally into an <code>occasion</code>.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>insertperson pi/PERSON_INDEX oi/OCCASION_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>insertperson pi/1 oi/1</code> Builds an association between the first <code>person</code> and <code>occasion</code> by inserting <code>person</code> 1 bi-directionally
+into <code>occasion</code> 1.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -106,6 +153,125 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="insertperson-feature"><a class="link" href="#insertperson-feature">InsertPerson feature</a></h3>
+<div class="paragraph">
+<p>The <code>InsertPerson</code> command is an advanced feature for TheTracker. It enables a bi-directional insert of a Person into
+either one of a <code>module</code> or an <code>occasion</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>To enable this feature to exist, the underlying structure between the entities <code>Person</code>, <code>Module</code> and <code>Occasion</code> have to
+be linked in a manner that will facilitate injections of one entity bi-directionally into another. The following class diagram
+depicts this new structure:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PersonModuleOccasionClassDiagram.png" alt="PersonModuleOccasionClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>For the following example we will use <code>InsertPerson</code> command to insert a <code>person</code>, bi-directionally, into a <code>module</code>.
+The usage for a bi-directional insert into an <code>occasion</code> is similar.</p>
+</div>
+<div class="paragraph">
+<p><code>InsertPerson</code> command extends the <code>Command</code> class and uses inheritance to facilitate implementation. It&#8217;s mechanism is
+facilitated by <code>VersionAddressBook</code>. Below is the associated sequence diagram for the <code>InsertPerson</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/InsertPersonSequenceDiagram.png" alt="InsertPersonSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>When the user first opens up <code>TheTracker</code> it loads up an instance of a <code>VersionAddressBook</code> and initializes
+the <code>currentStatePointer</code> to point at this instance of the <code>TheTracker</code>. When the user then executes the <code>InsertPerson</code>
+command an entirely new copy of the state of <code>TheTracker</code> is created and inserted as a new <code>VersionAddressBook</code> with the
+currentStatePointer being updated. Below is a diagram that depicts this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/InsertPersonStatePointerDiagram.png" alt="InsertPersonStatePointerDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The following steps represent the internal implementation of the <code>InsertPerson</code> command when inserting a <code>Person</code> into a <code>Module</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a <code>DeepDuplicate</code> and a <code>ShallowDuplicate</code> of the Both the <code>Person</code> and the <code>Module</code></p>
+</li>
+<li>
+<p>Insert the <code>ShallowDuplicate</code> of the module into the <code>DeepDuplicate</code> of the <code>Person&#8217;s</code> <code>UniqueModuleList</code></p>
+</li>
+<li>
+<p>Insert the <code>ShallowDuplicate</code> of the person into the <code>DeepDuplicate</code> of the <code>Module&#8217;s</code> <code>UniquePersonsList</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note: Further elaboration of the above implementation is discussed within the <code>Design Considerations</code> section.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>Why it is non-trivial:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For the feature to work coherently with <code>undo</code>/<code>redo</code> as well as <code>edit</code> an entire new replica of state
+of <code>TheTracker</code> must be created with the relevant entities bi-directionally inserted after this command has been executed.
+In accordance with this logic, two such methods were introduced to facilitate this feature&#8217;s functionality. The first is
+the method <code>makeDeepDuplicate</code>, the following class diagram shows how the method works in relation to calling <code>makeDeepDuplicate</code>
+on a person:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PersonMakeDeepDuplicate.png" alt="PersonMakeDeepDuplicate" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The method merely makes an entirely new copy of a <code>Person</code>/<code>Module</code>/<code>Occasion</code> by copying by <code>value</code> all of its predecessor&#8217;s
+attributes. We cannot, however, make do with only <code>makeDeepDuplicate</code> in order to implement the <code>InsertPerson</code> feature.
+The following scenario illustrates why:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Insertion of <code>Person</code> <code>x</code> into <code>Occasion</code> <code>y</code> would cause <code>x&#8217;s</code> occasion list to be populated by <code>y</code> and <code>y&#8217;s</code> person list
+to be populated by <code>x</code></p>
+</li>
+<li>
+<p>Insertion of <code>Person</code> <code>x</code> into <code>Module</code> <code>z</code> would cause <code>x&#8217;s</code> module list to be populated by <code>z</code> and <code>z&#8217;s</code> person list
+to be populated by <code>x</code>. But if we insert a deep copy of <code>x</code> into <code>z</code> this would entail us replicating <code>y</code>, which would entail
+us replicating the person list of <code>y</code> and, thus, <code>x</code> and so the program will halt in an infinite regress until a
+<code>StackOverFlow</code> is thrown.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To counter this, we have implemented a <code>makeShallowDuplicate</code> which replicates an entity, but with an empty list. For example,
+calling <code>makeShallowDuplicate</code> on a <code>Person</code> would have the following effect:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PersonMakeShallowDuplicate.png" alt="PersonMakeShallowDuplicate" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Upon insertion of a <code>Module</code> into a <code>Person</code> the respective <code>Module&#8217;s</code> <code>ShallowDuplicate</code> is inserted to avoid this
+error.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
@@ -138,4 +304,5 @@
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 06:38:12 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 07:56:09 UTC</div></div></div></body></html>
