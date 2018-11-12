@@ -20,7 +20,11 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: *Improved existing edit function to edit any type of entry.</p>
+<p><strong>Major enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Improved existing edit function to edit any type of entry.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -34,7 +38,26 @@ similar way of how he edit a person in his address book.</p>
 <p>Highlights: This feature is necessary for a user to simultaneously maintain all three types of entries.</p>
 </li>
 <li>
-<p>Credits: This enhancement required the different lists to be handled independently, but with all actions tracked simultaneously (e.g. for undo/redo).</p>
+<p>Credits: This enhancement requires the different lists to be handled independently, but with all actions tracked simultaneously (e.g. for undo/redo).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Create the export function</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to export user data to a specified file type at a specified location.</p>
+</li>
+<li>
+<p>Highlights: This feature enhance user&#8217;s experience to TheTracker. He can now raise a data communication (with import feature in coming v2.0) with the external world.</p>
+</li>
+<li>
+<p>Credits: This enhancement requires the command to access storage access directly, and has restrictions on the file path user typed in.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -56,7 +79,7 @@ similar way of how he edit a person in his address book.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Set up milestone deadlines, close issues and milestones accordingly on GitHub</p>
+<p>Set up milestone deadlines, close issues accordingly on GitHub</p>
 </li>
 </ul>
 </div>
@@ -72,13 +95,10 @@ similar way of how he edit a person in his address book.</p>
 <p>Add related classes for <code>EditPerson</code>, <code>EditModule</code> and <code>EditOccasion</code> (Pull requests <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/108">#108</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage (Pull requests <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/108">#108</a>)</p>
+<p>Wrote additional tests for existing features to increase coverage (Pull requests <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/108">#108</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/189" class="bare">https://github.com/CS2103-AY1819S1-W10-1/main/pull/189</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for Undo/Redo command features to increase coverage (in progress)</p>
-</li>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide</p>
+<p>Did cosmetic tweaks to existing contents of the User Guide (Pull requests )</p>
 </li>
 </ul>
 </div>
@@ -94,19 +114,6 @@ similar way of how he edit a person in his address book.</p>
 </div>
 </li>
 <li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project, eg: (<a href="https://github.com/">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
@@ -116,19 +123,18 @@ similar way of how he edit a person in his address book.</p>
 <li>
 <p>Updated AboutUs.adoc to match application design (Pull requests <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/34">#34</a>)</p>
 </li>
-</ul>
-</div>
+<li>
+<p>Polish documentation style to keep consistent.
+== Contributions to the User Guide</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
-<div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 100%;">
@@ -245,6 +251,114 @@ Occasion Date, Occasion Location and Tag respectively of the Occasion which is s
 </div>
 </div>
 <div class="sect2">
+<h3 id="exporting-user-data-to-xml-txt-code-export-code"><a class="link" href="#exporting-user-data-to-xml-txt-code-export-code">Exporting user data to xml/txt: <code>export</code></a></h3>
+<div class="paragraph">
+<p>A command to allow the user to export data from TheTracker to a specified location.</p>
+</div>
+<div class="sect3">
+<h4 id="exporting-data-to-xml-file"><a class="link" href="#exporting-data-to-xml-file">Exporting data to xml file</a></h4>
+<div class="paragraph">
+<p>Export data to a xml file.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>export --xml [FILEPATH]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use a single whitespace to divide <code>--xml</code> and <code>[FILEPATH]</code>.</p>
+</li>
+<li>
+<p>A valid <code>[FILEPATH]</code> can only contain alphanumeric and underscore.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For MacOS and Linux users: <code>export --xml /Users/Anna/Desktop/exported.xml</code></p>
+</li>
+<li>
+<p>For Windows users: <code>export --xml C:\Users\Anna\desktop\exported.xml</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exporting-data-to-txt-file"><a class="link" href="#exporting-data-to-txt-file">Exporting data to txt file</a></h4>
+<div class="paragraph">
+<p>Export data to a txt file.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>export --txt [FILEPATH]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use a single whitespace to divide <code>--txt</code> and <code>[FILEPATH]</code>.</p>
+</li>
+<li>
+<p>A valid <code>[FILEPATH]</code> can only contain alphanumeric and underscore.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For MacOS and Linux users: <code>export --txt /Users/Anna/Desktop/exported.txt</code></p>
+</li>
+<li>
+<p>For Windows users: <code>export --txt C:\Users\Anna\desktop\exported.txt</code>
+=== Importing data into TheTracker: <code>import</code> (coming in v 2.0)
+A command to allow the user to import information from external sources.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="importing-xml-file"><a class="link" href="#importing-xml-file">Importing xml file</a></h4>
+<div class="paragraph">
+<p>Format:<br>
+<code>import --xml [FILEPATH]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For MacOS and Linux users: <code>import --xml /Users/Anna/Desktop/imported.xml</code></p>
+</li>
+<li>
+<p>For Windows users: <code>import --xml C:\Users\Anna\desktop\imported.xml</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to undo previous commands.<br></p>
@@ -348,14 +462,10 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="edit-person-module-occasion-feature"><a class="link" href="#edit-person-module-occasion-feature">Edit Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
-<p>TheTracker is an extension of address book application. Besides
-supporting basic address book features for <code>Person</code>, we also intended to
-make those features be available for <code>Module</code> and <code>Occasion</code>. This makes
-TheTracker to be able to track the modules a person takes, as
-well as the occasions he participates in.
-=== Edit Person/Module/Occasion Feature
-<code>edit</code> is a basic feature for <code>TheTracker</code>.<br>
+<p><code>edit</code> is a basic feature for <code>TheTracker</code>.<br>
 It supports editing of <code>Person</code>, <code>Module</code> and <code>Occasion</code> by command <code>editperson</code>,
 <code>editmodule</code> and <code>editoccasion</code> respectively.</p>
 </div>
@@ -480,10 +590,189 @@ polymorphism and put everything together</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="export"><a class="link" href="#export">Export</a></h3>
+<div class="paragraph">
+<p>Export is a feature to enhance the functionality of TheTracker.
+TheTracker (v1.4) supports exporting user data to xml file and txt file.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> are both inherited from <code>ExportCommand</code>, which inherits from <code>Command</code> class</p>
+</div>
+<div class="paragraph">
+<p>In order to a direct access to the <code>Storage</code> component, the method <code>setStorage(Storage storage)</code> is added to <code>Command</code><br>
+In order to reduce redundant code in commands that are not directly dependent on <code>Storage</code>, <code>setStorage(Storage storage)</code> is
+designed to be a non-abstract method. Only <code>ExportCommand</code> overrides this method.</p>
+</div>
+<div class="paragraph">
+<p>Both <code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> inherits from <code>ExportCommand</code>.</p>
+</div>
+<div class="sect4">
+<h5 id="for-exportxmlcommand"><a class="link" href="#for-exportxmlcommand">For ExportXmlCommand</a></h5>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>ExportXmlCommand</code> works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EditXmlCommandSequenceDiagram.png" alt="EditXmlCommandSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="for-exporttxtcommand"><a class="link" href="#for-exporttxtcommand">For ExportTxtCommand</a></h5>
+<div class="paragraph">
+<p><code>ExportTxtCommand</code> can be regarded as an extension of <code>ExportXmlCommand</code>.<br>
+This interaction of <code>ExportTxtCommand</code> and <code>Storage</code> component works in the same way of <code>ExportXmlCommand</code>.<br>
+The difference is: <code>ExportTxtCommand</code> first stored the exported xml file <code>temp.xml</code>;
+then, the method <code>parse()</code> of <code>XmlToTxtUtil</code> will parse the xml file to a txt file with defaulted style and layout
+and stored in the <code>exportedFilePath</code> specified by the user.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-the-role-of-exported-file-type"><a class="link" href="#aspect-the-role-of-exported-file-type">Aspect: The role of exported file type</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>As a parameter (current implementation):</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format: <code>export --xml [FILEPATH]</code> and <code>export --txt [FILEPATH]</code></p>
+</li>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can utilise polymorphism</p>
+</li>
+<li>
+<p>Can avoid unnecessary repetition of code</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Not consistent with the format of other command (command + parameterPrefix + parameter)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>As a part of command :</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Format: <code>exportxml fp/[FILEPATH]</code> and <code>exporttxt fp/[FILEPATH]</code></p>
+</li>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can keep consistent with the format of other command (command + parameterPrefix + parameter)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> have to be two independent command, which does not utilise polymorphism</p>
+</li>
+<li>
+<p>Have unnecessary repetition of code</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-the-location-of-valid-filepath-check"><a class="link" href="#aspect-the-location-of-valid-filepath-check">Aspect: The Location of valid filepath check</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Check in <code>ExportCommand</code> (current implementation) :</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As only export commands are directly related to external file path that the user types in, which needs to check validation,
+checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary checking.</p>
+</li>
+<li>
+<p>Easy to implement and clear to understand</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can only check the validation of external file path that the user types in</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Check in <code>AddressBookStorage</code> :</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Can check the validation of all the file paths occurred in <code>Storage</code> component of this project</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Have unnecessary checking of the validation of file paths
+=== Undo/Redo feature
+==== Current Implementation</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
 <code>AddressBook</code> with an command history, stored internally as an
@@ -649,8 +938,9 @@ new command:</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -746,4 +1036,4 @@ The following sequence diagram shows how the <code>history</code> operation work
 <p>In this Orbital Project, we designed a 2D-pixel-style music-adventure Unity game. It is played on iOS platform.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 15:45:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 02:09:26 UTC</div></div></div></body></html>
