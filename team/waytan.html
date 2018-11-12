@@ -28,12 +28,20 @@ It demonstrates my ability to contribute as a team member of a software engineer
 <p>Description: Allows the user to delete a person, module or occasion by index. It also removes this entry from all other linked entries.</p>
 </li>
 <li>
-<p>Importance: This feature makes it easy for a user to remove any unnecessary entries from TheTracker.
-It also saves users from manually removing the entry from all associated entries.</p>
+<p>Highlights: This enhancement has two aspects:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Inferred Deletion: The deletion will be applied to the currently active list.</p>
 </li>
 <li>
-<p>Highlights: This enhancement required deletion from the three lists to be handled independently, but with entries in all lists being updated.
-This was challenging to implement as it required new objects to be create and linked in order for the undo/redo operations to work.</p>
+<p>Deep Deletion: The deletion will automatically all references to this entry (i.e. from other entries' lists)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Design Considerations: Based on the current undo/redo implementation, new copies must be created for updated entries.</p>
 </li>
 </ul>
 </div>
@@ -92,6 +100,12 @@ This was challenging to implement as it required new objects to be create and li
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/81">#81</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/87">#87</a></p>
 </li>
 <li>
+<p>Methods written for implementation of deep deletion were adapted for edit and removeModule.</p>
+</li>
+<li>
+<p>Set up test utils for modules and occasions: <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/97">#97</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/109">#109</a></p>
+</li>
+<li>
 <p>Helped in identifying bugs and offered suggestions for debugging</p>
 </li>
 </ul>
@@ -115,10 +129,7 @@ This was challenging to implement as it required new objects to be create and li
 <div class="ulist">
 <ul>
 <li>
-<p>Set up module class, various components and their unit tests.</p>
-</li>
-<li>
-<p>Set up test utils for modules and occasions: <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/97">#97</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/109">#109</a></p>
+<p>Set up <code>Module</code> class and its associated fields/exceptions</p>
 </li>
 </ul>
 </div>
@@ -425,18 +436,47 @@ On startup, no entry should be selected. Entries will not be deselected until an
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>Even though the storage unit contains three types of entries - Person, Module and Occasion, the behaviour of all three types is generally similar to each other.</p>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-dependencies"><a class="link" href="#aspect-implementation-of-dependencies">Aspect: Implementation of Dependencies</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have 3 separate classes for Person, Module and Occasion<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Each class can be designed specifically to accommodate suitable fields</p>
+</li>
+<li>
+<p>Cons: Some code duplication in similar methods</p>
+</li>
+</ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram" width="800">
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Have a parent <code>Entity</code> class, with all three classes inheriting from it</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Polymorphism can be implemented for similar methods</p>
+</li>
+<li>
+<p>Cons: Difficulty in implementation, (e.g. <code>UniqueEntityList</code> must be implemented in the model
+and <code>EntityCard</code>, <code>EntityListPanel</code> in the UI).</p>
+</li>
+</ul>
 </div>
-<div class="title">Figure 2. Activity Diagram when user deletes any entity</div>
+</li>
+<li>
+<p><strong>Decision:</strong> Alternative 1 was adopted, as the 3 classes do not have the exact same features.
+For example, a <code>Person</code> has 2 separate lists of Modules and Occasions respectively,
+but a <code>Module</code> or <code>Occasion</code> only contains a Person list.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>The diagram above shows that although these classes are separate, they serve very similar purposes.
-They are handled by the same parser, with the model determining the appropriate list to act upon.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:35:10 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:25:33 UTC</div></div></div></body></html>

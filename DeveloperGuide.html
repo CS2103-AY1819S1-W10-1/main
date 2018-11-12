@@ -30,7 +30,7 @@
 </li>
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#dependency-of-three-types">4.1. Dependency of three types</a></li>
+<li><a href="#dependencies-between-persons-modules-and-occasions">4.1. Dependencies between Persons, Modules and Occasions</a></li>
 <li><a href="#add-person-module-occasion-feature">4.2. Add Person/Module/Occasion Feature</a></li>
 <li><a href="#find-person-module-occasion-feature">4.3. Find Person/Module/Occasion Feature</a></li>
 <li><a href="#select-person-module-occasion-feature">4.4. Select Person/Module/Occasion Feature</a></li>
@@ -44,6 +44,7 @@
 <li><a href="#logging">4.12. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.13. Configuration</a></li>
 <li><a href="#delete">4.14. Delete</a></li>
+<li><a href="#Updating-Lists">4.15. Updating of Lists (General)</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -463,21 +464,10 @@ Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</c
 </td>
 <td class="content">
 Note how the event is propagated through the <code>EventsCenter</code> to the <code>Storage</code> and <code>UI</code> without <code>Model</code> having to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct coupling between components.
-Even though the storage unit contains three types of entries - Person, Module and Occasion, the behaviour of all three types is generally similar to each other.
+The sections below give more details of each component.
 </td>
 </tr>
 </table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram" width="800">
-</div>
-<div class="title">Figure 5. Activity Diagram when user deletes any entity</div>
-</div>
-<div class="paragraph">
-<p>The diagram above shows that although these classes are separate, they serve very similar purposes.
-They are handled by the same parser, with the model determining the appropriate list to act upon.
-The sections below give more details of each component.</p>
 </div>
 </div>
 <div class="sect2">
@@ -486,7 +476,7 @@ The sections below give more details of each component.</p>
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-<div class="title">Figure 6. Structure of the UI Component</div>
+<div class="title">Figure 5. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W10-1/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -520,7 +510,7 @@ The sections below give more details of each component.</p>
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
-<div class="title">Figure 7. Structure of the Logic Component</div>
+<div class="title">Figure 6. Structure of the Logic Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -549,7 +539,7 @@ The sections below give more details of each component.</p>
 <div class="content">
 <img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
 </div>
-<div class="title">Figure 8. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 7. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -558,7 +548,7 @@ The sections below give more details of each component.</p>
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
-<div class="title">Figure 9. Structure of the Model Component</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W10-1/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -603,7 +593,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Structure of the Storage Component</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103-AY1819S1-W10-1/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -636,18 +626,32 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
+<div class="sect2">
+<h3 id="dependencies-between-persons-modules-and-occasions"><a class="link" href="#dependencies-between-persons-modules-and-occasions">4.1. Dependencies between Persons, Modules and Occasions</a></h3>
 <div class="paragraph">
-<p>TheTracker is an extension of address book application. Besides
-supporting basic address book features for <code>Person</code>, we also intended to
-make those features be available for <code>Module</code> and <code>Occasion</code>. This makes
-TheTracker to be able to track the modules a person takes, as
+<p>TheTracker is an extended address book application. In addition to
+supporting basic address book features for <code>Person</code>, these features are also made available for <code>Module</code> and <code>Occasion</code>.
+As a result, TheTracker to be able to track the modules a person takes, as
 well as the occasions he participates in.</p>
 </div>
-<div class="sect2">
-<h3 id="dependency-of-three-types"><a class="link" href="#dependency-of-three-types">4.1. Dependency of three types</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To facilitate this the underlying structure of <code>Person</code>, <code>Module</code> and <code>Occasion</code> have to
+be linked in a manner that will facilitate injections of one entity bi-directionally into another.
+The following class diagram depicts this structure:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PersonModuleOccasionClassDiagram.png" alt="PersonModuleOccasionClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Of course, each of the three entities will then have their own independent fields as well.</p>
+</div>
 <div class="paragraph">
 <p>Below are the class diagrams or Person, Module and Occasion.
-For simplicity consideration, we divide the class diagrams in three seperate ones.</p>
+For simplicity consideration, we divide the class diagrams in three separate ones.</p>
 </div>
 <div class="paragraph">
 <p>Class Diagram for Person:</p>
@@ -674,6 +678,49 @@ For simplicity consideration, we divide the class diagrams in three seperate one
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-dependencies"><a class="link" href="#aspect-implementation-of-dependencies">Aspect: Implementation of Dependencies</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Have 3 separate classes for Person, Module and Occasion<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Each class can be designed specifically to accommodate suitable fields</p>
+</li>
+<li>
+<p>Cons: Some code duplication in similar methods</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Have a parent <code>Entity</code> class, with all three classes inheriting from it</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Polymorphism can be implemented for similar methods</p>
+</li>
+<li>
+<p>Cons: Difficulty in implementation, (e.g. <code>UniqueEntityList</code> must be implemented in the model
+and <code>EntityCard</code>, <code>EntityListPanel</code> in the UI).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Decision:</strong> Alternative 1 was adopted, as the 3 classes do not have the exact same features.
+For example, a <code>Person</code> has 2 separate lists of Modules and Occasions respectively,
+but a <code>Module</code> or <code>Occasion</code> only contains a Person list.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="add-person-module-occasion-feature"><a class="link" href="#add-person-module-occasion-feature">4.2. Add Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
@@ -685,14 +732,14 @@ There are thus three similar commands which are related to this add command:
 <p>The add command adds the entity (person, module, occasion) with the attributes / fields provided by the user.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">4.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>As the <code>addperson</code>, <code>addmodule</code>, <code>addoccasion</code> commands' logic are similar to one another,
 the <code>addperson</code> command will be taken as the sole example in this document.</p>
 </div>
 <div class="paragraph">
 <p><code>AddPersonCommand</code> extends the <code>Command</code> class and uses inheritance to facilitate implementation.
-It&#8217;s mechanism is facilitated by <code>VersionAddressBook</code>. In addition, it implements the following operations:
+Its mechanism is facilitated by <code>VersionAddressBook</code>. In addition, it implements the following operations:
 * <code>VersionedAddressBook#addPerson(Person)</code>: Update the targetedPerson with edited fields
 * <code>VersionedAddressBook#commit()</code>: Saves the current book state in the command history</p>
 </div>
@@ -738,7 +785,7 @@ after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-addperson-addmodule-addoccasion-executes"><a class="link" href="#aspect-how-addperson-addmodule-addoccasion-executes">Aspect: How addperson/addmodule/addoccasion executes</a></h5>
 <div class="ulist">
@@ -801,7 +848,7 @@ fields.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>As the <code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code> commands' logic are similar to one another,
 the <code>findperson</code> command will be taken as the sole example in this document. The findperson string
@@ -813,7 +860,7 @@ persons based on the filter specified.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-find-executes"><a class="link" href="#aspect-how-find-executes">Aspect: How find executes</a></h5>
 <div class="ulist">
@@ -866,7 +913,7 @@ Currently, the select feature selects by index in the observed list which has be
 UI.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The select string command input in the command line is passed into the <code>AddressBookParser</code> object,
 which parses the input and creates a <code>SelectCommandParser</code> to help it further parse the argument and
@@ -884,7 +931,7 @@ It supports editing of <code>Person</code>, <code>Module</code> and <code>Occasi
 <code>editmodule</code> and <code>editoccasion</code> respectively.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The following section will use <code>EditPersonCommand</code> as an example to explain the implementation.
 <code>EditModuleCommand</code> and <code>EditOccasionCommand</code> use the same mechanism as <code>EditPersonCommand</code>.<br></p>
@@ -927,7 +974,7 @@ Returns an unmodifiable view of the list of Person backed by the internal list o
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-editperson-editmodule-editoccasion-executes"><a class="link" href="#aspect-how-editperson-editmodule-editoccasion-executes">Aspect: How editperson/editmodule/editoccasion executes</a></h5>
 <div class="ulist">
@@ -988,17 +1035,7 @@ polymorphism and put everything together</p>
 either one of a <code>module</code> or an <code>occasion</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.6.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>To enable this feature to exist, the underlying structure between the entities <code>Person</code>, <code>Module</code> and <code>Occasion</code> have to
-be linked in a manner that will facilitate injections of one entity bi-directionally into another. The following class diagram
-depicts this new structure:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/PersonModuleOccasionClassDiagram.png" alt="PersonModuleOccasionClassDiagram" width="800">
-</div>
-</div>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>For the following example we will use <code>InsertPerson</code> command to insert a <code>person</code>, bi-directionally, into a <code>module</code>.
 The usage for a bi-directional insert into an <code>occasion</code> is similar.</p>
@@ -1044,7 +1081,7 @@ currentStatePointer being updated. Below is a diagram that depicts this:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Why it is non-trivial:</p>
 </div>
@@ -1101,7 +1138,7 @@ error.</p>
 <div class="sect2">
 <h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.7. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
 <code>AddressBook</code> with an command history, stored internally as an
@@ -1268,7 +1305,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1371,7 +1408,7 @@ The following sequence diagram shows how the <code>history</code> operation work
 TheTracker (v1.4) supports exporting user data to xml file and txt file.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.10.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.10.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> are both inherited from <code>ExportCommand</code>, which inherits from <code>Command</code> class</p>
 </div>
@@ -1406,7 +1443,7 @@ and stored in the <code>exportedFilePath</code> specified by the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.10.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.10.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-the-role-of-exported-file-type"><a class="link" href="#aspect-the-role-of-exported-file-type">Aspect: The role of exported file type</a></h5>
 <div class="ulist">
@@ -1597,76 +1634,108 @@ checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary 
 </div>
 <div class="sect2">
 <h3 id="delete"><a class="link" href="#delete">4.14. Delete</a></h3>
-<div class="paragraph">
-<p><code>delete</code> is a basic feature provided by <code>TheTracker</code>.
-It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion</code>, by the same <code>DeletePersonCommand</code> <code>DeleteModuleCommand</code> and
-<code>DeleteOccasionCommand</code> respectively.</p>
-</div>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.14.1. Current Implementation</a></h4>
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.14.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>This following section will use <code>DeletePersonCommand</code> as an example, <code>DeleteModuleCommand</code> and  <code>DeleteOccasionCommand</code>
-follows the same mechanism. <code>DeletePersonCommand</code> extends the <code>Command</code> class and uses inheritance to facilitate
-implementation.</p>
+<p>The <code>delete</code> command will delete a <code>Person</code>, <code>Module</code> or <code>Occasion</code>.
+Similar to other commands, a new <code>ReadOnlyAddressBook</code> is created upon the execution of this command.<br>
+It can then be accessed within the <code>VersionedAddressBook</code> when executing <code>undo</code> or <code>redo</code>.</p>
 </div>
 <div class="paragraph">
-<p>Generally, it implements the following operation:</p>
+<p>The sequence diagram below (reproduced from <a href="#Design-Logic">Section 3.3, &#8220;Logic component&#8221;</a>) shows that
+the high-level implementation is similar to the earlier commands.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>However, the current implementation also allows for 2 useful functionalities in this feature:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>DeletePersonCommand#excute(Model model, CommandHistory history)</code>: deletes the Person of the <code>Index</code> passed to the <code>DeletePersonCommand</code> class</p>
+<p>Inferred Deletion: As we maintain the <a href="#Type Inference">active type</a>, the deletion will be applied to the currently active list.</p>
+</li>
+<li>
+<p>Deep Deletion: Using <a href="#list updating">list updating</a>, all references to this entry can be removed (i.e. from other entries' lists).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>This operation is exposed in the Model interface as Model#getFilteredEntity(), Model#deleteEntity() and Model#commitAddressBook() respectively.</p>
-</div>
-<div class="paragraph">
-<p>Provided below is an usage scenario instance. It illustrates how the
-delete mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1: The user launches TheTracker for the first time. The
-<code>VersionedAddressBook</code> will be initialised with the initial address book
-state.</p>
-</div>
-<div class="paragraph">
-<p>Step 2: The user executes <code>addperson n/David&#8230;&#8203;</code> command to add a person named
-David in his TheTracker. The parser <code>AddPersonCommandParser</code> will parse the person&#8217;s attributes and create
-a new person object with these attributes and pass the person to <code>AddPersonCommand</code>. The <code>addperson</code> command
-calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker
-after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be saved in the <code>addressBookStateList</code>.
-(refer to the Add Command diagram)</p>
-</div>
-<div class="paragraph">
-<p>Step 3: The user executes <code>deleteperson 1</code> to delete the person who has an index 1 (named David) in the current active list.
-The parser <code>DeletePersonCommandParser</code> will identify by the index of the person to be
-deleted.The <code>deleteperson</code> command calls Model#getFilteredPersonList(), Model#deletePerson()
-and <code>Model#commitAddressBook()</code>, and causes modified address book state to be saved into the <code>addressBookStateList</code></p>
+<p>The following activity diagram gives a broad overview of the deletion process:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeleteDeleteCommandStateListDiagram.png" alt="DeleteDeleteCommandStateListDiagram" width="800">
+<img src="images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the delete operation works:</p>
+<p>In performing deep deletion, almost all "related" objects are copied.<br></p>
+</div>
+<div class="paragraph">
+<p>For example, suppose TheTracker is initialised in the following manner:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2 Persons <code>p1</code>, <code>p2</code> and 2 Modules <code>m1</code>, <code>m2</code> are created</p>
+</li>
+<li>
+<p><code>p1</code> is inserted into <code>m1</code>, <code>m2</code></p>
+</li>
+<li>
+<p><code>p2</code> is inserted into <code>m1</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The current object diagram can be drawn as follows (unnecessary fields omitted):</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram" width="800">
+<img src="images/DeepDeletionObjectDiagramBefore.png" alt="DeepDeletionObjectDiagramBefore" width="800">
 </div>
+</div>
+<div class="paragraph">
+<p>After deleting <code>p1</code>, the new object diagram will be:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeepDeletionObjectDiagramAfter.png" alt="DeepDeletionObjectDiagramAfter" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>p1</code> and its <code>UniqueModuleList</code> is deleted</p>
+</li>
+<li>
+<p><code>p2</code> is not affected</p>
+</li>
+<li>
+<p>A <strong>new</strong> version of <code>m1</code> is created.
+It has a new <code>UniquePersonList</code>, which contains a new <strong>copy</strong> of <code>p2</code> (copied from <code>p2Copy1</code>)</p>
+</li>
+<li>
+<p>A <strong>new</strong> version of <code>m2</code> is created.
+It has a new <code>UniquePersonList</code> which is empty.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.14.2. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.14.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-delete-executes"><a class="link" href="#aspect-how-delete-executes">Aspect: How delete executes</a></h5>
+<h5 id="aspect-explicit-implicit-deletion"><a class="link" href="#aspect-explicit-implicit-deletion">Aspect: Explicit/Implicit Deletion</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (Use tags):</strong> Inputs the type of the entity to be deleted.</p>
+<p><strong>Alternative 1 (Current Implementation):</strong> Check the active type from the model, and delete from the list.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1674,7 +1743,10 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 <div class="ulist">
 <ul>
 <li>
-<p>Easy for user to understand the usage.</p>
+<p>User can use <code>delete</code> instead of typing <code>deleteperson</code>, <code>deletemodule</code> or <code>deleteoccasion</code> in full.</p>
+</li>
+<li>
+<p>User is explicitly prevented from deleting entries from an inactive list</p>
 </li>
 </ul>
 </div>
@@ -1684,13 +1756,7 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 <div class="ulist">
 <ul>
 <li>
-<p>Needs to implement additional class type for checking which type of Entity and which Entity list to delete from.</p>
-</li>
-<li>
-<p>Needs to search for the Entity in the whole list which may be slow.</p>
-</li>
-<li>
-<p>User input Entity name may not be valid, which needs extra prompt.</p>
+<p>Harder to implement.</p>
 </li>
 </ul>
 </div>
@@ -1699,7 +1765,7 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Inputs the index number of entity to be deleted.</p>
+<p><strong>Alternative 2 :</strong> 3 commands <code>deleteperson</code>, <code>deletemodule</code> and <code>deleteoccasion</code> to delete from the respective list.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1707,10 +1773,7 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 <div class="ulist">
 <ul>
 <li>
-<p>Easy to implement.</p>
-</li>
-<li>
-<p>Fast retrieval of Entity in the list.</p>
+<p>Easier to implement</p>
 </li>
 </ul>
 </div>
@@ -1720,7 +1783,10 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 <div class="ulist">
 <ul>
 <li>
-<p>User needs to know the index number of the Entity to be deleted.</p>
+<p>User may delete from the wrong list without realising</p>
+</li>
+<li>
+<p>Inconvenient for user to type out full command</p>
 </li>
 </ul>
 </div>
@@ -1730,6 +1796,230 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 </li>
 </ul>
 </div>
+</div>
+<div class="sect4">
+<h5 id="aspect-deletion-by-index-fields"><a class="link" href="#aspect-deletion-by-index-fields">Aspect: Deletion by Index/Fields</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Implementation):</strong> Delete entries by index</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User can easily identify the index from the List Panel</p>
+</li>
+<li>
+<p>User can use the same command for all 3 lists</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User needs to user a <code>find</code> command first if he cannot find the entry</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Delete entries by field (e.g. delete n/john)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User can find an entry and delete them currently</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Have to decide what to do if multiple entries satisfying the condition are found</p>
+</li>
+<li>
+<p>User has to remember prefixes in order to delete an entry</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-shallow-deep-deletion"><a class="link" href="#aspect-shallow-deep-deletion">Aspect: Shallow/Deep Deletion</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Implementation):</strong> Deleted entry is removed from all linked entries</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User can completely remove an entry from all mentions in TheTracker</p>
+</li>
+<li>
+<p><code>removeperson</code> implementation does not need to check whether an entry still exists in the address book</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Difficult to implement</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Only allow entries that are not referenced to be deleted</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User will not accidentally delete an entry that is used</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User must manually use the <code>removePerson</code> command to eliminate all references</p>
+</li>
+<li>
+<p>Difficult to implement</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3:</strong> Deleted entries can remain in all linked entries</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement</p>
+</li>
+<li>
+<p>User can keep archival information for an entry</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Very tedious to remove all mentions of an entry <strong>after</strong> it has been deleted</p>
+</li>
+<li>
+<p>User may be misled that an entry still exists</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Updating-Lists"><a class="link" href="#Updating-Lists">4.15. Updating of Lists (General)</a></h3>
+<div class="paragraph">
+<p>When executing commands for a particular type of entry, <em>another</em> type of entry can modified.</p>
+</div>
+<div class="paragraph">
+<p>Naturally, <code>insertperson</code> and <code>removeperson</code> will affect a person and a module/occasion.<br>
+However, both <code>edit</code> and <code>delete</code> also can affect multiple types of entries.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If an entry is edited, all linked entries should reflect the changes accordingly.</p>
+</li>
+<li>
+<p>If an entry is deleted, all linked entries should remove this entry from their list.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.15.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>To facilitate the execution of <code>undo</code> and <code>redo</code>, a new replacement person, module or occasion is created
+to replace the original entry. By avoiding modification of these entries, previous versions of
+the <code>ReadOnlyAddressBook</code> will not be incorrectly modified.</p>
+</div>
+<div class="paragraph">
+<p>Currently, a list only stores a <strong>copy</strong> of the desired entries, instead of the actual entries.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.15.2. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Suppose that a person needs to be edited/deleted. Then correctly implementing any of these commands requires 3 stages:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Locate all linked modules and occasions</p>
+</li>
+<li>
+<p>Replace each module and occasion with an updated version</p>
+</li>
+<li>
+<p>Edit/Delete the person</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1794,7 +2084,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3382,4 +3672,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:35:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:25:33 UTC</div></div></div></body></html>
