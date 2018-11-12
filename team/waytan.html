@@ -181,19 +181,6 @@ This was challenging to implement as it required new objects to be create and li
 </li>
 </ol>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The info panel does not refresh even after you switch between lists, just in case you want to refer to other lists
-while editing an entry. To refresh the info panel, use the <code>select</code> command.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="using-the-gui"><a class="link" href="#using-the-gui">Using the GUI</a></h3>
@@ -227,8 +214,8 @@ Each of them contains a compulsory field, optional fields, optional tags and rel
 <li>
 <p><strong>Tags</strong> - One or more alphanumeric strings (A-Z, 0-9), with no limit on length.<br>
 Note: An entry can have 0 or any positive number of tags.<br>
-Valid: Friend, CS2103, Must RSVP<br>
-Invalid: Buddy!, CS2103:(, 25/12/2018</p>
+Valid: <code>Friend, CS2103, Must RSVP</code><br>
+Invalid: <code>Buddy!, CS2103:(, 25/12/2018</code></p>
 </li>
 </ul>
 </div>
@@ -245,25 +232,25 @@ Invalid: Buddy!, CS2103:(, 25/12/2018</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Name</strong> (compuslory) - One or more alphanumeric strings, with no limit on length.<br>
-Valid: Ashwin Raj, Damith Rajapakse, Bob12345<br>
-Invalid: Ashwin Raj S/O Yadav, Damith C. Rajapakse, Bob12345!!!</p>
+<p><strong>Name</strong> (compulsory) - One or more alphanumeric strings, with no limit on length.<br>
+Valid: <code>Ashwin Raj, Damith Rajapakse, Bob12345</code><br>
+Invalid: <code>Ashwin Raj S/O Yadav, Damith C. Rajapakse, Bob12345!!!</code></p>
 </li>
 <li>
 <p><strong>Phone Number</strong> - 3 or more digits (0-9), with no limit on length.<br>
-Valid: 999, 1800123456, 659192939495<br>
-Invalid: 9, 1800 123456, +659192939495</p>
+Valid: <code>999, 1800123456, 659192939495</code><br>
+Invalid: <code>9, 1800 123456, +659192939495</code></p>
 </li>
 <li>
 <p><strong>Email</strong> - A single string with an @ character in between the username and domain name.<br>
-Username can contain the following special characters: !#$%&amp;'*+/=?`{|}~^.-<br>
+Username can contain the following special characters: !#$%&amp;'*+/=?<code>{|}~^.-<br>
 Domain name should be at least 3 letters long.<br>
-Valid: alex@abc, <a href="mailto:bob123@xyz.com">bob123@xyz.com</a>, example!<a href="mailto:123@nus.edu.sg">123@nus.edu.sg</a><br>
-Invalid: alex, bob@co, example@<a href="mailto:123@nus.edu.sg">123@nus.edu.sg</a></p>
+Valid: `alex@abc, <a href="mailto:bob123@xyz.com">bob123@xyz.com</a>, example!<a href="mailto:123@nus.edu.sg">123@nus.edu.sg</a></code><br>
+Invalid: <code>alex, bob@co, example@<a href="mailto:123@nus.edu.sg">123@nus.edu.sg</a></code></p>
 </li>
 <li>
 <p><strong>Address</strong> - Any non-blank input, with no limit on length.<br>
-Valid: NIL, Singapore, 123 Clementi Ave 999 S(654123)</p>
+Valid: <code>NIL, Singapore, 123 Clementi Ave 999 S(654123)</code></p>
 </li>
 </ul>
 </div>
@@ -274,7 +261,7 @@ Valid: NIL, Singapore, 123 Clementi Ave 999 S(654123)</p>
 These lists will be initialized as empty until modules or occasions are added.</p>
 </div>
 <div class="paragraph">
-<p>Warning: Persons with the same name are permitted as long as they differ in at least one other field.
+<p>Warning: Persons with the same name are permitted as long as they have a <strong>different phone number or email address</strong>.<br>
 Use with caution, as they may be difficult to distinguish (e.g. in a module&#8217;s registration list).</p>
 </div>
 </div>
@@ -290,25 +277,25 @@ Use with caution, as they may be difficult to distinguish (e.g. in a module&#821
 <li>
 <p><strong>Module Code</strong> (compulsory) - 2 or 3 letters, followed by 4 digits and an optional letter behind.<br>
 Note: Does not check whether the module is an actual NUS module.<br>
-Valid: CS2103, CS2103T, GER1001<br>
-Invalid: CS210, CS2103AB, GER10000</p>
+Valid: <code>CS2103, CS2103T, GER1001</code><br>
+Invalid: <code>CS210, CS2103AB, GER10000</code></p>
 </li>
 <li>
 <p><strong>Module Title</strong> - One or more alphanumeric strings, with no limit on length.<br>
 Note: Does not check whether the module title matches the module code.<br>
-Valid: Software Engineering, Programming Methodology, A very annoying module<br>
-Invalid: Software Engineering!, Object-Oriented Design, ARGH:o</p>
+Valid: <code>Software Engineering, Programming Methodology, A very annoying module</code><br>
+Invalid: <code>Software Engineering!, Object-Oriented Design, ARGH:o</code></p>
 </li>
 <li>
 <p><strong>Academic Year</strong> - 4 digit number, with the first and last 2 numbers representing consecutive years.<br>
-Valid: 1819, 9900, 0001, 0304<br>
-Invalid: 123, AY1819, 18/19, 2018</p>
+Valid: <code>1819, 9900, 0001, 0304</code><br>
+Invalid: <code>123, AY1819, 18/19, 2018</code></p>
 </li>
 <li>
 <p><strong>Semester</strong> - 1 digit number between 1 and 4.<br>
 Remark: Semesters 3 and 4 are used to refer to Special Term I and II.<br>
-Valid: 1, 2, 3, 4<br>
-Invalid: Sem 1, 01, 1819/1</p>
+Valid: <code>1, 2, 3, 4</code><br>
+Invalid: <code>Sem 1, 01, 1819/1</code></p>
 </li>
 </ul>
 </div>
@@ -319,7 +306,7 @@ Invalid: Sem 1, 01, 1819/1</p>
 (i.e. the module will appear in their module lists).</p>
 </div>
 <div class="paragraph">
-<p>Warning: Module with the same code are permitted as long as they differ in at least one other field.
+<p>Warning: Modules with the same code are permitted as long as they have a <strong>different academic year or semester</strong>.<br>
 Use with caution, as they may be difficult to distinguish (e.g. in a person&#8217;s module list).</p>
 </div>
 </div>
@@ -333,20 +320,20 @@ Use with caution, as they may be difficult to distinguish (e.g. in a person&#821
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Occasion Name</strong> (compuslory) - One or more alphanumeric strings, with no limit on length.<br>
-Valid: Project Discussion, CS2103 Exam, Recess Week<br>
-Invalid: Ad-hoc Work, Meeting**, Friend&#8217;s Birthday</p>
+<p><strong>Occasion Name</strong> (compulsory) - One or more alphanumeric strings, with no limit on length.<br>
+Valid: <code>Project Discussion, CS2103 Exam, Recess Week</code><br>
+Invalid: <code>Ad-hoc Work, Meeting**, Friend&#8217;s Birthday</code></p>
 </li>
 <li>
 <p><strong>Occasion Date</strong> - Date in YYYY-MM-DD format.<br>
 Remark: Checks whether date is valid.<br>
-Valid: 2018-11-13, 2000-02-29, 2010-10-31<br>
-Invalid: 2018/11/13, 2001-02-29, 2010-09-31</p>
+Valid: <code>2018-11-13, 2000-02-29, 2010-10-31</code><br>
+Invalid: <code>2018/11/13, 2001-02-29, 2010-09-31</code></p>
 </li>
 <li>
 <p><strong>Occasion Location</strong> - One or more alphanumeric strings, with no limit on length.<br>
-Valid: Home, NUS COM1, 123 Clementi Rd<br>
-Invalid: John&#8217;s Home, NUS COM1 02-18, 123 Clementi Rd S(654123)</p>
+Valid: <code>Home, NUS COM1, 123 Clementi Rd</code><br>
+Invalid: <code>John&#8217;s Home, NUS COM1 02-18, 123 Clementi Rd S(654123)</code></p>
 </li>
 </ul>
 </div>
@@ -357,7 +344,7 @@ Invalid: John&#8217;s Home, NUS COM1 02-18, 123 Clementi Rd S(654123)</p>
 (i.e. the occasion will appear in their occasion lists).</p>
 </div>
 <div class="paragraph">
-<p>Warning: Occasions with the same name are permitted as long as they differ in at least one other field.
+<p>Warning: Occasions with the same name are permitted as long as they have a <strong>different date</strong>.<br>
 Use with caution, as they may be difficult to distinguish (e.g. in a person&#8217;s occasion list).
 === Deleting an entry: <code>delete</code></p>
 </div>
@@ -383,14 +370,22 @@ Format: <code>delete INDEX</code></p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:
-* <code>listperson</code><br>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listperson</code><br>
 <code>delete 1</code><br>
-Deletes the 1st person in TheTracker.
-* <code>listmodule</code><br>
+Deletes the 1st person in TheTracker.</p>
+</li>
+<li>
+<p><code>listmodule</code><br>
 <code>findmodule sem/1</code><br>
 <code>delete 2</code><br>
 Deletes the 2nd module of the <code>find</code> command.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -444,4 +439,4 @@ On startup, no entry should be selected. Entries will not be deselected until an
 They are handled by the same parser, with the model determining the appropriate list to act upon.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 05:07:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 06:38:12 UTC</div></div></div></body></html>
