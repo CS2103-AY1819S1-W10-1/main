@@ -29,7 +29,7 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">5.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-an-entry-code-add-code-code-person-code">5.2. Adding an entry: <code>add</code> + <code>person</code></a></li>
-<li><a href="#listing-code-list-code-code-person-code">5.3. Listing: <code>list</code> + <code>person</code></a></li>
+<li><a href="#listing-all-entries-code-list-code-code-person-code">5.3. Listing all entries : <code>list</code> + <code>person</code></a></li>
 <li><a href="#selecting-an-entry-code-select-code">5.4. Selecting an Entry: <code>select</code></a></li>
 <li><a href="#editing-an-entry-code-edit-code-code-person-code">5.5. Editing an entry : <code>edit</code> + <code>person</code></a></li>
 <li><a href="#inserting-a-person-code-insertperson-code">5.6. Inserting a Person: <code>insertperson</code></a></li>
@@ -490,7 +490,7 @@ A person, module or an occasion can have any number of tags (including 0) and in
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-code-list-code-code-person-code"><a class="link" href="#listing-code-list-code-code-person-code">5.3. Listing: <code>list</code> + <code>person</code></a></h3>
+<h3 id="listing-all-entries-code-list-code-code-person-code"><a class="link" href="#listing-all-entries-code-list-code-code-person-code">5.3. Listing all entries : <code>list</code> + <code>person</code></a></h3>
 <div class="paragraph">
 <p>The different list commands will show the specified list in TheTracker.<br></p>
 </div>
@@ -582,7 +582,7 @@ It can be used to add optional field that is not specified in the add command.</
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>editperson INDEX [PREFIX]/VALUE &#8230;&#8203;</code></p>
+<code>editperson INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
@@ -597,10 +597,7 @@ Edits the person at INDEX 6 in TheTracker: edits his phone number to 91234567 an
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>[PREFIX]/</code> should be replaced by <code>n/</code> (for Name), <code>p/</code> (Person), <code>e/</code> (Email), <code>a/</code> (Address), <code>t/</code> (Tag) to specify the field you want to edit.</p>
-</li>
-<li>
-<p>You can edit multiple fields</p>
+<p>You should edit at least one field</p>
 </li>
 <li>
 <p>The INDEX must be valid:</p>
@@ -627,7 +624,7 @@ Edits the person at INDEX 6 in TheTracker: edits his phone number to 91234567 an
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>editmodule INDEX [PREFIX]/VALUE &#8230;&#8203;</code></p>
+<code>editmodule INDEX [mc/MODULE CODE] [mt/MODULE TITLE] [ay/ACADEMIC YEAR] [sem/SEMESTER] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
@@ -642,11 +639,7 @@ Edits the module of INDEX 1 in TheTracker: edits the module code to CS1101S.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>[PREFIX]/</code> should be replaced by <code>mc/</code> (for Module Code), <code>mt/</code> (for Module Title), <code>ay/</code> (for Academic Year), <code>sem/</code> (for Semester), <code>t/</code> (for Tag) to
-specify the field you want to edit</p>
-</li>
-<li>
-<p>You can edit multiple fields</p>
+<p>You should edit at least one field</p>
 </li>
 <li>
 <p>The INDEX must be valid:</p>
@@ -671,7 +664,7 @@ specify the field you want to edit</p>
 <div class="paragraph">
 <p>A command to allow the user to edit an existing occasion in TheTracker.<br>
 Format:<br>
-<code>editoccasion x/VALUE &#8230;&#8203;</code></p>
+<code>editoccasion INDEX [on/OCCASION NAME] [od/OCCASION DATE] [loc/OCCASION LOCATION] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
@@ -687,11 +680,7 @@ Edits the occasion of INDEX 7 in TheTracker: edits the occasionName to Barbecue,
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>[PREFIX]/</code> should be replaced by <code>on/</code> (for Occasion Name), <code>od/</code> (for Occasion Date), <code>loc/</code> (for Occasion Location), <code>t/</code> (for Tag) to
-specify the field you want to edit</p>
-</li>
-<li>
-<p>You can edit multiple fields</p>
+<p>You should edit at least one field</p>
 </li>
 <li>
 <p>The INDEX must be valid:</p>
@@ -717,7 +706,7 @@ specify the field you want to edit</p>
 <div class="sect3">
 <h4 id="inserting-a-person-into-a-module-code-insertperson-code"><a class="link" href="#inserting-a-person-into-a-module-code-insertperson-code">5.6.1. Inserting a person into a module: <code>insertperson</code></a></h4>
 <div class="paragraph">
-<p>Builds an association between a module and a person within <code>TheTracker</code> by inserting
+<p>A command to allow the user to build an association between a module and a person within <code>TheTracker</code> by inserting
 a <code>person</code> bi-directionally into a <code>module</code>.</p>
 </div>
 <div class="paragraph">
@@ -919,7 +908,7 @@ Deletes the 2nd module of the <code>find</code> command.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add[]</code>, <code>delete</code>, <code>edit[]</code>, <code>clear</code> and <code>insertperson</code>).</p>
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code> + <code>person</code>, <code>delete</code>, <code>edit</code> + <code>person</code>, <code>clear</code> and <code>insertperson</code>).</p>
 </div>
 </td>
 </tr>
@@ -961,7 +950,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code> + <code>person</code>, <code>delete</code>, <code>edit</code> + <code>person</code>, <code>clear</code> and <code>insertperson</code>).</p>
 </div>
 </td>
 </tr>
@@ -1235,11 +1224,11 @@ e.g. <code>addperson n/John Doe p/98765432 e/johnd@example.com a/311, Clementi A
 </li>
 <li>
 <p><strong>Add Module</strong> <code>addmodule mc/MODULE_CODE mt/MODULE_TITLE ay/ACADEMIC_YEAR sem/SEMESTER[t/TAG]&#8230;&#8203;</code><br>
-e.g. ` addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1718 sem/1 t/gg `</p>
+e.g. <code>addmodule mc/CS2103 mt/SOFTWARE ENGINEERING ay/1718 sem/1 t/gg</code></p>
 </li>
 <li>
 <p><strong>Add Occasion</strong> <code>addoccasion on/OCCASION_NAME od/OCCASION_DATE loc/LOCATION [t/TAG]&#8230;&#8203;</code><br>
-e.g. ` addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg `</p>
+e.g. <code>addoccasion on/discussion od/2018-01-01 loc/SoC t/project t/gg</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
@@ -1251,10 +1240,10 @@ e.g. <code>editperson 1 p/91234567 e/johndoe@example.com</code></p>
 </li>
 <li>
 <p><strong>Edit Module</strong> : <code>editmodule INDEX [mc/MODULE CODE] [mt/MODULE TITLE] [ay/ACADEMIC YEAR] [sem/SEMESTER] [t/TAG]&#8230;&#8203;</code><br>
-e.g. `editmodule 1 mc/CS1101S `</p>
+e.g. <code>editmodule 1 mc/CS1101S</code></p>
 </li>
 <li>
-<p><strong>Edit Occasion</strong> :  <code>INDEX [on/OCCASION NAME] [od/OCCASION DATE] [loc/OCCASION LOCATION] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit Occasion</strong> : <code>editoccasion INDEX [on/OCCASION NAME] [od/OCCASION DATE] [loc/OCCASION LOCATION] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>editoccasion 1 on/Barbecue od/2019-6-17 loc/NUS</code></p>
 </li>
 <li>
@@ -1286,12 +1275,10 @@ e.g. <code>findoccasion on/discussion</code>, <code>findoccasion od/2018-01-01</
 <p><strong>List Occasion</strong> : <code>listoccasion</code></p>
 </li>
 <li>
-<p><strong>Undo</strong> : <code>undo</code><br>
-e.g. <code>undo</code></p>
+<p><strong>Undo</strong> : <code>undo</code><br></p>
 </li>
 <li>
-<p><strong>Redo</strong> : <code>redo</code><br>
-e.g. <code>redo</code></p>
+<p><strong>Redo</strong> : <code>redo</code><br></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -1310,15 +1297,15 @@ e.g. <code>redo</code></p>
 </li>
 <li>
 <p><strong>Export data to xml file</strong> : <code>export --xml [FILEPATH]</code><br>
-e.g. (MacOS, Linux) <code>export --xml /Users/Anna/Desktop/exported.xml</code>
+e.g. (MacOS, Linux) <code>export --xml /Users/Anna/Desktop/exported.xml</code><br>
 e.g. (Windows) <code>export --xml C:\Users\Anna\desktop\exported.xml</code></p>
 </li>
 <li>
 <p><strong>Export data to txt file</strong> : <code>export --txt [FILEPATH]</code><br>
-e.g. (MacOS, Linux) <code>export --txt /Users/Anna/Desktop/exported.txt</code>
+e.g. (MacOS, Linux) <code>export --txt /Users/Anna/Desktop/exported.txt</code><br>
 e.g. (Windows) <code>export --txt C:\Users\Anna\desktop\exported.txt</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:06:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:11:55 UTC</div></div></div></body></html>
