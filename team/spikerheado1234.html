@@ -155,6 +155,69 @@ into <code>occasion</code> 1.</p>
 </tbody>
 </table>
 <div class="sect2">
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
+</div>
+<div class="title">Figure 1. Structure of the UI Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>MainWindow</code> is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
+</li>
+<li>
+<p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="duplication-of-entities"><a class="link" href="#duplication-of-entities">Duplication of Entities</a></h3>
+<div class="paragraph">
+<p>To facilitate the ease of implementation of the following features, two important methods were conceived off: <code>makeDeepDuplicate</code>
+and <code>makeShallowDuplicate</code>. These two helper methods allow a <code>Person</code>, <code>Module</code> and <code>Occasion</code> within <code>TheTracker</code> to be copied in
+a different manner. The following image is a depiction of how <code>makeDeepDuplicate</code> works when it is called on a <code>Person</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PersonMakeDeepDuplicate.png" alt="PersonMakeDeepDuplicate">
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen from the above image <code>makeDeepDuplicate</code> creates a replica of a <code>Person</code> such that the respective <code>Modules</code> within the <code>UniqueModuleList</code> and
+the <code>Occasions</code> within the <code>UniqueOccasionList</code> are also <code>DeepDuplicated</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following image depicts how <code>makeShallowDuplicate</code> works when it is called on a <code>Person</code> within <code>TheTracker</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PersonMakeShallowDuplicate.png" alt="PersonMakeShallowDuplicate" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen from the above image <code>makeShallowDuplicate</code> creates a replica of a <code>Person</code> such that the respective <code>UniqueModuleList</code> and <code>UniqueOccasionList</code>
+are empty.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="insertperson-feature"><a class="link" href="#insertperson-feature">InsertPerson feature</a></h3>
 <div class="paragraph">
 <p>The <code>InsertPerson</code> command is an advanced feature for TheTracker. It enables a bi-directional insert of a Person into
@@ -162,16 +225,6 @@ either one of a <code>module</code> or an <code>occasion</code>.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-<div class="paragraph">
-<p>To enable this feature to exist, the underlying structure between the entities <code>Person</code>, <code>Module</code> and <code>Occasion</code> have to
-be linked in a manner that will facilitate injections of one entity bi-directionally into another. The following class diagram
-depicts this new structure:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PersonModuleOccasionClassDiagram.png" alt="PersonModuleOccasionClassDiagram" width="800">
-</div>
-</div>
 <div class="paragraph">
 <p>For the following example we will use <code>InsertPerson</code> command to insert a <code>person</code>, bi-directionally, into a <code>module</code>.
 The usage for a bi-directional insert into an <code>occasion</code> is similar.</p>
@@ -225,21 +278,12 @@ currentStatePointer being updated. Below is a diagram that depicts this:</p>
 <ul>
 <li>
 <p>For the feature to work coherently with <code>undo</code>/<code>redo</code> as well as <code>edit</code> an entire new replica of state
-of <code>TheTracker</code> must be created with the relevant entities bi-directionally inserted after this command has been executed.
-In accordance with this logic, two such methods were introduced to facilitate this feature&#8217;s functionality. The first is
-the method <code>makeDeepDuplicate</code>, the following class diagram shows how the method works in relation to calling <code>makeDeepDuplicate</code>
-on a person:</p>
+of <code>TheTracker</code> must be created with the relevant entities bi-directionally inserted after this command has been executed.</p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PersonMakeDeepDuplicate.png" alt="PersonMakeDeepDuplicate" width="800">
-</div>
-</div>
 <div class="paragraph">
-<p>The method merely makes an entirely new copy of a <code>Person</code>/<code>Module</code>/<code>Occasion</code> by copying by <code>value</code> all of its predecessor&#8217;s
-attributes. We cannot, however, make do with only <code>makeDeepDuplicate</code> in order to implement the <code>InsertPerson</code> feature.
+<p>We cannot, however, make do with only <code>makeDeepDuplicate</code> in order to implement the <code>InsertPerson</code> feature.
 The following scenario illustrates why:</p>
 </div>
 <div class="ulist">
@@ -257,53 +301,9 @@ us replicating the person list of <code>y</code> and, thus, <code>x</code> and s
 </ul>
 </div>
 <div class="paragraph">
-<p>To counter this, we have implemented a <code>makeShallowDuplicate</code> which replicates an entity, but with an empty list. For example,
-calling <code>makeShallowDuplicate</code> on a <code>Person</code> would have the following effect:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PersonMakeShallowDuplicate.png" alt="PersonMakeShallowDuplicate" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Upon insertion of a <code>Module</code> into a <code>Person</code> the respective <code>Module&#8217;s</code> <code>ShallowDuplicate</code> is inserted to avoid this
-error.</p>
+<p>To avoid the above error, upon insertion of a <code>Module</code> into a <code>Person</code> the respective <code>Module&#8217;s</code> <code>ShallowDuplicate</code> is inserted.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">UI component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
-<div class="title">Figure 1. Structure of the UI Component</div>
-</div>
-<div class="paragraph">
-<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>MainWindow</code> is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
-</div>
-<div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>UI</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Executes user commands using the <code>Logic</code> component.</p>
-</li>
-<li>
-<p>Binds itself to some data in the <code>Model</code> so that the UI can auto-update when data in the <code>Model</code> change.</p>
-</li>
-<li>
-<p>Responds to events raised from various parts of the App and updates the UI accordingly.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:37:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:53:53 UTC</div></div></div></body></html>

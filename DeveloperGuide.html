@@ -31,22 +31,23 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#dependencies-between-persons-modules-and-occasions">4.1. Dependencies between Persons, Modules and Occasions</a></li>
-<li><a href="#Updating-Lists">4.2. Updating of Lists</a></li>
-<li><a href="#add-person-module-occasion-feature">4.3. Add Person/Module/Occasion Feature</a></li>
-<li><a href="#find-person-module-occasion-feature">4.4. Find Person/Module/Occasion Feature</a></li>
-<li><a href="#select-person-module-occasion-feature">4.5. Select Person/Module/Occasion Feature</a></li>
-<li><a href="#edit-person-module-occasion-feature">4.6. Edit Person/Module/Occasion Feature</a></li>
-<li><a href="#insertperson-feature">4.7. InsertPerson feature</a></li>
-<li><a href="#removeperson-feature">4.8. RemovePerson Feature</a></li>
-<li><a href="#list-feature">4.9. List feature</a></li>
-<li><a href="#undo-redo-feature">4.10. Undo/Redo feature</a></li>
-<li><a href="#history-feature">4.11. History feature</a></li>
-<li><a href="#autocomplete">4.12. Autocomplete</a></li>
-<li><a href="#export">4.13. Export</a></li>
-<li><a href="#import-coming-in-v-2-0">4.14. Import (Coming in v 2.0)</a></li>
-<li><a href="#logging">4.15. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.16. Configuration</a></li>
-<li><a href="#delete">4.17. Delete</a></li>
+<li><a href="#duplication-of-entities">4.2. Duplication of Entities</a></li>
+<li><a href="#Updating-Lists">4.3. Updating of Lists</a></li>
+<li><a href="#add-person-module-occasion-feature">4.4. Add Person/Module/Occasion Feature</a></li>
+<li><a href="#find-person-module-occasion-feature">4.5. Find Person/Module/Occasion Feature</a></li>
+<li><a href="#select-person-module-occasion-feature">4.6. Select Person/Module/Occasion Feature</a></li>
+<li><a href="#edit-person-module-occasion-feature">4.7. Edit Person/Module/Occasion Feature</a></li>
+<li><a href="#insertperson-feature">4.8. InsertPerson feature</a></li>
+<li><a href="#removeperson-feature">4.9. RemovePerson Feature</a></li>
+<li><a href="#list-feature">4.10. List feature</a></li>
+<li><a href="#undo-redo-feature">4.11. Undo/Redo feature</a></li>
+<li><a href="#history-feature">4.12. History feature</a></li>
+<li><a href="#autocomplete">4.13. Autocomplete</a></li>
+<li><a href="#export">4.14. Export</a></li>
+<li><a href="#import-coming-in-v-2-0">4.15. Import (Coming in v 2.0)</a></li>
+<li><a href="#logging">4.16. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.17. Configuration</a></li>
+<li><a href="#delete">4.18. Delete</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -724,7 +725,36 @@ but a <code>Module</code> or <code>Occasion</code> only contains a Person list.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="Updating-Lists"><a class="link" href="#Updating-Lists">4.2. Updating of Lists</a></h3>
+<h3 id="duplication-of-entities"><a class="link" href="#duplication-of-entities">4.2. Duplication of Entities</a></h3>
+<div class="paragraph">
+<p>To facilitate the ease of implementation of the following features, two important methods were conceived off: <code>makeDeepDuplicate</code>
+and <code>makeShallowDuplicate</code>. These two helper methods allow a <code>Person</code>, <code>Module</code> and <code>Occasion</code> within <code>TheTracker</code> to be copied in
+a different manner. The following image is a depiction of how <code>makeDeepDuplicate</code> works when it is called on a <code>Person</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PersonMakeDeepDuplicate.png" alt="PersonMakeDeepDuplicate">
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen from the above image <code>makeDeepDuplicate</code> creates a replica of a <code>Person</code> such that the respective <code>Modules</code> within the <code>UniqueModuleList</code> and
+the <code>Occasions</code> within the <code>UniqueOccasionList</code> are also <code>DeepDuplicated</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following image depicts how <code>makeShallowDuplicate</code> works when it is called on a <code>Person</code> within <code>TheTracker</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PersonMakeShallowDuplicate.png" alt="PersonMakeShallowDuplicate" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen from the above image <code>makeShallowDuplicate</code> creates a replica of a <code>Person</code> such that the respective <code>UniqueModuleList</code> and <code>UniqueOccasionList</code>
+are empty.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Updating-Lists"><a class="link" href="#Updating-Lists">4.3. Updating of Lists</a></h3>
 <div class="paragraph">
 <p>When executing commands for a particular type of entry, <em>another</em> type of entry can modified.</p>
 </div>
@@ -743,7 +773,7 @@ However, both <code>edit</code> and <code>delete</code> also can affect multiple
 </ul>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>To facilitate the execution of <code>undo</code> and <code>redo</code>, a new replacement person, module or occasion is created
 to replace the original entry. By avoiding modification of these entries, previous versions of
@@ -833,7 +863,7 @@ and are used to perform 1 and 2 by updating the person lists in modules after de
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-person-module-occasion-feature"><a class="link" href="#add-person-module-occasion-feature">4.3. Add Person/Module/Occasion Feature</a></h3>
+<h3 id="add-person-module-occasion-feature"><a class="link" href="#add-person-module-occasion-feature">4.4. Add Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
 <p>The add feature is currently implemented the same way to add persons, modules and occasions.
 There are thus three similar commands which are related to this add command:
@@ -843,7 +873,7 @@ There are thus three similar commands which are related to this add command:
 <p>The add command adds the entity (person, module, occasion) with the attributes / fields provided by the user.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>As the <code>addperson</code>, <code>addmodule</code>, <code>addoccasion</code> commands' logic are similar to one another,
 the <code>addperson</code> command will be taken as the sole example in this document.</p>
@@ -896,7 +926,7 @@ after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-addperson-addmodule-addoccasion-executes"><a class="link" href="#aspect-how-addperson-addmodule-addoccasion-executes">Aspect: How addperson/addmodule/addoccasion executes</a></h5>
 <div class="ulist">
@@ -940,7 +970,7 @@ pre-defined attributes.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="find-person-module-occasion-feature"><a class="link" href="#find-person-module-occasion-feature">4.4. Find Person/Module/Occasion Feature</a></h3>
+<h3 id="find-person-module-occasion-feature"><a class="link" href="#find-person-module-occasion-feature">4.5. Find Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
 <p>The find feature currently is implemented the same way to find persons, modules, and occasions.
 There are thus three similar commands which are related to this find command:
@@ -959,7 +989,7 @@ fields.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>As the <code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code> commands' logic are similar to one another,
 the <code>findperson</code> command will be taken as the sole example in this document. The findperson string
@@ -971,7 +1001,7 @@ persons based on the filter specified.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-find-executes"><a class="link" href="#aspect-how-find-executes">Aspect: How find executes</a></h5>
 <div class="ulist">
@@ -1017,14 +1047,14 @@ attribute name, title, etc.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="select-person-module-occasion-feature"><a class="link" href="#select-person-module-occasion-feature">4.5. Select Person/Module/Occasion Feature</a></h3>
+<h3 id="select-person-module-occasion-feature"><a class="link" href="#select-person-module-occasion-feature">4.6. Select Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
 <p>The select feature currently is implemented the same way to select persons, modules, and occasions.
 Currently, the select feature selects by index in the observed list which has been loaded into the
 UI.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The select string command input in the command line is passed into the <code>AddressBookParser</code> object,
 which parses the input and creates a <code>SelectCommandParser</code> to help it further parse the argument and
@@ -1035,14 +1065,14 @@ the currently shown list in the UI, by posting a new <code>JumpToListRequestEven
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-person-module-occasion-feature"><a class="link" href="#edit-person-module-occasion-feature">4.6. Edit Person/Module/Occasion Feature</a></h3>
+<h3 id="edit-person-module-occasion-feature"><a class="link" href="#edit-person-module-occasion-feature">4.7. Edit Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
 <p><code>edit</code> is a basic feature for <code>TheTracker</code>.<br>
 It supports editing of <code>Person</code>, <code>Module</code> and <code>Occasion</code> by command <code>editperson</code>,
 <code>editmodule</code> and <code>editoccasion</code> respectively.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The following section will use <code>EditPersonCommand</code> as an example to explain the implementation.
 <code>EditModuleCommand</code> and <code>EditOccasionCommand</code> use the same mechanism as <code>EditPersonCommand</code>.<br></p>
@@ -1086,7 +1116,7 @@ Returns an unmodifiable view of the list of Person backed by the internal list o
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-editperson-editmodule-editoccasion-executes"><a class="link" href="#aspect-how-editperson-editmodule-editoccasion-executes">Aspect: How editperson/editmodule/editoccasion executes</a></h5>
 <div class="ulist">
@@ -1156,13 +1186,13 @@ polymorphism and put everything together</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="insertperson-feature"><a class="link" href="#insertperson-feature">4.7. InsertPerson feature</a></h3>
+<h3 id="insertperson-feature"><a class="link" href="#insertperson-feature">4.8. InsertPerson feature</a></h3>
 <div class="paragraph">
 <p>The <code>InsertPerson</code> command is an advanced feature for TheTracker. It enables a bi-directional insert of a Person into
 either one of a <code>module</code> or an <code>occasion</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>For the following example we will use <code>InsertPerson</code> command to insert a <code>person</code>, bi-directionally, into a <code>module</code>.
 The usage for a bi-directional insert into an <code>occasion</code> is similar.</p>
@@ -1208,7 +1238,7 @@ currentStatePointer being updated. Below is a diagram that depicts this:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.8.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Why it is non-trivial:</p>
 </div>
@@ -1216,21 +1246,12 @@ currentStatePointer being updated. Below is a diagram that depicts this:</p>
 <ul>
 <li>
 <p>For the feature to work coherently with <code>undo</code>/<code>redo</code> as well as <code>edit</code> an entire new replica of state
-of <code>TheTracker</code> must be created with the relevant entities bi-directionally inserted after this command has been executed.
-In accordance with this logic, two such methods were introduced to facilitate this feature&#8217;s functionality. The first is
-the method <code>makeDeepDuplicate</code>, the following class diagram shows how the method works in relation to calling <code>makeDeepDuplicate</code>
-on a person:</p>
+of <code>TheTracker</code> must be created with the relevant entities bi-directionally inserted after this command has been executed.</p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/PersonMakeDeepDuplicate.png" alt="PersonMakeDeepDuplicate" width="800">
-</div>
-</div>
 <div class="paragraph">
-<p>The method merely makes an entirely new copy of a <code>Person</code>/<code>Module</code>/<code>Occasion</code> by copying by <code>value</code> all of its predecessor&#8217;s
-attributes. We cannot, however, make do with only <code>makeDeepDuplicate</code> in order to implement the <code>InsertPerson</code> feature.
+<p>We cannot, however, make do with only <code>makeDeepDuplicate</code> in order to implement the <code>InsertPerson</code> feature.
 The following scenario illustrates why:</p>
 </div>
 <div class="ulist">
@@ -1248,22 +1269,12 @@ us replicating the person list of <code>y</code> and, thus, <code>x</code> and s
 </ul>
 </div>
 <div class="paragraph">
-<p>To counter this, we have implemented a <code>makeShallowDuplicate</code> which replicates an entity, but with an empty list. For example,
-calling <code>makeShallowDuplicate</code> on a <code>Person</code> would have the following effect:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/PersonMakeShallowDuplicate.png" alt="PersonMakeShallowDuplicate" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Upon insertion of a <code>Module</code> into a <code>Person</code> the respective <code>Module&#8217;s</code> <code>ShallowDuplicate</code> is inserted to avoid this
-error.</p>
+<p>To avoid the above error, upon insertion of a <code>Module</code> into a <code>Person</code> the respective <code>Module&#8217;s</code> <code>ShallowDuplicate</code> is inserted.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="removeperson-feature"><a class="link" href="#removeperson-feature">4.8. RemovePerson Feature</a></h3>
+<h3 id="removeperson-feature"><a class="link" href="#removeperson-feature">4.9. RemovePerson Feature</a></h3>
 <div class="paragraph">
 <p>The <code>removeperson</code> command is a complementary feature to the <code>insertperson</code> command. It enables the
 removal of a <code>Person</code> from either a <code>Module</code> students list or an <code>Occasion</code> attendance list. This thus
@@ -1276,7 +1287,7 @@ The activity diagram below illustrates what happens when <code>removeperson</cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.8.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">4.9.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Currently, removeperson creates a whole new copy of the <code>Person</code>, and a whole new copy of the <code>Module</code> to replace.
 The difference with the copy and the original is that their internal elements contain one less element,
@@ -1290,17 +1301,9 @@ A shallow duplicate of Module contains an empty students list.</p>
 <div class="paragraph">
 <p>The reason why this is done will be explained in the design considerations below.</p>
 </div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the <code>removeperson</code> operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/RemovePersonSequenceDiagram.png" alt="RemovePersonSequenceDiagram" width="800">
-</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.8.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.9.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>For this feature to be possible, it has to be possible to somehow remove the link between said <code>Person</code>
 and <code>Module</code>/<code>Occasion</code>.
@@ -1359,13 +1362,13 @@ repopulating the internal list of <code>Person</code> / <code>Module</code> / <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-feature"><a class="link" href="#list-feature">4.9. List feature</a></h3>
+<h3 id="list-feature"><a class="link" href="#list-feature">4.10. List feature</a></h3>
 <div class="paragraph">
 <p>The list feature acts as a switching between the lists of <code>Person</code>, <code>Module</code>, <code>Occasion</code>.
 In essence, it acts as a context switch between the 3.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.9.1. Current Implementation</a></h4>
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">4.10.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Currently, the list command will raise a context switch event, a <code>ShowPersonRequestEvent</code>
 if the <code>listperson</code> command is called. This then tells the MainWindow to update with
@@ -1393,9 +1396,17 @@ show the lists of <code>Module</code> and <code>Occasion</code> that <code>Perso
 setting of the active type (the context of the current window), so that contextual commands
 such as <code>delete</code> and <code>select</code> are able to function properly with correct indices.</p>
 </div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>listperson</code> operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ListPersonSequenceDiagram.png" alt="ListPersonSequenceDiagram" width="800">
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.9.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.10.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>We had to examine whether it was better to:
 Alternative 1:
@@ -1414,9 +1425,9 @@ in the application.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.10. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">4.11. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.10.1. Current Implementation</a></h4>
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">4.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionAddressBook</code>.It extends
 <code>AddressBook</code> with an command history, stored internally as an
@@ -1583,7 +1594,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.10.2. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.11.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1653,7 +1664,7 @@ new command:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="history-feature"><a class="link" href="#history-feature">4.11. History feature</a></h3>
+<h3 id="history-feature"><a class="link" href="#history-feature">4.12. History feature</a></h3>
 <div class="paragraph">
 <p>History feature allows the user to review all the commands he has typed in.
 The following sequence diagram shows how the <code>history</code> operation works:</p>
@@ -1665,7 +1676,7 @@ The following sequence diagram shows how the <code>history</code> operation work
 </div>
 </div>
 <div class="sect2">
-<h3 id="autocomplete"><a class="link" href="#autocomplete">4.12. Autocomplete</a></h3>
+<h3 id="autocomplete"><a class="link" href="#autocomplete">4.13. Autocomplete</a></h3>
 <div class="paragraph">
 <p>The autocomplete feature is facilitated by a stored list of commands and its own parser on the user&#8217;s
 command line inputs. The parser will enable the autocomplete to check the user&#8217;s input against a list
@@ -1673,7 +1684,7 @@ of commands which are final and known by the address book. The autocomplete pars
 after every input in the command line, making it a real time feature.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">4.12.1. Current Implementation</a></h4>
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">4.13.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>Currently, the feature calls on ControlsFX API to enable the autocomplete feature.
 It uses TextFields to have an autocomplete binding on the command box created which takes in the
@@ -1682,7 +1693,7 @@ known commands are stored.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="proposed-improvements-coming-in-v2-0"><a class="link" href="#proposed-improvements-coming-in-v2-0">4.12.2. Proposed Improvements (Coming in v2.0)</a></h4>
+<h4 id="proposed-improvements-coming-in-v2-0"><a class="link" href="#proposed-improvements-coming-in-v2-0">4.13.2. Proposed Improvements (Coming in v2.0)</a></h4>
 <div class="paragraph">
 <p>While checking, the feature will try to give a regex match of the command and also provide suggestions
 on correct arguments based on current entities stored in TheTracker&#8217;s address book.</p>
@@ -1690,13 +1701,13 @@ on correct arguments based on current entities stored in TheTracker&#8217;s addr
 </div>
 </div>
 <div class="sect2">
-<h3 id="export"><a class="link" href="#export">4.13. Export</a></h3>
+<h3 id="export"><a class="link" href="#export">4.14. Export</a></h3>
 <div class="paragraph">
 <p>Export is a feature to enhance the functionality of TheTracker.
 TheTracker (v1.4) supports exporting user data to xml file and txt file.</p>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">4.13.1. Current Implementation</a></h4>
+<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">4.14.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p><code>ExportXmlCommand</code> and <code>ExportTxtCommand</code> are both inherited from <code>ExportCommand</code>, which inherits from <code>Command</code> class</p>
 </div>
@@ -1729,7 +1740,7 @@ and stored in the <code>exportedFilePath</code> specified by the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.13.2. Design Considerations</a></h4>
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.14.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-the-role-of-exported-file-type"><a class="link" href="#aspect-the-role-of-exported-file-type">Aspect: The role of exported file type</a></h5>
 <div class="ulist">
@@ -1871,18 +1882,18 @@ checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary 
 </div>
 </div>
 <div class="sect2">
-<h3 id="import-coming-in-v-2-0"><a class="link" href="#import-coming-in-v-2-0">4.14. Import (Coming in v 2.0)</a></h3>
+<h3 id="import-coming-in-v-2-0"><a class="link" href="#import-coming-in-v-2-0">4.15. Import (Coming in v 2.0)</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.15. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.16. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.16, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.17, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1913,15 +1924,15 @@ checking in <code>ExportCommand</code> and its subclasses can avoid unnecessary 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.16. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.17. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">4.17. Delete</a></h3>
+<h3 id="delete"><a class="link" href="#delete">4.18. Delete</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-13"><a class="link" href="#current-implementation-13">4.17.1. Current Implementation</a></h4>
+<h4 id="current-implementation-13"><a class="link" href="#current-implementation-13">4.18.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>delete</code> command will delete a <code>Person</code>, <code>Module</code> or <code>Occasion</code>.
 Similar to other commands, a new <code>ReadOnlyAddressBook</code> is created upon the execution of this command.<br>
@@ -1942,10 +1953,10 @@ the high-level implementation is similar to the earlier commands.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Inferred Deletion: As we maintain the <a href="#Type Inference">active type</a>, the deletion will be applied to the currently active list.</p>
+<p>Inferred Deletion: As we maintain the active type, the deletion will be applied to the currently active list.</p>
 </li>
 <li>
-<p>Deep Deletion: Using <a href="#list updating">list updating</a>, all references to this entry can be removed (i.e. from other entries' lists).</p>
+<p>Deep Deletion: By updating the associated lists, all references to this entry can be removed (i.e. from other entries' lists).</p>
 </li>
 </ul>
 </div>
@@ -2029,7 +2040,7 @@ It has a new <code>UniquePersonList</code> which is empty.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">4.17.2. Design Considerations</a></h4>
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">4.18.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-explicit-implicit-deletion"><a class="link" href="#aspect-explicit-implicit-deletion">Aspect: Explicit/Implicit Deletion</a></h5>
 <div class="ulist">
@@ -3912,4 +3923,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:37:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:53:53 UTC</div></div></div></body></html>

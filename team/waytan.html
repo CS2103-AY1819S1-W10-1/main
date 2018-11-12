@@ -249,15 +249,19 @@ followed by "Show Persons/Modules/Occasions". You can also view these using the 
 </li>
 <li>
 <p>Clicking on an entry in the List Panel <strong>selects</strong> the entry. This allows you to see its additional info in the Info Panel.
-Selecting an entry can also be done by using the <code>select</code> command in the Command Box.
-== Types of Entries</p>
+Selecting an entry can also be done by using the <code>select</code> command in the Command Box.</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="types-of-entries"><a class="link" href="#types-of-entries">Types of Entries</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>This section explains the three types of entries - person, module and occasion.<br>
 Each of them contains a compulsory field, optional fields, optional tags and relevant lists as explained below.</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="shared-tags"><a class="link" href="#shared-tags">Shared: Tags</a></h3>
@@ -402,9 +406,11 @@ Invalid: <code>John&#8217;s Home, NUS COM1 02-18, 123 Clementi Rd S(654123)</cod
 </div>
 <div class="paragraph">
 <p>Warning: Occasions with the same name are permitted as long as they have a <strong>different date</strong>.<br>
-Use with caution, as they may be difficult to distinguish (e.g. in a person&#8217;s occasion list).
-=== Deleting an entry: <code>delete</code></p>
+Use with caution, as they may be difficult to distinguish (e.g. in a person&#8217;s occasion list).</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-entry-code-delete-code"><a class="link" href="#deleting-an-entry-code-delete-code">Deleting an entry: <code>delete</code></a></h3>
 <div class="paragraph">
 <p>A command to allow the user to delete the specified entry from the active list in TheTracker.<br>
 Format: <code>delete INDEX</code></p>
@@ -518,15 +524,125 @@ and <code>EntityCard</code>, <code>EntityListPanel</code> in the UI).</p>
 <li>
 <p><strong>Decision:</strong> Alternative 1 was adopted, as the 3 classes do not have the exact same features.
 For example, a <code>Person</code> has 2 separate lists of Modules and Occasions respectively,
-but a <code>Module</code> or <code>Occasion</code> only contains a Person list.
-=== Delete</p>
+but a <code>Module</code> or <code>Occasion</code> only contains a Person list.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="Updating-Lists"><a class="link" href="#Updating-Lists">Updating of Lists</a></h3>
+<div class="paragraph">
+<p>When executing commands for a particular type of entry, <em>another</em> type of entry can modified.</p>
+</div>
+<div class="paragraph">
+<p>Naturally, <code>insertperson</code> and <code>removeperson</code> will affect a person and a module/occasion.<br>
+However, both <code>edit</code> and <code>delete</code> also can affect multiple types of entries.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If an entry is edited, all linked entries should reflect the changes accordingly.</p>
+</li>
+<li>
+<p>If an entry is deleted, all linked entries should remove this entry from their list.</p>
+</li>
+</ul>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>To facilitate the execution of <code>undo</code> and <code>redo</code>, a new replacement person, module or occasion is created
+to replace the original entry. By avoiding modification of these entries, previous versions of
+the <code>ReadOnlyAddressBook</code> will not be incorrectly modified.</p>
+</div>
+<div class="paragraph">
+<p>Currently, a list only stores a <strong>copy</strong> of the desired entries, instead of the actual entries.</p>
+</div>
+<div class="paragraph">
+<p>Suppose that a person needs to be edited/deleted. Then correctly implementing any of these commands requires 3 stages:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Locate all linked modules and occasions</p>
+</li>
+<li>
+<p>Replace each module and occasion with an updated version</p>
+</li>
+<li>
+<p>Edit/Delete the person</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Methods for the implementation of 1 and 2 are contained in the <code>AttendanceListUtil</code> class.<br>
+The code snippets below are extracted with slight modifications,
+and are used to perform 1 and 2 by updating the person lists in modules after deleting a <code>Person</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">while</span> (moduleListIterator.hasNext()) {
+    Module module = moduleListIterator.next();
+    module.getStudents()
+            .asNormalList()
+            .stream()
+            .filter(person -&gt; person.isSamePerson(personToRemove))
+            .findFirst()
+            .ifPresent(removePersonFromModule(model, module));
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The above loop iterates through all modules.</p>
+</li>
+<li>
+<p>For each module, it filters through its studentList to determine whether it should be edited.</p>
+</li>
+<li>
+<p>If so, the person is removed from the module.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="directive">static</span> Consumer&lt;Person&gt; removePersonFromModule(Model model, Module module) {
+    <span class="keyword">return</span> person -&gt; {
+        <span class="predefined-type">List</span>&lt;Person&gt; updatedPersons = module.getStudents().makeShallowDuplicate().asNormalList();
+        updatedPersons.remove(person);
+        UniquePersonList updatedPersonList = <span class="keyword">new</span> UniquePersonList(updatedPersons);
+        ModuleDescriptor updatedModuleDescriptor = <span class="keyword">new</span> ModuleDescriptor();
+        updatedModuleDescriptor.setStudents(updatedPersonList);
+        Module updatedModule = Module.createEditedModule(module, updatedModuleDescriptor);
+        model.updateModule(module, updatedModule);
+    };
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In turn, removing a person from a module is done by creating a new list of persons, excluding the one pending deletion.</p>
+</li>
+<li>
+<p>A new module is then created based on the original module and this new list.</p>
+</li>
+<li>
+<p>Finally, the new module replaces the original module in the model.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Similar implementations are used for both <code>delete</code> and <code>edit</code> in the various combinations of entries and lists.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete"><a class="link" href="#delete">Delete</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>delete</code> command will delete a <code>Person</code>, <code>Module</code> or <code>Occasion</code>.
 Similar to other commands, a new <code>ReadOnlyAddressBook</code> is created upon the execution of this command.<br>
@@ -547,10 +663,10 @@ the high-level implementation is similar to the earlier commands.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Inferred Deletion: As we maintain the <a href="#Type Inference">active type</a>, the deletion will be applied to the currently active list.</p>
+<p>Inferred Deletion: As we maintain the active type, the deletion will be applied to the currently active list.</p>
 </li>
 <li>
-<p>Deep Deletion: Using <a href="#list updating">list updating</a>, all references to this entry can be removed (i.e. from other entries' lists).</p>
+<p>Deep Deletion: By updating the associated lists, all references to this entry can be removed (i.e. from other entries' lists).</p>
 </li>
 </ul>
 </div>
@@ -871,4 +987,5 @@ It has a new <code>UniquePersonList</code> which is empty.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:37:56 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 14:53:53 UTC</div></div></div></body></html>
