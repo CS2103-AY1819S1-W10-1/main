@@ -7,15 +7,6 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This Project Portfolio details my contributions to TheTracker.
-It demonstrates my ability to contribute as a team member of a software engineering project in both technical and non-technical ways.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
 <div class="ulist">
@@ -41,53 +32,10 @@ It demonstrates my ability to contribute as a team member of a software engineer
 </div>
 </li>
 <li>
-<p>Justification for Inferred Deletion:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>User will not have to type <code>deleteperson</code>,<code>deletemodule</code>, <code>deleteoccasion</code> in full.</strong>
-It would feel unnecessary for a user to type <code>deleteperson</code> when viewing the person list, for example.</p>
-</li>
-<li>
-<p><strong>User will not be allowed to delete from an inactive list.</strong>
-This ensures that the user will not perform a deletion by accident from the wrong list.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Justification for Deep Deletion:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>User will not have to manually remove an entry from all associated lists.</strong>
-If an entry is linked to many other entries, this would save a significant amount of time.</p>
-</li>
-<li>
-<p><strong>User will not be misled that a deleted entry is still in TheTracker.</strong>
-A user would be confused if a deleted module is still found in the module list of some people.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Highlights: This implementation was noteworthy for several reasons:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Inferred Deletion required the maintenance of an <code>activeType</code> variable in the model,
-which was accessible by the Logic and UI (via Logic) units.<br>
-Slight amendments were needed in the list command and several UI methods.<br>
-This was also useful in implementing the <code>select</code> command.</p>
-</li>
-<li>
-<p>Deep Deletion required the writing of methods that selectively mutates entries in a list.<br>
-A functional approach was adopted, with <code>Streams</code>, <code>Optionals</code> and <code>Consumers</code> being used to implement this.<br>
-Additionally, the <code>makeShallowDuplicate</code> was written to create shallow copies without losing information.<br>
-These were useful in implementing the <code>edit</code>, <code>insertperson</code> and <code>removeperson</code> commands.</p>
-</li>
-</ul>
-</div>
+<p>Highlights: Inferred deletion required amendments in the model and UI.
+This was also useful in implementing the <code>select</code> command.<br>
+Deep Deletion required the writing of methods that selectively mutates entries in a list.
+The methods were used in the <code>edit</code>, <code>insertperson</code> and <code>removeperson</code> commands.</p>
 </li>
 </ul>
 </div>
@@ -97,33 +45,13 @@ These were useful in implementing the <code>edit</code>, <code>insertperson</cod
 <div class="ulist">
 <ul>
 <li>
-<p>Description: Allows the user to select an entry from the active list, and view additional info</p>
-</li>
-<li>
-<p>Importance: The implementation is symmetric across all 3 lists, so that the user does not need to use different commands for different lists.</p>
+<p>Description: Allows the user to select an entry from the active list, and view their list info.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
 <p><strong>Code Contributed</strong>: <a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=waytan">Link to Code Contributions</a></p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Conceptualization:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Suggested context-inferring commands (e.g. <code>select</code>, <code>delete</code> instead of <code>selectmodule, `deletemodule</code>)</p>
-</li>
-<li>
-<p>Suggested implementing <code>insertperson</code> and <code>removeperson</code> to link persons with modules/occasions</p>
-</li>
-</ul>
-</div>
 </li>
 <li>
 <p>Project management:</p>
@@ -146,13 +74,7 @@ These were useful in implementing the <code>edit</code>, <code>insertperson</cod
 <p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/81">#81</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/87">#87</a></p>
 </li>
 <li>
-<p>Methods written for implementation of deep deletion were adapted for edit and removeModule.</p>
-</li>
-<li>
 <p>Set up test utils for modules and occasions: <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/97">#97</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/109">#109</a></p>
-</li>
-<li>
-<p>Helped in identifying bugs and offered suggestions for debugging</p>
 </li>
 </ul>
 </div>
@@ -176,9 +98,6 @@ These were useful in implementing the <code>edit</code>, <code>insertperson</cod
 <ul>
 <li>
 <p>Set up <code>Module</code> class and its associated fields/exceptions</p>
-</li>
-</ul>
-</div>
 </li>
 </ul>
 </div>
@@ -449,28 +368,6 @@ Deletes the 1st person in TheTracker.</p>
 Deletes the 2nd module of the <code>find</code> command.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="selecting-an-entry-code-select-code"><a class="link" href="#selecting-an-entry-code-select-code">Selecting an Entry: <code>select</code></a></h3>
-<div class="paragraph">
-<p>A command to allow the user to select the event identified by the index number in the List Panel.
-The Info Panel will display the additional information for that entry.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>select INDEX</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-On startup, no entry should be selected. Entries will not be deselected until another entry is selected.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -988,4 +885,4 @@ It has a new <code>UniquePersonList</code> which is empty.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:27:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:28:29 UTC</div></div></div></body></html>
