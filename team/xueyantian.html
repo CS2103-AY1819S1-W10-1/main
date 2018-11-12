@@ -25,33 +25,38 @@
 <ul>
 <li>
 <p>What it does: allows the user to adds Person, Module, and Occasion to their own TheTracker. Any Persons, Modules and
-Occasions added by users in the command line will show in separate windows.</p>
+Occasions added by users in the command line will show in separate windows. It also allows users to input only one
+compulsory attribute to add one Person, Module or Occasion.</p>
 </li>
 <li>
-<p>Justification: These features is the basics of the product such that a user can track not onlt his or her contacts
-but also modules and occasions happening in the school.</p>
+<p>Justification: These features are the basics of the product such that a user can track his or her contacts, modules
+and occasions happening in the school. It is more convenient for the users to input any number of optional attributes
+when they are adding the Person, Module and Occasion, and to update these optional attributes at any time they feel
+needed, rather than requiring the users to input all the attributes at the first place.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Major enhancement</strong>: extended FindCommand to <strong>FindPersonCommand, FindModuleCommand, FindOccasionCommand</strong></p>
+<p><strong>Minor enhancement</strong>:
+extended FindCommand to <strong>FindPersonCommand, FindModuleCommand, FindOccasionCommand</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to finds Person by name, phone, or email, or address; similarly, it allows finding
-Modules by module code, module name, academic year or semester; finding occasions by occasion name, occasion date,
-or occasion location.</p>
+<p>What it does: allows the user to finds Person by name, phone, or email, address, modules they are taking, and
+occasions they are involved in; similarly, it allows finding Modules by module code, module name, academic year or
+semester; finding occasions by occasion name, occasion date, or occasion location.</p>
 </li>
 <li>
 <p>Justification: These features largely improve the convenience for finding a specific Person, Module or Occasion. For
-instance, a Person now can be found by his or her name, phone, email or address, and multiple step of findperson command
+instance, a Person now can be found by his or her name, phone, email, address, module code of the module he is taking,
+and occasion name of the occasion he is involved in. Multiple steps of findperson command
 can be used to find a person by more than one kind of conditions.</p>
 </li>
 <li>
-<p>Highlights: The finding is based on the compulsory prefixes entered by the user when he or she adds a Person, Module
-or Occasion. This may be improved in TheTracker v1.4 by employing a new tagging system, which allows more dynamic
-finding.</p>
+<p>Highlights: The finding is based on the prefixes entered by the user when he or she adds a Person, Module
+or Occasion. It is compatible with the Add Command, such that Person, Module and Occasion will only be found by the
+attributes that have been entered by the user.</p>
 </li>
 </ul>
 </div>
@@ -61,8 +66,7 @@ finding.</p>
 commands.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>]
-<em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=xueyantian&amp;sort=displayName&amp;since=2018-09-12&amp;until=2018-11-12&amp;timeframe=day&amp;reverse=false&amp;repoSort=true">Code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>: wrote skeleton for Occasion related UI.</p>
@@ -102,7 +106,8 @@ commands.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/88">#88</a>,
+<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/202">#202</a></p>
 </li>
 </ul>
 </div>
@@ -112,29 +117,12 @@ commands.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/108">#108</a>,
+<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/121">#121</a>, <a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/171">#171</a>,
+<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/188">#188</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com/CS2103-AY1819S1-W10-1/main/pull/125">125</a>)</p>
 </li>
 </ul>
 </div>
@@ -143,9 +131,6 @@ commands.</p>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -369,17 +354,124 @@ A person, module or an occasion can have any number of tags (including 0) and in
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">Delete</a></h3>
+<h3 id="add-person-module-occasion-feature"><a class="link" href="#add-person-module-occasion-feature">Add Person/Module/Occasion Feature</a></h3>
 <div class="paragraph">
-<p><code>delete</code> is a basic feature provided by every version of <code>TheTracker</code>.
-It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion</code>, by the same <code>DeletePersonCommand</code> <code>DeleteModuleCommand</code> and
-<code>DeleteOccasionCommand</code> respectively.</p>
+<p>The add feature is currently implemented the same way to add persons, modules and occasions.
+There are thus three similar commands which are related to this add command:
+<code>addperson</code>, <code>addmodule</code>, <code>addoccasion</code>.</p>
+</div>
+<div class="paragraph">
+<p>The add command adds the entity (person, module, occasion) with the attributes / fields provided by the user.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
+<p>As the <code>addperson</code>, <code>addmodule</code>, <code>addoccasion</code> commands' logic are similar to one another,
+the <code>addperson</code> command will be taken as the sole example in this document.</p>
+</div>
+<div class="paragraph">
+<p><code>AddPersonCommand</code> extends the <code>Command</code> class and uses inheritance to facilitate implementation.
+It&#8217;s mechanism is facilitated by <code>VersionAddressBook</code>. In addition, it implements the following operations:
+* <code>VersionedAddressBook#addPerson(Person)</code>: Update the targetedPerson with edited fields
+* <code>VersionedAddressBook#commit()</code>: Saves the current book state in the command history</p>
+</div>
+<div class="paragraph">
+<p>Provided below is a usage scenario instance. It illustrates how the add mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1: The user launches TheTracker for the first time. The
+<code>VersionedAddressBook</code> will be initialised with the initial address book
+state, which the <code>currentStatePointer</code> is currently pointing to.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddStartingStateListDiagram.png" alt="AddStartingStateListDiagram" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2: The user executes <code>addperson n/David&#8230;&#8203;</code> command to add a person named David in his TheTracker. The <code>addperson</code>
+string input in the command line is passed into the <code>AddressBookParser</code> object, which parses the input and creates an
+<code>AddPersonCommandParser</code> to help it further parse the argument. This <code>AddPersonCommandParser</code> creates a Person with the
+Compulsory attribute <code>Name</code>, and optional fields <code>Phone</code>, <code>Email</code>, <code>Address</code> and <code>Tag</code> as provided by the user and
+passes this person to be added to a new <code>AddPersonCommand</code>. The <code>addPersonCommand</code> calls <code>Model#addPerson()</code>,
+thus adding the new <code>Person</code> into the versionedAddressBook. The <code>addperson</code> command
+then calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker
+after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be saved in the <code>addressBookStateList</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddNewCommand1StateListDiagram.png" alt="AddNewCommand1StateListDiagram" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>addperson</code> operation works:
+<code>addperson n/David</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddCommandLogicDiagram.png" alt="AddCommandLogicDiagram" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p><code>addmodule</code> and <code>addoccasion</code> works in a similar way as <code>addperson</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-addperson-addmodule-addoccasion-executes"><a class="link" href="#aspect-how-addperson-addmodule-addoccasion-executes">Aspect: How addperson/addmodule/addoccasion executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (Current Implementation):</strong> <code>AddPersonCommand</code>, <code>AddModuleCommand</code> and <code>AddOccasionCommand</code> require
+users to input only one compulsory attribute, and may also add any number of optional attributes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>E.g. <code>addperson n/David</code>, <code>addmodule mc/CS2103</code>, <code>addoccasion on/project meeting</code> are the easiest way to add a person,
+module and occasion</p>
+</li>
+<li>
+<p>Pros: This is more user friendly, such that users can add a contact even they only know the name of the contact. And,
+they can input details of that contact if needed.</p>
+</li>
+<li>
+<p>Cons: This may be hard for the storage of TheTracker, and needs to work compatibly with other features.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong>  <code>AddPersonCommand</code>, <code>AddModuleCommand</code> and <code>AddOccasionCommand</code> require users to input all
+pre-defined attributes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Less flexible, such that users cannot add in a contact with some details they do not know.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete"><a class="link" href="#delete">Delete</a></h3>
+<div class="paragraph">
+<p><code>delete</code> is a basic feature provided by <code>TheTracker</code>.
+It supports deletions of <code>Person</code>, <code>Module</code> and <code>Occasion</code>, by the same <code>DeletePersonCommand</code> <code>DeleteModuleCommand</code> and
+<code>DeleteOccasionCommand</code> respectively.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
 <p>This following section will use <code>DeletePersonCommand</code> as an example, <code>DeleteModuleCommand</code> and  <code>DeleteOccasionCommand</code>
-uses the same mechanism. <code>DeletePersonCommand`extends the `Command</code> class and uses inheritance to facilitate
+follows the same mechanism. <code>DeletePersonCommand</code> extends the <code>Command</code> class and uses inheritance to facilitate
 implementation.</p>
 </div>
 <div class="paragraph">
@@ -388,7 +480,7 @@ implementation.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>DeleteCommand#excute(Model model, CommandHistory history)</code>: deletes the entity passed to the <code>DeleteCommand</code> class</p>
+<p><code>DeletePersonCommand#excute(Model model, CommandHistory history)</code>: deletes the Person of the <code>Index</code> passed to the <code>DeletePersonCommand</code> class</p>
 </li>
 </ul>
 </div>
@@ -404,26 +496,17 @@ delete mechanism behaves at each step.</p>
 <code>VersionedAddressBook</code> will be initialised with the initial address book
 state.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteStartingStateListDiagram.png" alt="DeleteStartingStateListDiagram" width="800">
-</div>
-</div>
 <div class="paragraph">
 <p>Step 2: The user executes <code>addperson n/David&#8230;&#8203;</code> command to add a person named
-David in his TheTracker. The parser <code>AddPersonCommandParser</code> will identify by
-the 'n/' tag that the entity to be added is a person. The <code>addperson</code> command
+David in his TheTracker. The parser <code>AddPersonCommandParser</code> will parse the person&#8217;s attributes and create
+a new person object with these attributes and pass the person to <code>AddPersonCommand</code>. The <code>addperson</code> command
 calls <code>Model#commitAddressBook()</code>, causing the modified state of TheTracker
-after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be saved in the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteNewCommand1StateListDiagram.png" alt="DeleteNewCommand1StateListDiagram" width="800">
-</div>
+after the <code>addperson n/ David&#8230;&#8203;</code> command executes to be saved in the <code>addressBookStateList</code>.
+(refer to the Add Command diagram)</p>
 </div>
 <div class="paragraph">
-<p>Step 3: The user executes <code>deleteperson 1</code> to delete the person named David in the address
-book who has an index 1. The parser <code>DeletePersonCommandParser</code> will identify by the index of the person to be
+<p>Step 3: The user executes <code>deleteperson 1</code> to delete the person who has an index 1 (named David) in the current active list.
+The parser <code>DeletePersonCommandParser</code> will identify by the index of the person to be
 deleted.The <code>deleteperson</code> command calls Model#getFilteredPersonList(), Model#deletePerson()
 and <code>Model#commitAddressBook()</code>, and causes modified address book state to be saved into the <code>addressBookStateList</code></p>
 </div>
@@ -442,7 +525,7 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-delete-executes"><a class="link" href="#aspect-how-delete-executes">Aspect: How delete executes</a></h5>
 <div class="ulist">
@@ -516,13 +599,4 @@ and <code>Model#commitAddressBook()</code>, and causes modified address book sta
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:21:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:35:10 UTC</div></div></div></body></html>
