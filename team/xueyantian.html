@@ -502,6 +502,13 @@ the high-level implementation is similar to the earlier commands.</p>
 <div class="paragraph">
 <p>In performing deep deletion, almost all "related" objects are copied.<br></p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteDeleteCommandStateListDiagram.png" alt="DeleteDeleteCommandStateListDiagram" width="500">
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
 <p>For example, suppose TheTracker is initialised in the following manner:</p>
 </div>
@@ -517,6 +524,13 @@ the high-level implementation is similar to the earlier commands.</p>
 <p><code>p2</code> is inserted into <code>m1</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram" width="500">
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>The current object diagram can be drawn as follows (unnecessary fields omitted):</p>
@@ -781,7 +795,11 @@ It has a new <code>UniquePersonList</code> which is empty.</p>
 <p>Very tedious to remove all mentions of an entry <strong>after</strong> it has been deleted</p>
 </li>
 <li>
-<p>User may be misled that an entry still exists</p>
+<p>User may be misled that an entry still exists
+=== Find Person/Module/Occasion Feature
+The find feature currently is implemented the same way to find persons, modules, and occasions.
+There are thus three similar commands which are related to this find command:
+<code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code>.</p>
 </li>
 </ul>
 </div>
@@ -791,8 +809,77 @@ It has a new <code>UniquePersonList</code> which is empty.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The find command family finds the entity (person, module, occasion), based on their attributes /
+fields.</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows how the find command is processed through the logic of TheTracker:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommandLogicDiagram.png" alt="FindCommandLogicDiagram" width="500">
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:25:33 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>As the <code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code> commands' logic are similar to one another,
+the <code>findperson</code> command will be taken as the sole example in this document. The findperson string
+input in the command line is passed into the <code>AddressBookParser</code> object, which parses the input and
+creates a <code>FindPersonCommandParser</code> to help it further parse the argument and create a
+<code>FindPersonCommand</code>. This <code>FindPersonCommand</code> filters the entire person list based on the keyword
+in the specific field stipulated and updates the Address Book Model to create an Observable List of
+persons based on the filter specified.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-find-executes"><a class="link" href="#aspect-how-find-executes">Aspect: How find executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Match full keyword.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>E.g. If there is a person named "Alex", only the command <code>findperson n/alex</code> will find the
+person. <code>findperson n/ale</code> will not find the person.</p>
+</li>
+<li>
+<p>Pros: Very target and precise finding of person.</p>
+</li>
+<li>
+<p>Cons: Cannot find parts of the person&#8217;s attributes especially if user cannot remember full
+attribute name, title, etc.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Match keyword to part of the attribute.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>E.g. If there is a person named "Alex", the commands <code>findperson n/e</code>, <code>findperson n/ex</code>,
+<code>findperson n/le</code>, <code>findperson n/alex</code> will find the person.</p>
+</li>
+<li>
+<p>Pros: Can find multiple entries of persons with keyword in name.</p>
+</li>
+<li>
+<p>Cons: May not limit the search of persons, hard to pinpoint exact person.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:58:22 UTC</div></div></div></body></html>
