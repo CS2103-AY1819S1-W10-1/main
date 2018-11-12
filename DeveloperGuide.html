@@ -1709,7 +1709,7 @@ the high-level implementation is similar to the earlier commands.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeepDeletionObjectDiagramBefore.png" alt="DeepDeletionObjectDiagramBefore" width="800">
+<img src="images/DeepDeletionObjectDiagramBefore.png" alt="DeepDeletionObjectDiagramBefore" width="500">
 </div>
 </div>
 <div class="paragraph">
@@ -1717,7 +1717,7 @@ the high-level implementation is similar to the earlier commands.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeepDeletionObjectDiagramAfter.png" alt="DeepDeletionObjectDiagramAfter" width="800">
+<img src="images/DeepDeletionObjectDiagramAfter.png" alt="DeepDeletionObjectDiagramAfter" width="500">
 </div>
 </div>
 <div class="paragraph">
@@ -2009,16 +2009,6 @@ the <code>ReadOnlyAddressBook</code> will not be incorrectly modified.</p>
 <div class="paragraph">
 <p>Currently, a list only stores a <strong>copy</strong> of the desired entries, instead of the actual entries.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.15.2. Design Considerations</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros:</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Suppose that a person needs to be edited/deleted. Then correctly implementing any of these commands requires 3 stages:</p>
 </div>
@@ -2035,6 +2025,13 @@ the <code>ReadOnlyAddressBook</code> will not be incorrectly modified.</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>Methods for the implementation of 1 and 2 are contained in the <code>AttendanceListUtil</code> class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.15.2. Design Considerations</a></h4>
+
 </div>
 </div>
 </div>
@@ -3318,9 +3315,6 @@ multiple pre-existing platforms and consolidates all this information in a neat 
 <div class="sect1">
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
-</div>
 <h3 id="use-case-adding-an-entry" class="discrete">Use case: Adding an entry</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -3686,4 +3680,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:21:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 13:33:21 UTC</div></div></div></body></html>
