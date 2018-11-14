@@ -454,352 +454,95 @@ pre-defined attributes.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete"><a class="link" href="#delete">Delete</a></h3>
+<h3 id="find-person-module-occasion-feature"><a class="link" href="#find-person-module-occasion-feature">Find Person/Module/Occasion Feature</a></h3>
+<div class="paragraph">
+<p>The find feature currently is implemented the same way to find persons, modules, and occasions.
+There are thus three similar commands which are related to this find command:
+<code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code>.</p>
+</div>
+<div class="paragraph">
+<p>The find command family finds the entity (person, module, occasion), based on their attributes /
+fields.</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows how the find command is processed through the logic of TheTracker:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommandLogicDiagram.png" alt="FindCommandLogicDiagram" width="500">
+</div>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>delete</code> command will delete a <code>Person</code>, <code>Module</code> or <code>Occasion</code>.
-Similar to other commands, a new <code>ReadOnlyAddressBook</code> is created upon the execution of this command.<br>
-It can then be accessed within the <code>VersionedAddressBook</code> when executing <code>undo</code> or <code>redo</code>.</p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram below (reproduced from <a href="#Design-Logic">[Design-Logic]</a>) shows that
-the high-level implementation is similar to the earlier commands.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="400">
-</div>
-</div>
-<div class="paragraph">
-<p>However, the current implementation also allows for 2 useful functionalities in this feature:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Inferred Deletion: As we maintain the active type, the deletion will be applied to the currently active list.</p>
-</li>
-<li>
-<p>Deep Deletion: By updating the associated lists, all references to this entry can be removed (i.e. from other entries' lists).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The following activity diagram gives a broad overview of the deletion process:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteActivityDiagram.png" alt="DeleteActivityDiagram" width="400">
-</div>
-</div>
-<div class="paragraph">
-<p>In performing deep deletion, almost all "related" objects are copied.<br></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteDeleteCommandStateListDiagram.png" alt="DeleteDeleteCommandStateListDiagram" width="400">
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>For example, suppose TheTracker is initialised in the following manner:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>2 Persons <code>p1</code>, <code>p2</code> and 2 Modules <code>m1</code>, <code>m2</code> are created</p>
-</li>
-<li>
-<p><code>p1</code> is inserted into <code>m1</code>, <code>m2</code></p>
-</li>
-<li>
-<p><code>p2</code> is inserted into <code>m1</code></p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram" width="400">
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>The current object diagram can be drawn as follows (unnecessary fields omitted):</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeepDeletionObjectDiagramBefore.png" alt="DeepDeletionObjectDiagramBefore" width="500">
-</div>
-</div>
-<div class="paragraph">
-<p>After deleting <code>p1</code>, the new object diagram will be:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeepDeletionObjectDiagramAfter.png" alt="DeepDeletionObjectDiagramAfter" width="500">
-</div>
-</div>
-<div class="paragraph">
-<p>Notice that:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>p1</code> and its <code>UniqueModuleList</code> is deleted</p>
-</li>
-<li>
-<p><code>p2</code> is not affected</p>
-</li>
-<li>
-<p>A <strong>new</strong> version of <code>m1</code> is created.
-It has a new <code>UniquePersonList</code>, which contains a new <strong>copy</strong> of <code>p2</code> (copied from <code>p2Copy1</code>)</p>
-</li>
-<li>
-<p>A <strong>new</strong> version of <code>m2</code> is created.
-It has a new <code>UniquePersonList</code> which is empty.</p>
-</li>
-</ul>
+<p>As the <code>findperson</code>, <code>findmodule</code>, and <code>findoccasion</code> commands' logic are similar to one another,
+the <code>findperson</code> command will be taken as the sole example in this document. The findperson string
+input in the command line is passed into the <code>AddressBookParser</code> object, which parses the input and
+creates a <code>FindPersonCommandParser</code> to help it further parse the argument and create a
+<code>FindPersonCommand</code>. This <code>FindPersonCommand</code> filters the entire person list based on the keyword
+in the specific field stipulated and updates the Address Book Model to create an Observable List of
+persons based on the filter specified.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-explicit-implicit-deletion"><a class="link" href="#aspect-explicit-implicit-deletion">Aspect: Explicit/Implicit Deletion</a></h5>
+<h5 id="aspect-how-find-executes"><a class="link" href="#aspect-how-find-executes">Aspect: How find executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (Current Implementation):</strong> Check the active type from the model, and delete from the list.</p>
+<p><strong>Alternative 1 (current choice):</strong> Match full keyword.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User can use <code>delete</code> instead of typing <code>deleteperson</code>, <code>deletemodule</code> or <code>deleteoccasion</code> in full.</p>
+<p>E.g. If there is a person named "Alex", only the command <code>findperson n/alex</code> will find the
+person. <code>findperson n/ale</code> will not find the person.</p>
 </li>
 <li>
-<p>User is explicitly prevented from deleting entries from an inactive list</p>
+<p>Pros: Very target and precise finding of person.</p>
+</li>
+<li>
+<p>Cons: Cannot find parts of the person&#8217;s attributes especially if user cannot remember full
+attribute name, title, etc.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Cons:</p>
+<p><strong>Alternative 2:</strong> Match keyword to part of the attribute.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Harder to implement.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<p>E.g. If there is a person named "Alex", the commands <code>findperson n/e</code>, <code>findperson n/ex</code>,
+<code>findperson n/le</code>, <code>findperson n/alex</code> will find the person.</p>
 </li>
 <li>
-<p><strong>Alternative 2 :</strong> 3 commands <code>deleteperson</code>, <code>deletemodule</code> and <code>deleteoccasion</code> to delete from the respective list.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Easier to implement</p>
-</li>
-</ul>
-</div>
+<p>Pros: Can find multiple entries of persons with keyword in name.</p>
 </li>
 <li>
-<p>Cons:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User may delete from the wrong list without realising</p>
-</li>
-<li>
-<p>Inconvenient for user to type out full command</p>
+<p>Cons: May not limit the search of persons, hard to pinpoint exact person.
+Class Diagram for Module:</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModuleClassDiagram.png" alt="ModuleClassDiagram" width="500">
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-deletion-by-index-fields"><a class="link" href="#aspect-deletion-by-index-fields">Aspect: Deletion by Index/Fields</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (Current Implementation):</strong> Delete entries by index</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User can easily identify the index from the List Panel</p>
-</li>
-<li>
-<p>User can use the same command for all 3 lists</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Class Diagram for Occasion:</p>
 </div>
-</li>
-<li>
-<p>Cons:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User needs to user a <code>find</code> command first if he cannot find the entry</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Delete entries by field (e.g. delete n/john)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User can find an entry and delete them currently</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Cons:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Have to decide what to do if multiple entries satisfying the condition are found</p>
-</li>
-<li>
-<p>User has to remember prefixes in order to delete an entry</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-shallow-deep-deletion"><a class="link" href="#aspect-shallow-deep-deletion">Aspect: Shallow/Deep Deletion</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (Current Implementation):</strong> Deleted entry is removed from all linked entries</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User can completely remove an entry from all mentions in TheTracker</p>
-</li>
-<li>
-<p><code>removeperson</code> implementation does not need to check whether an entry still exists in the address book</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Cons:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Difficult to implement</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Only allow entries that are not referenced to be deleted</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User will not accidentally delete an entry that is used</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Cons:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>User must manually use the <code>removePerson</code> command to eliminate all references</p>
-</li>
-<li>
-<p>Difficult to implement</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 3:</strong> Deleted entries can remain in all linked entries</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Easy to implement</p>
-</li>
-<li>
-<p>User can keep archival information for an entry</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Cons:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Very tedious to remove all mentions of an entry <strong>after</strong> it has been deleted</p>
-</li>
-<li>
-<p>User may be misled that an entry still exists</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OccasionClassDiagram.png" alt="OccasionClassDiagram" width="500">
 </div>
 </div>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:57:09 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-14 12:57:49 UTC</div></div></div></body></html>
